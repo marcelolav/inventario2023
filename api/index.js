@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 // Recupera todos los productos
 app.get('/productos', async (req, res) => {
-  console.log('get productos...');
+  // console.log('get productos...');
   const productos = await productoModel.obtenerProductos();
   res.json(productos);
 });
@@ -48,21 +48,26 @@ app.get('/proveedores', async (req, res) => {
 });
 
 app.get("/carrito", (req, res) => {
-  res.json(req.session.carrito || []);
+  const carrito = req.session.carrito;
+  res.json(carrito || []);
+
 });
 
 app.post("/carrito/agregar", async (req, res) => {
   const idProducto = req.body.id;
   const producto = await productoModel.obtenerPorId(idProducto);
+  let total = 0;
   if (!req.session.carrito) {
     req.session.carrito = [];
   }
   req.session.carrito.push(producto);
+  req.session.carrito.forEach(p => total += p.precio);
   res.json(req.body);
+  console.log(total);
 });
 
 app.get("/carrito/limpiar", (req,res) => {
-  res.json(req.session.carrito = []);
+  req.session.carrito = [];
 });
 
 // Inicializar el servidor (Siempre al final de todas las anteriores definiciones y constantes)

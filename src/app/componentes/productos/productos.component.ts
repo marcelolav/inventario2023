@@ -32,7 +32,7 @@ export class ProductosComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  async verCompra() {
+  async verCarrito() {
     this.dataSource.data = await this.carrito.obtenerProductos()
   }
 
