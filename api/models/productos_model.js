@@ -1,6 +1,6 @@
 const conexion = require("../conexion")
-const fs = require("fs");
-const path = require("path");
+// const fs = require("fs");
+// const path = require("path");
 
 module.exports = {
 
@@ -67,11 +67,22 @@ module.exports = {
             });
         });
       },
+      // Obtener producto por numero de id
+      obtenerPorId(id) {
+        return new Promise((resolve, reject) => {
+          conexion.query(`select id, codigobarra, nombre,descripcion, precio, preciocompra, existencia, preciorefdolar from productos where id = ?`,
+            [id],
+            (err, resultados) => {
+              if (err) reject(err);
+              else resolve(resultados[0]);
+            });
+        });
+      },
 
-      // Obtener todos los rubtos 
+      // Obtener todos los rubros 
       obtenerRubros() {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id, nombre from rubros`, 
+            conexion.query(`select * from rubros`, 
             (err, resultados) => {
                 if (err) reject(err);
                 else resolve(resultados);
