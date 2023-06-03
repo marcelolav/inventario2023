@@ -5,9 +5,14 @@
     <mat-label>Buscar...</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
 </mat-form-field>
-<button mat-raised-button (click)="verCarrito()">Ver carrito</button>
-<button mat-raised-button (click)="limpiarCarrito()">Limpiar carrito</button>
-<button mat-raised-button (click)="obtenerProductos()">Volver...</button>
+
+<mat-card style="text-align: center;">
+  <mat-card-content>
+    <button mat-raised-button (click)="verCarrito()">Ver carrito</button>
+    <button mat-raised-button (click)="limpiarCarrito()">Limpiar carrito</button>
+    <button mat-raised-button (click)="obtenerProductos()">Listar Productos</button>
+  </mat-card-content>
+</mat-card>  
 
 <table class="mat-elevation-z13" *ngIf="this.dataSource.data.length>0" mat-table [dataSource]="dataSource">
   
@@ -38,7 +43,7 @@
   <ng-container matColumnDef="agregar">
     <mat-header-cell *matHeaderCellDef>Agregar</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button (click)="agregaProducto(element.id)" mat-raised-button color="primary">
+      <button (click)="agregarCarro(element.nombre, 1, element.precio)" mat-raised-button color="primary">
         <mat-icon>add</mat-icon> Agregar
       </button>
     </mat-cell>
@@ -46,3 +51,11 @@
   <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
   <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
 </table>
+
+    <ul>
+      <li *ngFor="let dato of itemsCarrito">
+          {{ dato |json}}
+      </li>
+    </ul>
+
+

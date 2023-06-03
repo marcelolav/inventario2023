@@ -5,7 +5,10 @@ const express = require("express"),
 // Modelos para funciones     
 const proveedores_model = require("./models/proveedores_model");
 const productoModel = require("./models/productos_model");
-// CORS ¿Funcionara????
+const ventasModel = require("./models/ventas_model");
+const carritoModel = require('./models/carrito_model');
+
+// Manejo de dominios cruzados para evitar errores en navegador
 const DOMINIO_PERMITIDO_CORS = "http://localhost:4200",
   DIRECTORIO_FOTOS = path.join(__dirname, "fotos_productos"),
   DIRECTORIO_DIST = path.join(__dirname, "dist"),
@@ -47,27 +50,34 @@ app.get('/proveedores', async (req, res) => {
   res.json(proveedores);
 });
 
-app.get("/carrito", (req, res) => {
-  const carrito = req.session.carrito;
-  res.json(carrito || []);
 
+// CARRITO VIEJO VER ARCHIVO APARTE CARRITO_VIEJO.JS
+
+// Mostrar registros de carrito
+
+app.get("/carrito", async (req, res) => {
+  const carrito = await carritoModel.obtenerItems();
+  res.json(carrito);
 });
 
-app.post("/carrito/agregar", async (req, res) => {
-  const idProducto = req.body.id;
-  const producto = await productoModel.obtenerPorId(idProducto);
-  let total = 0;
-  if (!req.session.carrito) {
-    req.session.carrito = [];
-  }
-  req.session.carrito.push(producto);
-  req.session.carrito.forEach(p => total += p.precio);
-  res.json(req.body);
-  console.log(total);
-});
+app.post("/carrito/agregar", async (req,res) => {
+  const regCarrito = req.body;
+  const agregar = await carritoModel.agregarItem(regCarrito.producto, regCarrito.cantidad, regCarrito.precio);
+  res.json(agregar);
+})
 
-app.get("/carrito/limpiar", (req,res) => {
-  req.session.carrito = [];
+
+
+// Ventas - Ver todos los registros de ventas
+app.get('/ventas', async (req, res) => {
+  const ventas = await ventasModel.obtenerVentas();
+  res.json(ventas);
+});
+// Ventas - Agrega un registro de ventas
+app.post('/ventas/agregar', async (req, res) => {
+  const venta = req.body;
+  const respuesta = await ventasModel.agregoItemVenta(venta.fecha, venta.producto, venta.cantidad, venta.precio);
+  res.json(respuesta);
 });
 
 // Inicializar el servidor (Siempre al final de todas las anteriores definiciones y constantes)

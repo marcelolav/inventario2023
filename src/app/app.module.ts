@@ -22,7 +22,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatStepperModule} from "@angular/material/stepper";
-
+import {MatCardModule} from "@angular/material/card";
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 
 // Modulos del app
@@ -53,7 +53,8 @@ import { ProductosComponent } from './componentes/productos/productos.component'
     MatBadgeModule,
     MatMenuModule,
     MatStepperModule, 
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
