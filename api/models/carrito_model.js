@@ -15,7 +15,7 @@ module.exports = {
 
     obtenerItems() {
         return new Promise((resolve, reject) => {
-            conexion.query(`select * from carrito`,
+            conexion.query(`select producto, cantidad, precio from carrito`,
             (err,resultados)=>{
                 if(err) reject(err);
                 else resolve(resultados);

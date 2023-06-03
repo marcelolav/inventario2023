@@ -14,8 +14,9 @@ import { Carrito } from '../../modelos/carrito';
 export class ProductosComponent implements OnInit {
 
   public columnas = ['codigobarra','nombre', 'descripcion', 'precio', 'preciocompra', 'existencia', 'agregar'];
+  public colItems = ['producto', 'cantidad', 'precio'];
   public dataSource = new MatTableDataSource();
-  public itemsCarrito = [];
+  public itemsCarrito = new MatTableDataSource();
   public carro = new Carrito("",0,0);
 
   public total = 0;
@@ -40,6 +41,7 @@ export class ProductosComponent implements OnInit {
       precio
     }
     this.carrito.agregarAlCarrito(constreg);
+    this.verCarrito();
 
     console.log(producto, cantidad, precio)
   }
@@ -64,9 +66,9 @@ export class ProductosComponent implements OnInit {
 
   async limpiarCarrito() {
     this.carrito.limpiarCarrito();
-    this.dataSource.data = await this.carrito.obtenerItemsCarrito()
+    // this.dataSource.data = await this.carrito.obtenerItemsCarrito()
     // this.carritoJson = []
-    this.total = await this.carrito.obtenerTotal();
+    // this.total = await this.carrito.obtenerTotal();
   }
 
   finalizaVenta(datos: any) {

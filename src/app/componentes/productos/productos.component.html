@@ -14,8 +14,7 @@
   </mat-card-content>
 </mat-card>  
 
-<table class="mat-elevation-z13" *ngIf="this.dataSource.data.length>0" mat-table [dataSource]="dataSource">
-  
+<table class="mat-elevation-z13" mat-table [dataSource]="dataSource">
   <ng-container matColumnDef="codigobarra">
     <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.codigobarra}}</mat-cell>
@@ -52,10 +51,22 @@
   <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
 </table>
 
-    <ul>
-      <li *ngFor="let dato of itemsCarrito">
-          {{ dato |json}}
-      </li>
-    </ul>
+<table class="mat-elevation-z13" mat-table [dataSource]="itemsCarrito">
+  <ng-container matColumnDef="producto">
+    <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.producto}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="cantidad">
+    <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.cantidad}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="precio">
+    <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.precio}}</mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="colItems"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: colItems;"></mat-row>
+</table>
+  
 
 
