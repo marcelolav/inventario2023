@@ -1,18 +1,8 @@
-<h1>Productos</h1>
-<!-- <button (click)="navegarAFormulario()" mat-button color="accent" mat-raised-button>Agregar producto</button> -->
-
+<h2>Productos</h2>
 <mat-form-field>
     <mat-label>Buscar...</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
 </mat-form-field>
-
-<mat-card style="text-align: center;">
-  <mat-card-content>
-    <button mat-raised-button (click)="verCarrito()">Ver carrito</button>
-    <button mat-raised-button (click)="limpiarCarrito()">Limpiar carrito</button>
-    <button mat-raised-button (click)="obtenerProductos()">Listar Productos</button>
-  </mat-card-content>
-</mat-card>  
 
 <table class="mat-elevation-z13" mat-table [dataSource]="dataSource">
   <ng-container matColumnDef="codigobarra">
@@ -50,23 +40,3 @@
   <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
   <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
 </table>
-
-<table class="mat-elevation-z13" mat-table [dataSource]="itemsCarrito">
-  <ng-container matColumnDef="producto">
-    <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.producto}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="cantidad">
-    <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.cantidad}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="precio">
-    <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.precio}}</mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="colItems"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: colItems;"></mat-row>
-</table>
-  
-
-

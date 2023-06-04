@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-content>
+        <button mat-raised-button color="primary" (click)="facturarCarrito()"> Facturar </button>
+        <button mat-raised-button color="primary" (click)="eliminarCarrito()"> Eliminar </button>
+    </mat-card-content>
+</mat-card>
+
+<table class="mat-elevation-z13" mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="producto">
+      <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.producto}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cantidad">
+      <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cantidad}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="precio">
+      <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.precio}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="colItems"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: colItems;"></mat-row>
+  </table>

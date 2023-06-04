@@ -21,7 +21,7 @@ export class CarritoService {
   };
 
   async limpiarCarrito() {
-    return await this.http.get("/carrito/limpiar");
+    return await this.http.get("/carrito/eliminar");
   };
 
   async obtenerTotal() {
@@ -29,8 +29,6 @@ export class CarritoService {
   }
 
   async agregarRegistroVenta(regVenta: Ventas) {
-    return await this.http.post("/ventas/agregar", {
-      id: regVenta,
-    });
+    return await this.http.post("/ventas/agregar", regVenta);
   }
 }

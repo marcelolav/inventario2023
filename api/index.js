@@ -54,31 +54,37 @@ app.get('/proveedores', async (req, res) => {
 // CARRITO VIEJO VER ARCHIVO APARTE CARRITO_VIEJO.JS
 
 // Mostrar registros de carrito
-
 app.get("/carrito", async (req, res) => {
   const carrito = await carritoModel.obtenerItems();
   res.json(carrito);
 });
-
+// Agrega un item de carrito
 app.post("/carrito/agregar", async (req,res) => {
   const regCarrito = req.body;
   const agregar = await carritoModel.agregarItem(regCarrito.producto, regCarrito.cantidad, regCarrito.precio);
   res.json(agregar);
-})
+});
+// Eliminar todo el carrito
+app.get("/carrito/eliminar", async (req,res) => {
+  const elimnaCarrito = await carritoModel.elimnarCarrito();
+  res.json(elimnaCarrito);
+});
 
-
+// Manejo de Tabla ventas
 
 // Ventas - Ver todos los registros de ventas
 app.get('/ventas', async (req, res) => {
   const ventas = await ventasModel.obtenerVentas();
   res.json(ventas);
 });
-// Ventas - Agrega un registro de ventas
+// Ventas - Agrega un registro  de ventas
 app.post('/ventas/agregar', async (req, res) => {
   const venta = req.body;
+  console.log(venta);
   const respuesta = await ventasModel.agregoItemVenta(venta.fecha, venta.producto, venta.cantidad, venta.precio);
   res.json(respuesta);
 });
+
 
 // Inicializar el servidor (Siempre al final de todas las anteriores definiciones y constantes)
 app.listen(PUERTO, err => {

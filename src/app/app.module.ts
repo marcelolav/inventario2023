@@ -27,11 +27,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 
 // Modulos del app
 import { ProductosComponent } from './componentes/productos/productos.component';
+import { CarritoComponent } from './componentes/carrito/carrito.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductosComponent
+    ProductosComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

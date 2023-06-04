@@ -5,9 +5,6 @@
   border: 1px solid #555;
 }
 
-.example-icon {
-  padding: 0 14px;
-}
-.example-spacer {
-  flex: 1 1 auto;
+button {
+  width: 100% ;
 }

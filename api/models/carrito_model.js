@@ -21,8 +21,19 @@ module.exports = {
                 else resolve(resultados);
             })
         })
+    },
+
+    elimnarCarrito() {
+        return new Promise((resolve, reject) => {
+            conexion.query(`delete from carrito`,
+            (err,resultados)=>{
+                if(err) reject(err);
+                else resolve(resultados);
+            })
+        })
     }
    
+    
 
 
 }
