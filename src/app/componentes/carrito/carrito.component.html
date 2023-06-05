@@ -21,3 +21,7 @@
     <mat-header-row *matHeaderRowDef="colItems"></mat-header-row>
     <mat-row *matRowDef="let row; columns: colItems;"></mat-row>
   </table>
+  <mat-card>
+    <mat-card-title>Total : {{calcularTotal() | currency}}  </mat-card-title>
+  </mat-card>
+

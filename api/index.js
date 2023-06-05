@@ -7,6 +7,7 @@ const proveedores_model = require("./models/proveedores_model");
 const productoModel = require("./models/productos_model");
 const ventasModel = require("./models/ventas_model");
 const carritoModel = require('./models/carrito_model');
+const rubrosModel = require("./models/rubros_model");
 
 // Manejo de dominios cruzados para evitar errores en navegador
 const DOMINIO_PERMITIDO_CORS = "http://localhost:4200",
@@ -50,6 +51,11 @@ app.get('/proveedores', async (req, res) => {
   res.json(proveedores);
 });
 
+// Recupera todos los rubros
+app.get('/rubro', async (req, res) => { 
+  const rubros = await rubrosModel.obtenerRubros();
+  res.json(rubros);
+})
 
 // CARRITO VIEJO VER ARCHIVO APARTE CARRITO_VIEJO.JS
 

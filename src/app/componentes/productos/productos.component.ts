@@ -14,13 +14,9 @@ import { Carrito } from '../../modelos/carrito';
 export class ProductosComponent implements OnInit {
 
   public columnas = ['codigobarra','nombre', 'descripcion', 'precio', 'preciocompra', 'existencia', 'agregar'];
-  
   public dataSource = new MatTableDataSource();
-  
   public carro = new Carrito("",0,0);
-
   public total = 0;
-  
 
   constructor(private productosService: ProductosService, private carrito: CarritoService) { }
 

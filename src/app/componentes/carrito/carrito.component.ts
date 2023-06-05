@@ -17,6 +17,7 @@ export class CarritoComponent implements OnInit {
   public dataSource = new MatTableDataSource();
   public colItems = ['producto', 'cantidad', 'precio'];
   public regVenta = new Ventas(this.fechaActual, '',0,0);
+  public totalCarrito = 0;
 
   constructor(private carrito: CarritoService)  {}
   
@@ -34,31 +35,41 @@ export class CarritoComponent implements OnInit {
 
   facturarCarrito() {
     const object1 = JSON.stringify(this.dataSource);
-    //console.log(object1);
     const object2 = JSON.parse(object1);
-    //console.log(object2);
     
     for (const [key, value] of Object.entries(object2)) {
-      // Registro de Venta:  fecha, producto, cantidad, precio
       let registrocarro = JSON.stringify(value);
       let objetocarro = JSON.parse(registrocarro)
       console.log(objetocarro.producto, objetocarro.cantidad, objetocarro.precio);
-      let fecha = new Date();
+      let fechaActual = new Date();
+      console.log(fechaActual);
       let producto = objetocarro.producto;
       let cantidad = objetocarro.cantidad;
       let precio = Number(objetocarro.precio);
+      // this.totalCarrito = this.totalCarrito + precio;
       let regVenta: Ventas =  {
-        fecha: fecha,
+        fecha: fechaActual,
         producto: producto,
         cantidad: cantidad,
         precio: precio
       }
-      console.log(regVenta);
       this.carrito.agregarRegistroVenta(regVenta);
+      this.carrito.limpiarCarrito();
+      this.verCarrito();
+      this.totalCarrito = 0;
     }
-    //this.carrito.limpiarCarrito();
  
   }
   
-
+  calcularTotal() {
+    this.totalCarrito = 0;
+    const object2 = JSON.parse(JSON.stringify(this.dataSource));
+    for (const [key, value] of Object.entries(object2)) {
+      let objetocarro = JSON.parse(JSON.stringify(value))
+      let precio = Number(objetocarro.precio);
+      this.totalCarrito = this.totalCarrito + precio;
+    }
+    console.log(this.totalCarrito);
+    return this.totalCarrito;
+  }
 }

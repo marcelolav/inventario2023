@@ -46,9 +46,10 @@ module.exports = {
       },
 
       // Obtener todos los productos
+      //select ventas.total, clientes.nombre, clientes.direccion, ventas.fecha_venta FROM ventas inner join clientes on ventas.id_cliente = clientes.id
       obtenerProductos() {
         return new Promise((resolve, reject) => {
-          conexion.query(`select id, codigobarra, nombre, descripcion, precio, preciocompra, existencia, preciorefdolar, rubroid from productos`,
+          conexion.query(`select productos.id, productos.codigobarra, productos.nombre, productos.descripcion, productos.precio, productos.preciocompra, productos.existencia, productos.preciorefdolar, rubros.nombrerubro from productos inner join rubros on productos.rubroid = rubros.rubroid`,
             (err, resultados) => {
               if (err) reject(err);
               else resolve(resultados);
@@ -59,7 +60,7 @@ module.exports = {
       // Obtener producto por codigo de barras
       obtenerPorCodigoBarra(codigobarra) {
         return new Promise((resolve, reject) => {
-          conexion.query(`select id, codigobarra, nombre,descripcion, precio, preciocompra, existencia, preciorefdolar, idrubro from productos where codigobarra = ?`,
+          conexion.query(`select id, codigobarra, nombre,descripcion, precio, preciocompra, existencia, preciorefdolar, rubros.nombrerubro from productos inner join rubros on productos.rubroid = rubros.rubroid where codigobarra = ?`,
             [id],
             (err, resultados) => {
               if (err) reject(err);
@@ -70,7 +71,7 @@ module.exports = {
       // Obtener producto por numero de id
       obtenerPorId(id) {
         return new Promise((resolve, reject) => {
-          conexion.query(`select id, codigobarra, nombre,descripcion, precio, preciocompra, existencia, preciorefdolar from productos where id = ?`,
+          conexion.query(`select id, codigobarra, nombre,descripcion, precio, preciocompra, existencia, preciorefdolar, rubros.nombrerubro from productos  inner join rubros on productos.rubroid = rubros.rubroid  where id = ?`,
             [id],
             (err, resultados) => {
               if (err) reject(err);

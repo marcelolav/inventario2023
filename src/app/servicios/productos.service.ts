@@ -12,4 +12,7 @@ export class ProductosService {
     return await this.http.get("/productos");
   }
   
+  public async obtenerRubros() {
+      return await this.http.get(`/rubros`);
+    }
 }
