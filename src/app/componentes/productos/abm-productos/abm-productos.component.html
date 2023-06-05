@@ -1,1 +1,56 @@
-<p>abm-productos works!</p>
+<mat-card>
+    <h1>Agregar producto</h1>
+    <p>
+      <mat-form-field>
+        <input matInput [(ngModel)]="productoModel.codigobarra"
+              style="width: 50px;"
+               type="text"
+               placeholder="Código Barras">
+      </mat-form-field>
+    <!-- </p><p> -->
+      <mat-form-field>
+        <input matInput [(ngModel)]="productoModel.nombre"
+              style="width: 600px !important;"
+               type="text"
+               placeholder="Nombre">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <textarea rows="3" matInput [(ngModel)]="productoModel.descripcion"
+                  placeholder="Descripción"></textarea>
+      </mat-form-field>
+  
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="productoModel.precio"
+               type="number"
+               placeholder="Precio Venta Público">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput [(ngModel)]="productoModel.preciocompra"
+               type="number"
+               placeholder="Precio Compra">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="productoModel.existencia"
+               type="number"
+               placeholder="Existencia Actual">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="productoModel.rubroid"
+               type="number"
+               placeholder="Rubro ID...">
+      </mat-form-field>     
+      <mat-form-field>
+        <input matInput [(ngModel)]="productoModel.refdolar"
+               type="number"
+               placeholder="Precio Referencia Dolar">
+      </mat-form-field>
+      <button mat-raised-button (click)="guardarProducto()">Guardar</button>
+      <button mat-raised-button routerLink="/productos">Ir a Productos</button>
+  </mat-card>
+  <!-- <app-loading-button [cargando]="cargando" texto="Guardar" (click)="guardar()"></app-loading-button>
+  <a routerLink="/productos" mat-raised-button color="primary" style="margin-left: 10px">Volver</a>   -->

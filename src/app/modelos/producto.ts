@@ -6,6 +6,7 @@ export class Producto {
     public precio: number, 
     public preciocompra: number,
     public existencia: number,
+    public rubroid: number,
     public id?: number,
     public refdolar?: number)
     {

@@ -30,6 +30,10 @@
     <mat-header-cell *matHeaderCellDef>Existencia</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.existencia}}</mat-cell>
   </ng-container>
+  <ng-container matColumnDef="nombrerubro">
+    <mat-header-cell *matHeaderCellDef>Rubro</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.nombrerubro}}</mat-cell>
+  </ng-container>
   <ng-container matColumnDef="agregar">
     <mat-header-cell *matHeaderCellDef>Agregar</mat-header-cell>
     <mat-cell *matCellDef="let element">

@@ -45,6 +45,14 @@ app.get('/rubros', async (req, res) => {
   res.json(rubros);
 });
 
+// Agrega un producto
+app.post('/producto', async (req, res) => {
+  const producto = req.body;
+  const respuesta = await productoModel.agregarProducto(producto.codigobarra,producto.nombre, producto.descripcion, producto.precio, producto.preciocompra, producto.existencia, producto.refdolar, producto.rubroid);
+  res.json(respuesta);
+});
+
+
 // Recupera todos los proveedores
 app.get('/proveedores', async (req, res) => {
   const proveedores = await proveedores_model.obtenerProveedores();

@@ -15,4 +15,8 @@ export class ProductosService {
   public async obtenerRubros() {
       return await this.http.get(`/rubros`);
     }
+
+    public async agregarProducto(producto: Producto) {
+      return await this.http.post("/producto", producto);
+    }
 }

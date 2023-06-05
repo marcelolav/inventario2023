@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 // Modulos de angular material
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -60,7 +61,8 @@ import { VentasComponent } from './componentes/ventas/ventas.component';
     MatMenuModule,
     MatStepperModule, 
     MatSidenavModule,
-    MatCardModule
+    MatCardModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
