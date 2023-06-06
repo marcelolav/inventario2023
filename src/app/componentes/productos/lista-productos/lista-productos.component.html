@@ -1,0 +1,49 @@
+
+  <table class="mat-elevation-z13" mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="codigobarra">
+      <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.codigobarra}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.nombre}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.descripcion}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="precio">
+      <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.precio | currency}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="preciocompra">
+      <mat-header-cell *matHeaderCellDef>Precio Compra</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.preciocompra | currency}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="existencia">
+      <mat-header-cell *matHeaderCellDef>Existencia</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.existencia}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="nombrerubro">
+      <mat-header-cell *matHeaderCellDef>Rubro</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.nombrerubro}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="eliminar">
+      <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button (click)="eliminar(element.id)" mat-raised-button color="warn">
+          <mat-icon>delete</mat-icon> Eliminar
+        </button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="modificar">
+      <mat-header-cell *matHeaderCellDef>modificar</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button (click)="modificar(element.id)" mat-raised-button color="accent">
+          <mat-icon>modify</mat-icon> Modificar
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
+  </table>

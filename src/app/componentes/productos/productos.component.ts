@@ -51,6 +51,5 @@ export class ProductosComponent implements OnInit {
   finalizaVenta(datos: any) {
 
     const regVenta = datos.nombre
-    console.log(regVenta);
   }
 }

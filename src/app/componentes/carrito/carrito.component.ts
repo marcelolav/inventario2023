@@ -40,9 +40,7 @@ export class CarritoComponent implements OnInit {
     for (const [key, value] of Object.entries(object2)) {
       let registrocarro = JSON.stringify(value);
       let objetocarro = JSON.parse(registrocarro)
-      console.log(objetocarro.producto, objetocarro.cantidad, objetocarro.precio);
       let fechaActual = new Date();
-      console.log(fechaActual);
       let producto = objetocarro.producto;
       let cantidad = objetocarro.cantidad;
       let precio = Number(objetocarro.precio);

@@ -11,6 +11,7 @@ import { ProductosService } from 'src/app/servicios/productos.service';
 export class AbmProductosComponent implements OnInit{
   productoModel = new Producto("", "","", 0,0,0,0,0,0);
   rubros: Rubros[] = [];
+  
   constructor(private productosService: ProductosService) {}
   ngOnInit() {
     this.recuperaRubros();

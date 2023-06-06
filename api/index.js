@@ -34,13 +34,22 @@ app.use((req, res, next) => {
 
 // Recupera todos los productos
 app.get('/productos', async (req, res) => {
-  // console.log('get productos...');
   const productos = await productoModel.obtenerProductos();
   res.json(productos);
 });
+
+app.get('/producto', async (req, res) => {
+  if (!req.query.id) {
+    res.end("not found");
+    return;
+  }
+  const producto = await productoModel.obtenerPorId(req.query.id);
+  // producto.fotos = await productoModel.obtenerFotos(req.query.id);
+  res.json(producto);
+});
+
 // Recupera todos los rubros (Se encuentra en el model producto)
 app.get('/rubros', async (req, res) => {
-  console.log('get rubros.-');
   const rubros = await productoModel.obtenerRubros();
   res.json(rubros);
 });
@@ -52,6 +61,17 @@ app.post('/producto', async (req, res) => {
   res.json(respuesta);
 });
 
+// Elimina un producto por numero de id
+app.delete("/producto", async (req, res) => {
+
+  if (!req.query.id) {
+    res.end("No se encuentra el id del producto.");
+    return;
+  }
+  const idProducto = req.query.id;
+  await productoModel.eliminarProducto(idProducto);
+  res.json(true);
+});
 
 // Recupera todos los proveedores
 app.get('/proveedores', async (req, res) => {
@@ -94,7 +114,6 @@ app.get('/ventas', async (req, res) => {
 // Ventas - Agrega un registro  de ventas
 app.post('/ventas/agregar', async (req, res) => {
   const venta = req.body;
-  console.log(venta);
   const respuesta = await ventasModel.agregoItemVenta(venta.fecha, venta.producto, venta.cantidad, venta.precio);
   res.json(respuesta);
 });

@@ -7,9 +7,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
           let fecRep = Date.parse(fecha);
           let fechareplace = new Date(fecRep);
-
-          console.log(Date.now());
-            conexion.query(`insert into ventas (fecha, producto, cantidad, precio) values (?, ?, ?, ?)`,
+          conexion.query(`insert into ventas (fecha, producto, cantidad, precio) values (?, ?, ?, ?)`,
             [fechareplace, producto, cantidad, precio], (err, resultados) => {
                 if (err) reject(err);
                 else resolve (resultados.insertId);
