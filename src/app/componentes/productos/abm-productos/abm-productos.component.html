@@ -1,56 +1,69 @@
 <mat-card>
-    <h1>Agregar producto</h1>
+  <mat-card-title>Agregar producto</mat-card-title>
+  <mat-card-content>
     <p>
-      <mat-form-field>
-        <input matInput [(ngModel)]="productoModel.codigobarra"
-              style="width: 50px;"
-               type="text"
-               placeholder="Código Barras">
+      <mat-form-field class="medium-width">
+        <mat-label>Código de Barras</mat-label>
+        <input matInput [(ngModel)]="productoModel.codigobarra" type="text" />
       </mat-form-field>
-    <!-- </p><p> -->
-      <mat-form-field>
-        <input matInput [(ngModel)]="productoModel.nombre"
-              style="width: 600px !important;"
-               type="text"
-               placeholder="Nombre">
+      <mat-form-field class="medium-width">
+        <mat-label>Nombre / Descripción</mat-label>
+        <input matInput [(ngModel)]="productoModel.nombre" type="text" />
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field>
-        <textarea rows="3" matInput [(ngModel)]="productoModel.descripcion"
-                  placeholder="Descripción"></textarea>
-      </mat-form-field>
-  
-  
-      <mat-form-field>
-        <input matInput [(ngModel)]="productoModel.precio"
-               type="number"
-               placeholder="Precio Venta Público">
+      <mat-form-field class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          rows="3"
+          matInput
+          [(ngModel)]="productoModel.descripcion"
+        ></textarea>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field>
-        <input matInput [(ngModel)]="productoModel.preciocompra"
-               type="number"
-               placeholder="Precio Compra">
+      <mat-form-field class="numeric-width">
+        <mat-label>Precio de Venta</mat-label>
+        <input matInput [(ngModel)]="productoModel.precio" type="number" />
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="productoModel.existencia"
-               type="number"
-               placeholder="Existencia Actual">
+      <mat-form-field class="numeric-width">
+        <mat-label>Precio de Compra</mat-label>
+        <input
+          matInput
+          [(ngModel)]="productoModel.preciocompra"
+          type="number"
+        />
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="productoModel.rubroid"
-               type="number"
-               placeholder="Rubro ID...">
-      </mat-form-field>     
-      <mat-form-field>
-        <input matInput [(ngModel)]="productoModel.refdolar"
-               type="number"
-               placeholder="Precio Referencia Dolar">
+      <mat-form-field class="numeric-width">
+        <mat-label>Cantidad en Stock</mat-label>
+        <input matInput [(ngModel)]="productoModel.existencia" type="number" />
       </mat-form-field>
-      <button mat-raised-button (click)="guardarProducto()">Guardar</button>
-      <button mat-raised-button routerLink="/productos">Ir a Productos</button>
-  </mat-card>
-  <!-- <app-loading-button [cargando]="cargando" texto="Guardar" (click)="guardar()"></app-loading-button>
-  <a routerLink="/productos" mat-raised-button color="primary" style="margin-left: 10px">Volver</a>   -->
+      <mat-form-field class="numeric-width">
+        <mat-label>Precio Dolar Referencia</mat-label>
+        <input
+          matInput
+          [(ngModel)]="productoModel.refdolar"
+          type="number"
+        />
+      </mat-form-field>
+    </p>
+    
+      <mat-form-field>
+        <mat-label>Rubro</mat-label>
+        <mat-select [(ngModel)]="productoModel.rubroid">
+          <mat-option *ngFor="let rubro of rubros" [value]="rubro.rubroid" name="rubroid">
+            {{rubro.rubroid}}-{{rubro.nombrerubro}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-footer>
+    <button class="buttons" mat-raised-button (click)="guardarProducto()">
+      Guardar
+    </button>
+    <button class="buttons" mat-raised-button routerLink="/productos">
+      Ir a Productos
+    </button>
+  </mat-card-footer>
+</mat-card>

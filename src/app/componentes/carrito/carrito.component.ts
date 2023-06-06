@@ -55,21 +55,19 @@ export class CarritoComponent implements OnInit {
       }
       this.carrito.agregarRegistroVenta(regVenta);
       this.carrito.limpiarCarrito();
-      this.verCarrito();
       this.totalCarrito = 0;
+      this.verCarrito();
     }
  
   }
   
   calcularTotal() {
     this.totalCarrito = 0;
-    const object2 = JSON.parse(JSON.stringify(this.dataSource));
-    for (const [key, value] of Object.entries(object2)) {
-      let objetocarro = JSON.parse(JSON.stringify(value))
+    for (const [key, value] of Object.entries(JSON.parse(JSON.stringify(this.dataSource)))) {
+      let objetocarro = JSON.parse(JSON.stringify(value));
       let precio = Number(objetocarro.precio);
       this.totalCarrito = this.totalCarrito + precio;
     }
-    console.log(this.totalCarrito);
     return this.totalCarrito;
   }
 }

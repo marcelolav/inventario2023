@@ -24,7 +24,9 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatCardModule} from "@angular/material/card";
-import {MatSidenavModule} from '@angular/material/sidenav'; 
+import { MatSidenavModule } from '@angular/material/sidenav'; 
+import { MatOptionModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 // Modulos del app
 import { ProductosComponent } from './componentes/productos/productos.component';
@@ -62,7 +64,9 @@ import { VentasComponent } from './componentes/ventas/ventas.component';
     MatStepperModule, 
     MatSidenavModule,
     MatCardModule, 
-    FormsModule
+    FormsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
