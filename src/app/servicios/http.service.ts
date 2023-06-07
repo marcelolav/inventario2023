@@ -37,4 +37,13 @@ export class HttpService {
     return await respuestaRaw.json();
   }
 
+  public async update(ruta: string) {
+    const respuestaRaw = await fetch(this.rutaServidor + ruta, {
+      credentials: "include",
+      method: "PUT",
+    });
+    console.log(respuestaRaw);
+    return respuestaRaw;
+  }
+
 }

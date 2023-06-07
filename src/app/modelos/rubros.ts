@@ -1,7 +1,7 @@
 export class Rubros {
   constructor(
-    public rubroid: number,
-    public nombrerubro: string
+    public nombrerubro: string,
+    public rubroid?: number
   )
     { }
 }

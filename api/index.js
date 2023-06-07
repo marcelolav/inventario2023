@@ -44,7 +44,6 @@ app.get('/producto', async (req, res) => {
     return;
   }
   const producto = await productoModel.obtenerPorId(req.query.id);
-  // producto.fotos = await productoModel.obtenerFotos(req.query.id);
   res.json(producto);
 });
 
@@ -80,10 +79,47 @@ app.get('/proveedores', async (req, res) => {
 });
 
 // Recupera todos los rubros
-app.get('/rubro', async (req, res) => { 
+app.get('/rubros', async (req, res) => { 
   const rubros = await rubrosModel.obtenerRubros();
   res.json(rubros);
 })
+
+// Recupera un rubro por numero de id
+app.get('/rubro', async (req, res) => {
+  if (!req.query.id) {
+    res.end("not found");
+    return;
+  }
+  const rubro = await rubrosModel.obtenerRubro(req.query.id);
+  res.json(rubro);
+});
+
+// Agrega un Rubro
+app.post('/rubro', async (req, res) => {
+  const rubro = req.body;
+  const respuesta = await rubrosModel.agregaRubro(rubro.nombrerubro);
+  res.json(respuesta);
+});
+
+// Elimina un Rubro
+app.delete("/rubro", async (req, res) => {
+
+  if (!req.query.id) {
+    res.end("No se encuentra el id del rubro.");
+    return;
+  }
+  const idRubro = req.query.id;
+  await rubrosModel.eliminaRubro(idRubro);
+  res.json(true);
+});
+
+// Modifica un Rubro
+app.put('/rubro', async (req, res) => {
+  const rubro = req.query;
+  console.log('desde index.js' ,rubro);
+  const respuesta = await rubrosModel.modificaRubro(rubro.rubroid, rubro.nombrerubro);
+  res.json(respuesta);
+});
 
 // CARRITO VIEJO VER ARCHIVO APARTE CARRITO_VIEJO.JS
 
