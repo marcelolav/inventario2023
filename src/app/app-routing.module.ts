@@ -6,6 +6,7 @@ import { AbmProductosComponent } from './componentes/productos/abm-productos/abm
 import { VentasComponent } from './componentes/ventas/ventas.component';
 import { RubrosComponent } from './componentes/rubros/rubros.component';
 import { ServiciosComponent } from './componentes/servicios/servicios.component';
+import { VentaPublicoComponent } from './componentes/venta-publico/venta-publico.component';
 
 const routes: Routes = [
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'abm-productos', component: AbmProductosComponent},
   { path: 'ventas', component: VentasComponent },
   { path: 'rubros', component: RubrosComponent },
-  { path: 'servicios', component: ServiciosComponent},
+  { path: 'servicios', component: ServiciosComponent },
+  { path: 'ventapublico', component: VentaPublicoComponent },
   {path: '', redirectTo: "/", pathMatch: "full"},
   {path: '**', redirectTo: "/"},
 ];

@@ -1,6 +1,5 @@
 <mat-drawer-container class="container">
   <mat-drawer mode="side" opened>
-
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span>Gual Street</span>
@@ -8,24 +7,24 @@
       <mat-toolbar-row>
         <button mat-raised-button routerLink="abm-productos">ABM Productos</button>
       </mat-toolbar-row>
-
       <mat-toolbar-row>
         <button mat-raised-button routerLink="rubros">ABM Rubros</button>
       </mat-toolbar-row>
       <mat-toolbar-row>
-        <button mat-raised-button routerLink="carrito">CARRO</button>
-      </mat-toolbar-row>
-      <mat-toolbar-row>
-        <button mat-raised-button routerLink="ventas">Ventas</button>
+        <button mat-raised-button routerLink="ventapublico">Venta</button>
       </mat-toolbar-row>
       <mat-toolbar-row>
         <button mat-raised-button routerLink="servicios">Servicios</button>
       </mat-toolbar-row>
+
       <mat-toolbar-row>
-        <button mat-raised-button routerLink="productos">test</button>
+        <button mat-raised-button [matMenuTriggerFor]="consultas">Consultas</button>
+        <mat-menu #consultas="matMenu">
+          <button mat-menu-item routerLink="ventas">Ventas</button>
+          <button mat-menu-item routerLink="carrito">Carrito</button>
+        </mat-menu>
       </mat-toolbar-row>
     </mat-toolbar>
-
   </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>
