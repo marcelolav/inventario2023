@@ -35,6 +35,7 @@ import { AbmProductosComponent } from './componentes/productos/abm-productos/abm
 import { VentasComponent } from './componentes/ventas/ventas.component';
 import { ListaProductosComponent } from './componentes/productos/lista-productos/lista-productos.component';
 import { RubrosComponent } from './componentes/rubros/rubros.component';
+import { ServiciosComponent } from './componentes/servicios/servicios.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { RubrosComponent } from './componentes/rubros/rubros.component';
     AbmProductosComponent,
     VentasComponent,
     ListaProductosComponent,
-    RubrosComponent
+    RubrosComponent,
+    ServiciosComponent
     
   ],
   imports: [
