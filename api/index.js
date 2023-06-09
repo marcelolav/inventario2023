@@ -152,11 +152,15 @@ app.post("/carrito/agregar", async (req, res) => {
   res.json(agregar);
 });
 // Eliminar todo el carrito
-app.get("/carrito/eliminar", async (req, res) => {
+app.delete("/carrito/eliminar", async (req, res) => {
   const elimnaCarrito = await carritoModel.elimnarCarrito();
   res.json(elimnaCarrito);
 });
-
+// Obtener el total del carrito
+app.get("/carrito/total", async (req, res) => {
+  const totalcarrito = await carritoModel.obtenerTotal();
+  res.json(totalcarrito);
+});
 // Manejo de Tabla ventas
 
 // Ventas - Ver todos los registros de ventas

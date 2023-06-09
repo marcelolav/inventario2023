@@ -35,6 +35,7 @@ import { ListaProductosComponent } from './componentes/productos/lista-productos
 import { RubrosComponent } from './componentes/rubros/rubros.component';
 import { ServiciosComponent } from './componentes/servicios/servicios.component';
 import { VentaPublicoComponent } from './componentes/venta-publico/venta-publico.component';
+import { CarritoComponent } from './componentes/carrito/carrito.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { VentaPublicoComponent } from './componentes/venta-publico/venta-publico
     ListaProductosComponent,
     RubrosComponent,
     ServiciosComponent,
-    VentaPublicoComponent
+    VentaPublicoComponent,
+    CarritoComponent
     
   ],
   imports: [

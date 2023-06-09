@@ -31,9 +31,17 @@ module.exports = {
                 else resolve(resultados);
             })
         })
+    },
+
+    obtenerTotal() {
+        return new Promise((resolve, reject) => {
+            conexion.query(`select SUM(precio) from carrito`,
+            (err,resultados) => {
+                if(err) reject(err);
+                else resolve(resultados);
+            })
+        })
     }
    
-    
-
 
 }
