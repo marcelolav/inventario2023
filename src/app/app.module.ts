@@ -29,8 +29,6 @@ import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 
 // Modulos del app
-import { ProductosComponent } from './componentes/productos/productos.component';
-import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { AbmProductosComponent } from './componentes/productos/abm-productos/abm-productos.component';
 import { VentasComponent } from './componentes/ventas/ventas.component';
 import { ListaProductosComponent } from './componentes/productos/lista-productos/lista-productos.component';
@@ -42,8 +40,6 @@ import { VentaPublicoComponent } from './componentes/venta-publico/venta-publico
 @NgModule({
   declarations: [
     AppComponent,
-    ProductosComponent,
-    CarritoComponent,
     AbmProductosComponent,
     VentasComponent,
     ListaProductosComponent,
