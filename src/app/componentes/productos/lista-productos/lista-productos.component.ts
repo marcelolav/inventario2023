@@ -18,7 +18,6 @@ export class ListaProductosComponent implements OnInit {
     this.dataSource.data = await this.productosService.obtenerProductos();
   }
   eliminar(id: number) {
-    console.log(id);
     if (confirm('Seguro de eliminar el producto')) {
       this.productosService.eliminarProducto(id)
     }

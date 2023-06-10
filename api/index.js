@@ -126,7 +126,6 @@ app.delete("/rubro", async (req, res) => {
 // Modifica un Rubro
 app.put("/rubro", async (req, res) => {
   const rubro = req.query;
-  console.log("desde index.js", rubro);
   const respuesta = await rubrosModel.modificaRubro(
     rubro.rubroid,
     rubro.nombrerubro
@@ -161,6 +160,31 @@ app.get("/carrito/total", async (req, res) => {
   const totalcarrito = await carritoModel.obtenerTotal();
   res.json(totalcarrito);
 });
+// Modificar cantidad en un item del carrito
+app.put("/carrito/cantidad", async (req, res) => {
+  const id = req.query.id;
+  const cantidad = req.query.cantidad;
+  const precio = req.query.precio;
+
+  const respuesta = await carritoModel.cambiarCantidad(
+    id,
+    cantidad,
+    precio
+  );
+  res.json(respuesta);
+});
+// Eliminar un item del carrito
+app.delete("/carrito/eliminaitem", async (req, res) => {
+  if (!req.query.id) {
+    res.end("No se encuentra el id del item de carrito.");
+    return;
+  }
+  const idRubro = req.query.id;
+  await carritoModel.elimnarItemCarrito(idRubro);
+  res.json(true);
+});
+
+
 // Manejo de Tabla ventas
 
 // Ventas - Ver todos los registros de ventas

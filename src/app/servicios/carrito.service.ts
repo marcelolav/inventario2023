@@ -26,9 +26,16 @@ export class CarritoService {
 
   async obtenerTotal() {
     return await this.http.get("/carrito/total");
-  }
-
+  };
   async agregarRegistroVenta(regVenta: Ventas) {
     return await this.http.post("/ventas/agregar", regVenta);
+  };
+  async cambiarCantidad(id: number, cantidad:number, prec:number) {
+    return await this.http.update("/carrito/cantidad?id=" .concat(id.toString()) + "&cantidad=" .concat(cantidad.toString()) + "&precio=" .concat(prec.toString()));
+  };
+
+  public async eliminarItemCarrito(id: number) {
+    return await this.http.delete('/carrito/eliminaitem?id='.concat(id.toString()));
   }
+
 }

@@ -15,7 +15,7 @@ module.exports = {
 
     obtenerItems() {
         return new Promise((resolve, reject) => {
-            conexion.query(`select producto, cantidad, precio from carrito`,
+            conexion.query(`select id, producto, cantidad, precio from carrito`,
             (err,resultados)=>{
                 if(err) reject(err);
                 else resolve(resultados);
@@ -25,7 +25,7 @@ module.exports = {
 
     elimnarCarrito() {
         return new Promise((resolve, reject) => {
-            conexion.query(`delete from carrito`,
+            conexion.query(`delete * from carrito`,
             (err,resultados)=>{
                 if(err) reject(err);
                 else resolve(resultados);
@@ -41,7 +41,27 @@ module.exports = {
                 else resolve(resultados);
             })
         })
-    }
+    },
+
+    cambiarCantidad(id, cantidadNueva, precioNuevo) {
+        return new Promise((resolve, reject) => {
+            conexion.query(`update carrito set cantidad =?, precio=? where id =?`,
+            [cantidadNueva, precioNuevo, id], (err, resultados) => {
+                if (err) reject(err);
+                else resolve(resultados);
+            });
+        })
+    },
+
+    elimnarItemCarrito(id) {
+        return new Promise((resolve, reject) => {
+            conexion.query(`delete from carrito where id =?`, [id], 
+            (err,resultados)=>{
+                if(err) reject(err);
+                else resolve(resultados);
+            })
+        })
+    },
    
 
 }

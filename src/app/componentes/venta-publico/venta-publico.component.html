@@ -22,7 +22,12 @@
       <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.precio | currency }}</mat-cell>
     </ng-container>
-
+    <ng-container matColumnDef="agregar">
+      <mat-header-cell *matHeaderCellDef>Agregar al Carrito</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button (click)="agregarCarrito(element)" mat-raised-button color="primary"><mat-icon>add</mat-icon> Agregar</button>
+      </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnas"></mat-row>
   </table>

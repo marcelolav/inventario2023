@@ -1,4 +1,42 @@
-<p>carrito works!</p>
+<mat-card>
+  <mat-card-title> Carrito de Ventas </mat-card-title>
+  <mat-card-content>
+    <table class="mat-elevation-z13" mat-table [dataSource]="datosCarrito">
+      <ng-container matColumnDef="producto">
+        <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.producto }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cantidad">
+        <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.cantidad }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="precio">
+        <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.precio | currency }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="modificaCantidad">
+        <mat-header-cell *matHeaderCellDef>Modifica Cantidad</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button (click)="modificaCantidadProducto(element)" mat-raised-button><mat-icon>edit</mat-icon> Editar</button>
+        </mat-cell>
+      </ng-container>
 
-{{ importeTotal[0] | json }}
-{{ importeNumerico }}
+      <ng-container matColumnDef="eliminar">
+        <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button (click)="eliminarItemCarrito(element.id)" mat-raised-button color="warn"><mat-icon>delete</mat-icon> Eliminar</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columnas"></mat-row>
+    </table>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="facturarCarrito()">Facturar Carrito</button>
+    <button mat-raised-button (click)="eliminarCarrito()">Eliminar Carrito</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <div class="footer">Importe Total Carrito: {{ importeNumerico | currency }}</div>
+  </mat-card-footer>
+</mat-card>
