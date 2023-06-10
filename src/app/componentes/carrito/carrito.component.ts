@@ -19,6 +19,8 @@ export class CarritoComponent implements OnInit {
   async ngOnInit() {
     this.totalCarrito();
     this.datosCarrito.data = await this.carritoService.obtenerItemsCarrito();
+   
+
   }
   async totalCarrito() {
     this.importeTotal = await this.carritoService.obtenerTotal();
@@ -29,7 +31,7 @@ export class CarritoComponent implements OnInit {
     if (confirm('Desea Eliminar el item')) {
       this.carritoService.eliminarItemCarrito(id);
       this.totalCarrito();
-      this.datosCarrito.data = await this.carritoService.obtenerItemsCarrito();
+      // this.datosCarrito.data = await this.carritoService.obtenerItemsCarrito();
     }
   }
   modificaCantidadProducto(regCarrito: any) { 

@@ -184,6 +184,13 @@ app.delete("/carrito/eliminaitem", async (req, res) => {
   res.json(true);
 });
 
+// test con async await en variable 
+app.get("/carrito/test", (req, res) => {
+  const carrito = carritoModel.getRegistros()
+  .then((res) => res.json(carrito))
+  .catch((err) => err.json(err));
+})
+
 
 // Manejo de Tabla ventas
 

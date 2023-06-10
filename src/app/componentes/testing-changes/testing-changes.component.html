@@ -1,0 +1,30 @@
+<table class="mat-elevation-z13" mat-table [dataSource]="datosCarrito">
+  <ng-container matColumnDef="producto">
+    <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.producto }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="cantidad">
+    <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.cantidad }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="precio">
+    <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.precio | currency }}</mat-cell>
+  </ng-container>
+  <!-- <ng-container matColumnDef="modificaCantidad">
+    <mat-header-cell *matHeaderCellDef>Modifica Cantidad</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="modificaCantidadProducto(element)" mat-raised-button><mat-icon>edit</mat-icon> Editar</button>
+    </mat-cell>
+  </ng-container> -->
+
+  <!-- <ng-container matColumnDef="eliminar">
+    <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="eliminarItemCarrito(element.id)" mat-raised-button color="warn"><mat-icon>delete</mat-icon> Eliminar</button>
+    </mat-cell>
+  </ng-container> -->
+
+  <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnas"></mat-row>
+</table>

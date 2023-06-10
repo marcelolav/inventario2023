@@ -62,6 +62,13 @@ module.exports = {
             })
         })
     },
+
+    getRegistros() { 
+        consulta = conexion.query(`select * from carrito`)
+        console.log(consulta.producto);
+        return ({consulta});
+    }
+
    
 
 }

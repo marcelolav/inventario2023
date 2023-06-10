@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +36,7 @@ import { RubrosComponent } from './componentes/rubros/rubros.component';
 import { ServiciosComponent } from './componentes/servicios/servicios.component';
 import { VentaPublicoComponent } from './componentes/venta-publico/venta-publico.component';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
+import { TestingChangesComponent } from './componentes/testing-changes/testing-changes.component';
 
 
 @NgModule({
@@ -47,12 +48,14 @@ import { CarritoComponent } from './componentes/carrito/carrito.component';
     RubrosComponent,
     ServiciosComponent,
     VentaPublicoComponent,
-    CarritoComponent
+    CarritoComponent,
+    TestingChangesComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatListModule,
