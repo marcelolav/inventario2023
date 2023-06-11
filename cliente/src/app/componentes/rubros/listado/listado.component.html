@@ -1,0 +1,25 @@
+<div class="col-md-4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rubro of rubros">
+        <td scope="row">{{ rubro.idrubro }}</td>
+        <td>{{ rubro.nombre }}</td>
+        <td>
+          <button
+            class="btn btn-primary btn-sm"
+            [routerLink]="['/rubros/editar', rubro.idrubro]"
+          >
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
