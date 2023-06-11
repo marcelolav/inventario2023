@@ -16,34 +16,25 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `servicios`
+-- Table structure for table `productos`
 --
 
-DROP TABLE IF EXISTS `servicios`;
+DROP TABLE IF EXISTS `productos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `servicios` (
-  `idservicios` int NOT NULL AUTO_INCREMENT,
-  `cliente` varchar(45) DEFAULT NULL,
-  `telefono` varchar(45) DEFAULT NULL,
-  `fechaingreso` datetime DEFAULT NULL,
-  `articulo` varchar(45) DEFAULT NULL,
-  `falla` varchar(200) DEFAULT NULL,
-  `observaciones` varchar(200) DEFAULT NULL,
-  `fechasalida` datetime DEFAULT NULL,
-  `precioreparacion` decimal(9,2) DEFAULT NULL,
-  PRIMARY KEY (`idservicios`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Servicios tecnicos';
+CREATE TABLE `productos` (
+  `idproducto` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `codigobarra` varchar(60) DEFAULT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(1024) NOT NULL,
+  `precio` decimal(9,2) NOT NULL,
+  `preciocompra` decimal(9,2) DEFAULT NULL,
+  `existencia` int DEFAULT NULL,
+  `preciorefdolar` decimal(9,2) DEFAULT NULL,
+  `rubroid` int DEFAULT NULL,
+  PRIMARY KEY (`idproducto`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `servicios`
---
-
-LOCK TABLES `servicios` WRITE;
-/*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -54,4 +45,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-07 20:13:14
+-- Dump completed on 2023-06-10 22:46:22

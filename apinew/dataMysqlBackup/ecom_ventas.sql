@@ -16,18 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `refdolar`
+-- Table structure for table `ventas`
 --
 
-DROP TABLE IF EXISTS `refdolar`;
+DROP TABLE IF EXISTS `ventas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `refdolar` (
-  `idrefdolar` int NOT NULL AUTO_INCREMENT,
-  `fecha` datetime NOT NULL,
-  `precioventanacion` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`idrefdolar`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `ventas` (
+  `idventas` int NOT NULL AUTO_INCREMENT,
+  `fecha` datetime DEFAULT NULL,
+  `producto` varchar(45) DEFAULT NULL,
+  `cantidad` int DEFAULT NULL,
+  `precio` decimal(9,2) DEFAULT NULL,
+  PRIMARY KEY (`idventas`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -39,4 +41,4 @@ CREATE TABLE `refdolar` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-07 20:10:11
+-- Dump completed on 2023-06-10 22:46:21

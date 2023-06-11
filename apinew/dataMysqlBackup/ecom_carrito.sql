@@ -16,20 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ventas`
+-- Table structure for table `carrito`
 --
 
-DROP TABLE IF EXISTS `ventas`;
+DROP TABLE IF EXISTS `carrito`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ventas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `fecha` datetime DEFAULT NULL,
+CREATE TABLE `carrito` (
+  `idcarrito` int NOT NULL AUTO_INCREMENT,
   `producto` varchar(45) DEFAULT NULL,
   `cantidad` int DEFAULT NULL,
   `precio` decimal(9,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `subtotal` decimal(9,2) DEFAULT NULL,
+  PRIMARY KEY (`idcarrito`)
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -41,4 +41,4 @@ CREATE TABLE `ventas` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-07 20:10:10
+-- Dump completed on 2023-06-10 22:46:22

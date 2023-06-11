@@ -11,6 +11,8 @@ class CarritoRoute {
 
   config() {
     this.router.get('/', carritoController.listaCarrito);
+    this.router.get('/totalcantidad/', carritoController.totalCantidadCarrito);
+    this.router.get('/totalimporte/', carritoController.totalImporteCarrito);
     this.router.get('/:id', carritoController.listaItemCarrito);
     this.router.post('/', carritoController.agregaItemCarrito);
     this.router.put('/:id', carritoController.actualizaItemCarrito);

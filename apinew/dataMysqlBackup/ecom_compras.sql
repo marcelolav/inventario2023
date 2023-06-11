@@ -16,20 +16,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `proveedores`
+-- Table structure for table `compras`
 --
 
-DROP TABLE IF EXISTS `proveedores`;
+DROP TABLE IF EXISTS `compras`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `proveedores` (
-  `idproveedor` int NOT NULL AUTO_INCREMENT,
-  `prov_nombre` varchar(45) DEFAULT NULL,
-  `prov_referencia` varchar(200) DEFAULT NULL,
-  `prov_fucompra` datetime DEFAULT NULL,
-  `prov_totalgeneral` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`idproveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Tabla de proveedores	';
+CREATE TABLE `compras` (
+  `idcompra` int NOT NULL AUTO_INCREMENT,
+  `idproveedor` int NOT NULL,
+  `idproducto` int NOT NULL,
+  `fechacompra` datetime NOT NULL,
+  `cantidad` int NOT NULL,
+  `preciocompra` decimal(10,2) NOT NULL,
+  `preciocompradolar` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`idcompra`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -41,4 +43,4 @@ CREATE TABLE `proveedores` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-07 20:10:10
+-- Dump completed on 2023-06-10 22:46:21

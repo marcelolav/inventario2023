@@ -47,6 +47,25 @@ class CarritoController {
     const result = await pool.query('DELETE * FROM carrito');
     res.json({ message: 'El ítem ha sido guardado con éxito!' });
   }
+
+  // Obtener el importe total del carrito
+  public async totalImporteCarrito(req: Request, res: Response): Promise<void> {
+    const total = await pool.query(
+      'select SUM(subtotal) as importetotal from carrito'
+    );
+    res.json(total);
+  }
+  // Obtener la cantidad total de artículos
+
+  public async totalCantidadCarrito(
+    req: Request,
+    res: Response
+  ): Promise<void> {
+    const total = await pool.query(
+      'select SUM(cantidad) as cantidadtotal from carrito'
+    );
+    res.json(total);
+  }
 }
 
 export const carritoController = new CarritoController();

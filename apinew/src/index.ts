@@ -6,6 +6,7 @@ import indexRoutes from './rutas/indexRoute';
 import productosRoute from './rutas/productosRoute';
 import rubrosRoute from './rutas/rubrosRoute';
 import carritoRoute from './rutas/carritoRoute';
+import proveedoresRoute from './rutas/proveedoresRoute';
 
 class Server {
   public app: Application;
@@ -31,6 +32,7 @@ class Server {
     this.app.use('/api/productos', productosRoute);
     this.app.use('/api/rubros', rubrosRoute);
     this.app.use('/api/carrito', carritoRoute);
+    this.app.use('/api/proveedores', proveedoresRoute);
   }
 
   start() {

@@ -16,18 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fotos_productos`
+-- Table structure for table `proveedores`
 --
 
-DROP TABLE IF EXISTS `fotos_productos`;
+DROP TABLE IF EXISTS `proveedores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `fotos_productos` (
-  `id_producto` bigint unsigned NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  KEY `id_producto` (`id_producto`),
-  CONSTRAINT `fotos_productos_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `proveedores` (
+  `idproveedor` int NOT NULL AUTO_INCREMENT,
+  `prov_nombre` varchar(45) DEFAULT NULL,
+  `prov_referencia` varchar(200) DEFAULT NULL,
+  `prov_fucompra` datetime DEFAULT NULL,
+  `prov_totalgeneral` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`idproveedor`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Tabla de proveedores	';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -39,4 +41,4 @@ CREATE TABLE `fotos_productos` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-07 20:10:11
+-- Dump completed on 2023-06-10 22:46:21
