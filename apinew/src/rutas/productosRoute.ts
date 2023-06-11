@@ -1,23 +1,22 @@
 import express, { Router } from 'express';
 
-import {productosController} from '../controladores/productosController';
+import { productosController } from '../controladores/productosController';
 
-class GameRoutes {
+class ProductosRoutes {
+  router: Router = Router();
 
-    router: Router = Router();
+  constructor() {
+    this.config();
+  }
 
-    constructor() {
-        this.config();
-    }
-
-    config() {
-        this.router.get('/', productosController.list);
-        this.router.get('/:id', productosController.getOne);
-        this.router.post('/', productosController.create);
-        this.router.put('/:id', productosController.update);
-        this.router.delete('/:id', productosController.delete);
-    }
-
+  config() {
+    this.router.get('/', productosController.listaProductos);
+    this.router.get('/:id', productosController.listaProducto);
+    this.router.get('/cb/:id', productosController.muestraPorCodigobarra);
+    this.router.post('/', productosController.agregaProducto);
+    this.router.put('/:id', productosController.actualizaProducto);
+    this.router.delete('/:id', productosController.eliminaProducto);
+  }
 }
 
-export default new GameRoutes().router;
+export default new ProductosRoutes().router;
