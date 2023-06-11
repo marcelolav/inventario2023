@@ -7,11 +7,15 @@
 /bazel-out
 
 # Archivos de configuracion
-/api/conexion.js
+conexion.js
+/apinew/src/database.ts
+/apinew/src/keys.ts
 
-# Node
+# Nodenp
 /node_modules
 /api/node_modules
+/apinew/node_modules
+/apinew/build
 npm-debug.log
 yarn-error.log
 
