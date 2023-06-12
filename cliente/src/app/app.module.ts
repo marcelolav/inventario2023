@@ -35,35 +35,38 @@ import { RubrosService } from './servicios/rubros.service';
 import { ProveedoresService } from './servicios/proveedores.service';
 import { ServiciosService } from './servicios/servicios.service';
 import { ComprasService } from './servicios/compras.service';
+import { VentasService } from './servicios/ventas.service';
+import { CarritoService } from './servicios/carrito.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenunavegacionComponent,
-    FormularioProductosComponent,
-    ListadoProductosComponent,
-    AbmProductosComponent,
-    FormularioRubrosComponent,
-    ListadoRubrosComponent,
-    AbmRubrosComponent,
-    FormularioProveedoresComponent,
-    ListadoProveedoresComponent,
-    FormularioComprasComponent,
-    ListadoComprasComponent,
-    AbmProveedoresComponent,
-    AbmComprasComponent,
-    ListadoServiciosComponent,
-    FormularioServiciosComponent,
-    AbmServiciosComponent,
-    ListadoVentasComponent,
-    FormularioVentasComponent,
-    AbmVentasComponent,
-    ListadoCarritoComponent,
-    FormularioCarritoComponent,
-    AbmCarritoComponent,
+    MenunavegacionComponent,        // Menu de navegacion
+    FormularioProductosComponent,   // Productos - Form 
+    ListadoProductosComponent,      // Productos - Listado 
+    AbmProductosComponent,          // Productos - Principal 
+    FormularioRubrosComponent,      // Rubros - Form 
+    ListadoRubrosComponent,         // Rubros - Listado 
+    AbmRubrosComponent,             // Rubros - Principal
+    FormularioProveedoresComponent, // Proveedores - Form 
+    ListadoProveedoresComponent,    // Proveedores - Listado 
+    AbmProveedoresComponent,        // Proveedores - Principal
+    FormularioComprasComponent,     // Compras - Form 
+    ListadoComprasComponent,        // Compras - Listado 
+    AbmComprasComponent,            // Compras - Principal
+    FormularioServiciosComponent,   // Servicios - Form
+    ListadoServiciosComponent,      // Servicios - Listado
+    AbmServiciosComponent,          // Servicios - Principal
+    FormularioVentasComponent,      // Ventas - Form
+    ListadoVentasComponent,         // Ventas - Listado
+    AbmVentasComponent,             // Ventas - Principal
+    FormularioCarritoComponent,     // Carrito - Form
+    ListadoCarritoComponent,        // Carrito - Listado
+    AbmCarritoComponent,            // Carrito - Principal
+
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [ProductosService, RubrosService, ProveedoresService, ComprasService, ServiciosService],
+  providers: [ProductosService, RubrosService, ProveedoresService, ComprasService, ServiciosService, VentasService, CarritoService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
