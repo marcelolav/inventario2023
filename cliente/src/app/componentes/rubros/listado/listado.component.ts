@@ -10,7 +10,7 @@ import { RubrosService } from 'src/app/servicios/rubros.service';
 export class ListadoRubrosComponent implements OnInit {
   rubros: any = [];
   titulo: string = 'Alta de Rubro';
-  constructor(private rubrosService: RubrosService, private router: Router) {}
+  constructor(private rubrosService: RubrosService, private router: Router) { }
   ngOnInit(): void {
     this.getRubros();
   }
@@ -30,6 +30,5 @@ export class ListadoRubrosComponent implements OnInit {
       console.log(res);
       this.getRubros();
     });
-    // this.router.navigate(['/rubros/']);
   }
 }

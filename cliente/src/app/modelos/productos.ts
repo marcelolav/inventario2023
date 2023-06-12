@@ -4,7 +4,7 @@ export interface Producto {
   nombre?: string;
   descripcion?: string;
   precio?: number;
-  preciocompra: number;
+  preciocompra?: number;
   existencia?: number;
   preciorefdolar?: number;
   rubroid?: number;

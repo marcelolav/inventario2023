@@ -11,11 +11,13 @@ conexion.js
 /apinew/src/database.ts
 /apinew/src/keys.ts
 
+
 # Nodenp
 /node_modules
 /api/node_modules
 /apinew/node_modules
 /apinew/build
+/cliente/node_modules
 npm-debug.log
 yarn-error.log
 

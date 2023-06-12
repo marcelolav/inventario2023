@@ -1,3 +1,37 @@
-<div class="container">
-  <h2>Listado de Productos</h2>
+<h3>Listado de Rubros</h3>
+<div>
+  <button class="btn btn-primary btn-block" routerLink="/rubros/agregar">
+    Alta de Rubro
+  </button>
+</div>
+<div class="col-sm-8">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio Venta</th>
+        <th scope="col">Precio Compra</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of prodData">
+        <td scope="row">{{ prod.idproducto }}</td>
+        <td>{{ prod.nombre }}</td>
+        <td>{{ prod.precio }}</td>
+        <td>{{ prod.preciocompra }}</td>
+        <td>{{ prod.existencia }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm mr-5" (click)="editarProducto(prod.idproducto)">
+            Editar
+          </button>
+          <button class="btn btn-danger btn-sm ml-3" (click)="eliminarProducto(prod.idproducto)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

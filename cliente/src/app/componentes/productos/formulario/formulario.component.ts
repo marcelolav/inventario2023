@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/modelos/productos';
+import { ProductosService } from 'src/app/servicios/productos.service';
 
 @Component({
   selector: 'app-formulario-productos',
@@ -18,12 +19,13 @@ export class FormularioProductosComponent implements OnInit {
     precio: 0,
     preciocompra: 0,
     existencia: 0,
-    preciorefdolar:0,
+    preciorefdolar: 0,
     rubroid: 0,
   };
-  
 
-  constructor() { }
+
+  constructor(private productosService: ProductosService) { }
 
   ngOnInit() {
-}
+
+  }

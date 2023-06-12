@@ -10,27 +10,60 @@ import { MenunavegacionComponent } from './componentes/menunavegacion/menunavega
 import { FormularioProductosComponent } from './componentes/productos/formulario/formulario.component';
 import { ListadoProductosComponent } from './componentes/productos/listado/listado.component';
 import { AbmProductosComponent } from './componentes/productos/abm-productos.component';
-import { ListadoRubrosComponent } from './componentes/rubros/listado/listado.component';
 import { FormularioRubrosComponent } from './componentes/rubros/formulario/formulario.component';
+import { ListadoRubrosComponent } from './componentes/rubros/listado/listado.component';
 import { AbmRubrosComponent } from './componentes/rubros/abm-rubros.component';
+import { FormularioProveedoresComponent } from './componentes/proveedores/formulario/formulario.component';
+import { ListadoProveedoresComponent } from './componentes/proveedores/listado/listado.component';
+import { AbmProveedoresComponent } from './componentes/proveedores/abm-proveedores.component';
+import { FormularioComprasComponent } from './componentes/compras/formulario/formulario.component';
+import { ListadoComprasComponent } from './componentes/compras/listado/listado.component';
+import { AbmComprasComponent } from './componentes/compras/abm-compras.component';
+import { ListadoServiciosComponent } from './componentes/servicios/listado/listado.component';
+import { FormularioServiciosComponent } from './componentes/servicios/formulario/formulario.component';
+import { AbmServiciosComponent } from './componentes/servicios/abm-servicios.component';
+import { ListadoVentasComponent } from './componentes/ventas/listado/listado.component';
+import { FormularioVentasComponent } from './componentes/ventas/formulario/formulario.component';
+import { AbmVentasComponent } from './componentes/ventas/abm-ventas.component';
+import { AbmCarritoComponent } from './componentes/carrito/abm-carrito.component';
+import { ListadoCarritoComponent } from './componentes/carrito/listado/listado.component';
+import { FormularioCarritoComponent } from './componentes/carrito/formulario/formulario.component';
 
 // Services
 import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
+import { ProveedoresService } from './servicios/proveedores.service';
+import { ServiciosService } from './servicios/servicios.service';
+import { ComprasService } from './servicios/compras.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenunavegacionComponent,
     FormularioProductosComponent,
     ListadoProductosComponent,
-    MenunavegacionComponent,
-    ListadoRubrosComponent,
-    FormularioRubrosComponent,
-    AbmRubrosComponent,
     AbmProductosComponent,
+    FormularioRubrosComponent,
+    ListadoRubrosComponent,
+    AbmRubrosComponent,
+    FormularioProveedoresComponent,
+    ListadoProveedoresComponent,
+    FormularioComprasComponent,
+    ListadoComprasComponent,
+    AbmProveedoresComponent,
+    AbmComprasComponent,
+    ListadoServiciosComponent,
+    FormularioServiciosComponent,
+    AbmServiciosComponent,
+    ListadoVentasComponent,
+    FormularioVentasComponent,
+    AbmVentasComponent,
+    ListadoCarritoComponent,
+    FormularioCarritoComponent,
+    AbmCarritoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [ProductosService, RubrosService],
+  providers: [ProductosService, RubrosService, ProveedoresService, ComprasService, ServiciosService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
