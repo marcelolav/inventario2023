@@ -1,1 +1,25 @@
-<p>formulario works!</p>
+<h3>{{ titulo }}</h3>
+
+<form action="">
+  <div class="form-group">
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="rubro.nombre"
+      placeholder="Nombre del Rubro"
+      class="form-control"
+      autofocus
+    />
+  </div>
+  <button
+    class="btn btn-success btn-block"
+    (click)="
+      editar
+        ? actualizaRubro(rubro.idrubro, rubro.nombre)
+        : guardaRubro(rubro.nombre)
+    "
+  >
+    Save
+  </button>
+  <button class="btn btn-primary" (click)="cancelar()">Atrás</button>
+</form>

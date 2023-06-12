@@ -23,8 +23,13 @@ export class RubrosService {
     return this.http.delete(`${this.API_URI}/rubros/${id}`);
   }
 
-  saveRubro(game: Rubro) {
-    return this.http.post(`${this.API_URI}/rubros`, game);
+  saveRubro(rubro: Rubro) {
+    console.log(rubro);
+    const bod = {
+      nombre: rubro,
+    };
+    console.log(bod);
+    return this.http.post(`${this.API_URI}/rubros`, bod);
   }
 
   updateRubro(id: string | number, updatedRubro: Rubro): Observable<Rubro> {

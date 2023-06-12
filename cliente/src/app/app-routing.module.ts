@@ -5,11 +5,12 @@ import { ListadoProductosComponent } from './componentes/productos/listado/lista
 import { FormularioProductosComponent } from './componentes/productos/formulario/formulario.component';
 import { ListadoRubrosComponent } from './componentes/rubros/listado/listado.component';
 import { FormularioRubrosComponent } from './componentes/rubros/formulario/formulario.component';
+import { AbmRubrosComponent } from './componentes/rubros/abm-rubros.component';
 
 const routes: Routes = [
   { path: 'productos/listado', component: ListadoProductosComponent },
   { path: 'productos/formulario', component: FormularioProductosComponent },
-  { path: 'rubros/listado', component: ListadoRubrosComponent },
+  { path: 'rubros', component: AbmRubrosComponent },
   { path: 'rubros/agregar', component: FormularioRubrosComponent },
   { path: 'rubros/editar/:id', component: FormularioRubrosComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },

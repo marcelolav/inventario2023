@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,6 +15,7 @@ import { FormularioRubrosComponent } from './componentes/rubros/formulario/formu
 // Services
 import { ProductosService } from './servicios/productos.service';
 import { RubrosService } from './servicios/rubros.service';
+import { AbmRubrosComponent } from './componentes/rubros/abm-rubros.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +24,9 @@ import { RubrosService } from './servicios/rubros.service';
     MenunavegacionComponent,
     ListadoRubrosComponent,
     FormularioRubrosComponent,
+    AbmRubrosComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [ProductosService, RubrosService],
   bootstrap: [AppComponent],
 })

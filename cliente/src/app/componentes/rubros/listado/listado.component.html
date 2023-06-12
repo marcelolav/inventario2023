@@ -1,4 +1,10 @@
-<div class="col-md-4">
+<h3>Listado de Rubros</h3>
+<div>
+  <button class="btn btn-primary" routerLink="/rubros/agregar">
+    Alta de Rubro
+  </button>
+</div>
+<div class="col-sm-8">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -14,7 +20,7 @@
         <td>
           <button
             class="btn btn-primary btn-sm"
-            [routerLink]="['/rubros/editar', rubro.idrubro]"
+            (click)="editarRubro(rubro.idrubro)"
           >
             Editar
           </button>
