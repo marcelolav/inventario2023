@@ -19,10 +19,16 @@
         <td>{{ rubro.nombre }}</td>
         <td>
           <button
-            class="btn btn-primary btn-sm"
+            class="btn btn-primary btn-sm mr-5"
             (click)="editarRubro(rubro.idrubro)"
           >
             Editar
+          </button>
+          <button
+            class="btn btn-danger btn-sm ml-3"
+            (click)="eliminarRubro(rubro.idrubro)"
+          >
+            Eliminar
           </button>
         </td>
       </tr>
