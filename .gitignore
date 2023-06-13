@@ -10,6 +10,8 @@
 conexion.js
 /apinew/src/database.ts
 /apinew/src/keys.ts
+/build/database.js
+/build/keys.js
 
 
 # Nodenp
