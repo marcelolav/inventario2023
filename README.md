@@ -49,7 +49,7 @@ Estos archivos corresponden a la configuracion de la conexion con la base de dat
 
 #### Pre-Requisitos:
 
-Se debe contar con una instalación de Node y de Angular para esto verificar la documentación de cada uno en la página correspondiente. También tiene que contarse con una versión de Mysql ya sea local o por intermedio de un servidor a la cual se le deben ingresar las tablas por medio de una restauracion de las tablas que se encuentran en la carpeta /apinew/dataMysqlBackup 
+Se debe contar con una instalación de Node y de Angular para esto verificar la documentación de cada uno en la página correspondiente. También tiene que contarse con una versión de Mysql ya sea local o por intermedio de un servidor a la cual se le deben ingresar las tablas por medio de una restauracion de las tablas que se encuentran en la carpeta /apinew/dataMysqlBackup
 
 #### Instalación API:
 
@@ -65,13 +65,13 @@ Dentro de Visual Studio code se deben tener 3 terminales abiertas, en la primera
 
 En otro terminal ejecutar dentro de la carpeta /apinew el comando
 
-´´´ npm run dev ´´´ Estos dos comandos van a iniciar por un lado un traspilador de codigo Typscript a Javascript (watch) lo que quedara en memoria y estará verificando cualquier cambio realizado al código de la aplicación. El comando run dev ejecuta el servidor en si mismo quedando operativo el API normalmente en la dirección localhost:3000 Se puede ver en el archivo de index.ts la definición de las diferentes rutas que puede tener. Ejemplo
+`npm run dev`
 
-´´´ routes(): void { this.app.use("/", indexRoutes); this.app.use("/api/productos", productosRoute); this.app.use("/api/rubros", rubrosRoute); this.app.use("/api/carrito", carritoRoute); this.app.use("/api/proveedores", proveedoresRoute); } ´´´ También desde aqui se pueden agregar mas rutas al servidor.
+Estos dos comandos van a iniciar por un lado un traspilador de codigo Typscript a Javascript (watch) lo que quedara en memoria y estará verificando cualquier cambio realizado al código de la aplicación. El comando run dev ejecuta el servidor en si mismo quedando operativo el API normalmente en la dirección localhost:3000 Se puede ver en el archivo de index.ts la definición de las diferentes rutas que puede tener. También desde aqui se pueden agregar mas rutas al servidor.
 
 En el terminal numero 3 que se encuentra abierto vamos a ir a la carpeta /cliente y desde alli ejecutar:
 
-´´´ ng serve -o ´´´
+`ng serve -o `
 
 Con este comando se ejecuta el front-end creando un servidor habitualmente en la direccion localhost:4200 yendo a esta direccion se ve el aplicativo de front el cual consumirá la API creada con los pasos anteriores.
 
@@ -81,4 +81,4 @@ Para consultas, sugerencias por favor contactar a
 
 Mail: marcelo.lavandeira@gmail.com Whatsapp: +54-11-2747-8500
 
-Hecho en Buenos Aires, Enero de 2023
+@Hecho en Buenos Aires, Enero de 2023
