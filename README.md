@@ -61,7 +61,9 @@ En linea de comandos ingresar a la carpeta /inventario2023/cliente y ejecutar el
 
 ## Ejecución de entorno desarrollo:
 
-Dentro de Visual Studio code se deben tener 3 terminales abiertas, en la primera vamos a ejecutar dentro de la carpeta /apinew el comando ´´´ npm run watch ´´´
+Dentro de Visual Studio code se deben tener 3 terminales abiertas, en la primera vamos a ejecutar dentro de la carpeta /apinew el comando
+
+`npm run watch`
 
 En otro terminal ejecutar dentro de la carpeta /apinew el comando
 
