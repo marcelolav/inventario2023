@@ -8,7 +8,7 @@ Para instalar se requiere el agregado de 2 archivos en el API/rest para las conf
 
 Ejemplo de estructura y nombres de cada archivo necesario:
 
-Archivo /inventario2023/apinew/database.ts
+Archivo /inventario2023/apinew/src/database.ts
 
 ```
 import mysql from 'promise-mysql';
