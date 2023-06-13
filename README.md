@@ -19,7 +19,7 @@ const pool = mysql.createPool(keys.database);
 
 pool.getConnection().then((connection) => {
   pool.releaseConnection(connection);
-  console.log('MySQL Conectado exitosamente!');
+  console.log('MySQL Conectado exitosamente!'); // Este mensje sale por la ventanita de coandos igual que el servidor conectado.
 });
 
 export default pool;
@@ -32,10 +32,10 @@ Archivo /inventario2023/apinew/src/keys.ts
 export default {
 
     database: {
-        host: 'localhost',
-        user: 'root',
-        password: 'Nxt3005F1',
-        database: 'ecom'
+        host: 'localhost', // O el host donde se encuentra la database mysql
+        user: 'root',   // El usuario de la base de datos
+        password: 'passwrong', // El password
+        database: 'ecom'  // La base de datos
     }
 
 }
@@ -49,7 +49,7 @@ Estos archivos corresponden a la configuracion de la conexion con la base de dat
 
 #### Pre-Requisitos:
 
-Se debe contar con una instalación de Node y de Angular para esto verificar la documentación de cada uno en la página correspondiente.
+Se debe contar con una instalación de Node y de Angular para esto verificar la documentación de cada uno en la página correspondiente. También tiene que contarse con una versión de Mysql ya sea local o por intermedio de un servidor a la cual se le deben ingresar las tablas por medio de una restauracion de las tablas que se encuentran en la carpeta /apinew/dataMysqlBackup 
 
 #### Instalación API:
 
