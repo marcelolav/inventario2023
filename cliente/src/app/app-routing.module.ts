@@ -6,14 +6,27 @@ import { FormularioProductosComponent } from './componentes/productos/formulario
 import { FormularioRubrosComponent } from './componentes/rubros/formulario/formulario.component';
 import { AbmRubrosComponent } from './componentes/rubros/abm-rubros.component';
 import { AbmProductosComponent } from './componentes/productos/abm-productos.component';
+import { AbmProveedoresComponent } from './componentes/proveedores/abm-proveedores.component';
+import { FormularioProveedoresComponent } from './componentes/proveedores/formulario/formulario.component';
+import { AbmServiciosComponent } from './componentes/servicios/abm-servicios.component';
+import { ListadoServiciosComponent } from './componentes/servicios/listado/listado.component';
+import { FormularioServiciosComponent } from './componentes/servicios/formulario/formulario.component';
 
 const routes: Routes = [
   { path: 'productos', component: AbmProductosComponent },
   { path: 'productos/listado', component: ListadoProductosComponent },
-  { path: 'productos/formulario', component: FormularioProductosComponent },
+  { path: 'productos/agregar', component: FormularioProductosComponent },
+  { path: 'productos/editar/:id', component: FormularioProductosComponent },
   { path: 'rubros', component: AbmRubrosComponent },
   { path: 'rubros/agregar', component: FormularioRubrosComponent },
   { path: 'rubros/editar/:id', component: FormularioRubrosComponent },
+  { path: 'proveedores', component: AbmProveedoresComponent },
+  { path: 'proveedores/agregar', component: FormularioProveedoresComponent },
+  { path: 'proveedores/editar/:id', component: FormularioProveedoresComponent },
+
+  { path: 'servicios', component: AbmServiciosComponent },
+  { path: 'servicios/listado', component: ListadoServiciosComponent },
+  { path: 'servicio/editar/:id', component: FormularioServiciosComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

@@ -1,5 +1,43 @@
-<div class="row">
-    <div class="col">
-        <app-listado-proveedores></app-listado-proveedores>
-    </div>
+<h3>Listado de Proveedores</h3>
+<div>
+  <button class="btn btn-primary btn-block" routerLink="/proveedores/agregar">
+    Alta de Proveedor
+  </button>
+</div>
+<div class="col-sm-8">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Referencias</th>
+        <th scope="col">Fecha Ult.Compra</th>
+        <th scope="col">Importe Total Compras</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prov of provData">
+        <td scope="row">{{ prov.idproveedor }}</td>
+        <td>{{ prov.nombre }}</td>
+        <td>{{ prov.referncia }}</td>
+        <td>{{ prov.fechaultimacompra | date : "dd-MM-yyyy" }}</td>
+        <td>{{ prov.totalcompras | currency }}</td>
+        <td>
+          <button
+            class="btn btn-primary btn-sm mr-5"
+            (click)="editarProveedor(prov.idproveedor)"
+          >
+            Editar
+          </button>
+          <button
+            class="btn btn-danger btn-sm ml-3"
+            (click)="eliminarProveedor(prov.idproveedor)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -1,1 +1,91 @@
-<p>formulario works!</p>
+<h3>{{ titulo }}</h3>
+
+<form action="">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-3">
+        <label for="idprov"># ID</label>
+        <input
+          type="text"
+          id="idprov"
+          name="idproveedor"
+          [(ngModel)]="proveedor.idproveedor"
+          readonly
+          class="form-control"
+        />
+      </div>
+      <div class="col-9">
+        <label for="nombre">Nombre del Proveedor</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="proveedor.nombre"
+          placeholder="Nombre del Proveedor"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="referencia">Referencias</label>
+        <input
+          type="text"
+          id="referencia"
+          name="referencia"
+          [(ngModel)]="proveedor.referencia"
+          placeholder="Referencias"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="fecha">Fecha de Última Compra</label>
+        <input
+          type="date"
+          id="fecha"
+          name="fechaultimacompra"
+          [(ngModel)]="proveedor.fechaultimacompra"
+          placeholder="Fecha de Última Compra"
+          class="form-control"
+          autofocus
+        />
+      </div>
+      <div class="col-6">
+        <label for="total">Importe Total de Compras</label>
+        <input
+          type="number"
+          id="total"
+          name="totalcompras"
+          [(ngModel)]="proveedor.totalcompras"
+          placeholder="Importe Total de compras"
+          class="form-control"
+          autofocus
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <button
+        class="btn btn-success mt-4"
+        (click)="
+          editar
+            ? actualizaProveedor(
+                proveedor.idproveedor,
+                proveedor.nombre,
+                proveedor.referencia,
+                proveedor.fechaultimacompra,
+                proveedor.totalcompras
+              )
+            : guardaProveedor(proveedor)
+        "
+      >
+        Save
+      </button>
+      <button class="btn btn-primary mt-4" (click)="cancelar()">Atrás</button>
+    </div>
+  </div>
+</form>

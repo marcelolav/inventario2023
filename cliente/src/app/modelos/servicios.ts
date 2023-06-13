@@ -8,4 +8,5 @@ export interface Servicio {
   observaciones?: string;
   fechasalida?: Date;
   precioreparacion?: number;
+  reparado: boolean;
 }
