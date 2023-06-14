@@ -1,1 +1,82 @@
-<p>formulario works!</p>
+<h3>{{ titulo }}</h3>
+
+<form action="">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-5">
+        <label for="cliente">Nombre del cliente</label>
+        <input
+          type="text"
+          id="cliente"
+          name="cliente"
+          [(ngModel)]="servicio.cliente"
+          class="form-control"
+          autofocus
+        />
+      </div>
+      <div class="col-3">
+        <label for="telefono">Teléfono del cliente</label>
+        <input
+          type="text"
+          id="telefono"
+          name="telefono"
+          [(ngModel)]="servicio.telefono"
+          class="form-control"
+        />
+      </div>
+      <div class="col-4">
+        <label for="fechaingreso">Fecha de Ingreso</label>
+        <input
+          type="date"
+          id="fechaingreso"
+          name="fechaingreso"
+          [(ngModel)]="servicio.fechaingreso"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="articulo">Precio de Venta</label>
+        <input
+          type="text"
+          id="articulo"
+          name="precio"
+          [(ngModel)]="servicio.articulo"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="falla">Falla declarada por el cliente</label>
+        <input
+          type="text"
+          id="falla"
+          name="falla"
+          [(ngModel)]="servicio.falla"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="observaciones">Observaciones/Detalle Reparación</label>
+        <input
+          type="text"
+          id="observaciones"
+          name="observaciones"
+          [(ngModel)]="servicio.observaciones"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-success mt-4" (click)="guardaServicio(servicio)">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>

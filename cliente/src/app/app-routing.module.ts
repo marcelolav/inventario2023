@@ -11,6 +11,7 @@ import { FormularioProveedoresComponent } from './componentes/proveedores/formul
 import { AbmServiciosComponent } from './componentes/servicios/abm-servicios.component';
 import { ListadoServiciosComponent } from './componentes/servicios/listado/listado.component';
 import { FormularioServiciosComponent } from './componentes/servicios/formulario/formulario.component';
+import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
 
 const routes: Routes = [
   { path: 'productos', component: AbmProductosComponent },
@@ -24,9 +25,10 @@ const routes: Routes = [
   { path: 'proveedores/agregar', component: FormularioProveedoresComponent },
   { path: 'proveedores/editar/:id', component: FormularioProveedoresComponent },
 
-  { path: 'servicios', component: AbmServiciosComponent },
+  { path: 'servicios/alta', component: FormularioServiciosComponent },
   { path: 'servicios/listado', component: ListadoServiciosComponent },
-  { path: 'servicio/editar/:id', component: FormularioServiciosComponent },
+  { path: 'servicios/editar', component: AbmServiciosComponent },
+  { path: 'servicios/pendientes', component: PendientesComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

@@ -3,10 +3,10 @@ export interface Servicio {
   cliente?: string;
   telefono?: string;
   fechaingreso?: Date;
-  articulo?: number;
+  articulo?: string;
   falla?: string;
   observaciones?: string;
   fechasalida?: Date;
   precioreparacion?: number;
-  reparado: boolean;
+  reparado?: boolean;
 }
