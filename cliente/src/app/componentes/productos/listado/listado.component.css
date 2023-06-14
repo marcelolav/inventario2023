@@ -2,3 +2,6 @@
     cursor: pointer;
     position: relative;
 }
+.h3 {
+    box-shadow: 5px 5px 2px;    /* Sombra con ligero desenfoque */
+}

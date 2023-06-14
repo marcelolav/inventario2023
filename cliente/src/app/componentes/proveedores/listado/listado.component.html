@@ -1,10 +1,14 @@
-<h3>Listado de Proveedores</h3>
+<h3
+  class="text-center font-weight-bold border border-primary rounded shadow p-3 mb-5 bg-white"
+>
+  Listado de Proveedores
+</h3>
 <div>
   <button class="btn btn-primary btn-block" routerLink="/proveedores/agregar">
     Alta de Proveedor
   </button>
 </div>
-<div class="col-sm-8">
+<div class="col">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -28,13 +32,13 @@
             class="btn btn-primary btn-sm mr-5"
             (click)="editarProveedor(prov.idproveedor)"
           >
-            Editar
+            <span class="material-symbols-rounded"> edit </span>
           </button>
           <button
             class="btn btn-danger btn-sm ml-3"
             (click)="eliminarProveedor(prov.idproveedor)"
           >
-            Eliminar
+            <span class="material-symbols-rounded"> delete </span>
           </button>
         </td>
       </tr>
