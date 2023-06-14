@@ -5,7 +5,7 @@
     <input
       type="text"
       name="title"
-      [(ngModel)]="rubro.nombre"
+      [(ngModel)]="rubro.nombrerubro"
       placeholder="Nombre del Rubro"
       class="form-control"
       autofocus
@@ -15,8 +15,8 @@
     class="btn btn-success btn-block"
     (click)="
       editar
-        ? actualizaRubro(rubro.idrubro, rubro.nombre)
-        : guardaRubro(rubro.nombre)
+        ? actualizaRubro(rubro.idrubro, rubro.nombrerubro)
+        : guardaRubro(rubro.nombrerubro)
     "
   >
     Save

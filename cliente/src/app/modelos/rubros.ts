@@ -1,4 +1,4 @@
 export interface Rubro {
   idrubro?: number;
-  nombre?: string;
+  nombrerubro?: string;
 }

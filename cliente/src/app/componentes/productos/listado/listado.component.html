@@ -5,24 +5,33 @@
   </button>
 </div>
 <div class="col-sm-8">
-  <table class="table table-striped">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th scope="col">#ID</th>
-        <th scope="col">Nombre</th>
+        <th
+          scope="col"
+          sortable="nombreproducto"
+          direction="asc"
+          (sort)="onSort($event)"
+        >
+          Nombre
+        </th>
         <th scope="col">Precio Venta</th>
         <th scope="col">Precio Compra</th>
         <th scope="col">Stock</th>
+        <th scope="col">Rubro</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let prod of prodData">
         <td scope="row">{{ prod.idproducto }}</td>
-        <td>{{ prod.nombre }}</td>
+        <td>{{ prod.nombreproducto }}</td>
         <td>{{ prod.precio }}</td>
         <td>{{ prod.preciocompra }}</td>
         <td>{{ prod.existencia }}</td>
+        <td>{{ prod.nombrerubro }}</td>
         <td>
           <button
             class="btn btn-primary btn-sm mr-5"

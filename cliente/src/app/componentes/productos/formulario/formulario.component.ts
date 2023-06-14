@@ -17,7 +17,7 @@ export class FormularioProductosComponent implements OnInit {
   producto: Producto = {
     idproducto: 0,
     codigobarra: '',
-    nombre: '',
+    nombreproducto: '',
     descripcion: '',
     precio: 0,
     preciocompra: 0,
@@ -35,6 +35,7 @@ export class FormularioProductosComponent implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params['id'];
+    this.obtenerRubros();
     if (id) {
       this.titulo = 'Modificación del Producto';
       this.editar = true;
@@ -49,7 +50,7 @@ export class FormularioProductosComponent implements OnInit {
       this.producto = {
         idproducto: 0,
         codigobarra: '',
-        nombre: '',
+        nombreproducto: '',
         descripcion: '',
         precio: 0,
         preciocompra: 0,
@@ -78,7 +79,7 @@ export class FormularioProductosComponent implements OnInit {
     this.producto = {
       idproducto: idproducto,
       codigobarra: codigobarra,
-      nombre: nombre,
+      nombreproducto: nombre,
       descripcion: descripcion,
       precio: precio,
       preciocompra: preciocompra,
@@ -93,7 +94,11 @@ export class FormularioProductosComponent implements OnInit {
         this.router.navigate(['/productos']);
       });
   }
-
+  obtenerRubros() {
+    this.rubrosService.getRubros().subscribe((data) => {
+      this.rubros = data;
+    });
+  }
   guardaProducto(producto: Producto) {
     this.productosService.saveProducto(producto).subscribe((res) => {
       this.editar = false;

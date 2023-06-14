@@ -1,7 +1,7 @@
 export interface Producto {
   idproducto?: number;
   codigobarra?: string;
-  nombre?: string;
+  nombreproducto?: string;
   descripcion?: string;
   precio?: number;
   preciocompra?: number;

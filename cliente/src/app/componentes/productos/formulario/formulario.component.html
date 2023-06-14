@@ -27,12 +27,12 @@
       </div>
       ´
       <div class="col-4">
-        <label for="nombre">Nombre de Producto</label>
+        <label for="nombreproducto">Nombre de Producto</label>
         <input
           type="text"
-          id="nombre"
-          name="nombre"
-          [(ngModel)]="producto.nombre"
+          id="nombreproducto"
+          name="nombreproducto"
+          [(ngModel)]="producto.nombreproducto"
           class="form-control"
         />
       </div>
@@ -101,8 +101,8 @@
           [(ngModel)]="producto.rubroid"
           name="rubroid"
         >
-          <option *ngFor="let rub of rubros">
-            {{ rub.nombre }}
+          <option *ngFor="let rub of rubros" [value]="rub.idrubro">
+            {{ rub.nombrerubro }}
           </option>
         </select>
       </div>
@@ -118,7 +118,7 @@
             ? actualizaProducto(
                 producto.idproducto,
                 producto.codigobarra,
-                producto.nombre,
+                producto.nombreproducto,
                 producto.descripcion,
                 producto.precio,
                 producto.preciocompra,

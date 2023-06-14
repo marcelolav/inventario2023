@@ -13,7 +13,7 @@ export class FormularioRubrosComponent implements OnInit {
   titulo: string = 'Alta Rubro';
   rubro: Rubro = {
     idrubro: 0,
-    nombre: '',
+    nombrerubro: '',
   };
 
   constructor(
@@ -33,7 +33,7 @@ export class FormularioRubrosComponent implements OnInit {
       this.titulo = 'Alta Rubro';
       this.editar = false;
       this.rubro = {
-        nombre: '',
+        nombrerubro: '',
       };
     }
   }
@@ -45,7 +45,7 @@ export class FormularioRubrosComponent implements OnInit {
   actualizaRubro(id: any, nombre: any) {
     this.rubro = {
       idrubro: id,
-      nombre: nombre,
+      nombrerubro: nombre,
     };
     this.rubrosService.updateRubro(id, this.rubro).subscribe((res) => {
       console.log(res);
