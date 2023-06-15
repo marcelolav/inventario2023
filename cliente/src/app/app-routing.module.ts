@@ -12,6 +12,7 @@ import { AbmServiciosComponent } from './componentes/servicios/abm-servicios.com
 import { ListadoServiciosComponent } from './componentes/servicios/listado/listado.component';
 import { FormularioServiciosComponent } from './componentes/servicios/formulario/formulario.component';
 import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
+import { EntregaComponent } from './componentes/servicios/entrega/entrega.component';
 
 const routes: Routes = [
   { path: 'productos', component: AbmProductosComponent },
@@ -24,10 +25,11 @@ const routes: Routes = [
   { path: 'proveedores', component: AbmProveedoresComponent },
   { path: 'proveedores/agregar', component: FormularioProveedoresComponent },
   { path: 'proveedores/editar/:id', component: FormularioProveedoresComponent },
-
-  { path: 'servicios/alta', component: FormularioServiciosComponent },
+  { path: 'servicios', component: AbmServiciosComponent },
+  { path: 'servicios/agregar', component: FormularioServiciosComponent },
+  { path: 'servicios/editar/:id', component: FormularioServiciosComponent },
+  { path: 'servicios/entregar/:id', component: EntregaComponent },
   { path: 'servicios/listado', component: ListadoServiciosComponent },
-  { path: 'servicios/editar', component: AbmServiciosComponent },
   { path: 'servicios/pendientes', component: PendientesComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },

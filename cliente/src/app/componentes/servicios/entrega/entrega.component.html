@@ -1,0 +1,89 @@
+<h3
+  class="text-center font-weight-bold border border-primary rounded shadow p-3 mb-5 bg-white"
+>
+  Entrega de Equipos en Reparación
+</h3>
+
+<div class="card mb-2">
+  <div class="card-body">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="alert alert-success text-center" role="alert">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Cliente</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Fecha de Ingreso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{ servData.cliente }}</th>
+                <td>{{ servData.articulo }}</td>
+                <td>{{ servData.fechaingreso | date : "dd-MM-yyyy" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card mt-2 mb-2">
+  <div class="row justify-content-between">
+    <form>
+      <div class="form-group">
+        <label for="falla">Falla Reportada</label>
+        <textarea
+          name="falla"
+          class="form-control"
+          id="falla"
+          rows="3"
+          [(ngModel)]="servData.falla"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="observaciones"
+          >Observaciones / Detalles de Reparación</label
+        >
+        <textarea
+          name="observaciones"
+          class="form-control"
+          id="observaciones"
+          rows="3"
+          [(ngModel)]="servData.observaciones"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="importereparacion">Importe Reparación</label>
+        <input
+          name="precioreparacion"
+          type="number"
+          class="form-control"
+          id="importereparacion"
+          [(ngModel)]="servData.precioreparacion"
+        />
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="reparado"
+          name="reparado"
+          checked
+          [(ngModel)]="servData.reparado"
+        />
+        <label class="form-check-label" for="reparado"> Está Reparado </label>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer justify-content-center">
+    <div class="row justify-content-between">
+      <button class="btn btn-primary" (click)="confirmaEntrega()">
+        Confirma Entrega
+      </button>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,9 @@ export class ServiciosService {
     return this.http.get(`${this.API_URI}/servicios/${id}`);
   }
 
+  getPendientes() {
+    return this.http.get(`${this.API_URI}/servicios/pendientes`);
+  }
   deleteServicio(id: string) {
     return this.http.delete(`${this.API_URI}/servicios/${id}`);
   }

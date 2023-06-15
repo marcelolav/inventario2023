@@ -40,6 +40,7 @@ import { CarritoService } from './servicios/carrito.service';
 
 // Directives
 import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
+import { EntregaComponent } from './componentes/servicios/entrega/entrega.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { PendientesComponent } from './componentes/servicios/pendientes/pendient
     FormularioCarritoComponent, // Carrito - Form
     ListadoCarritoComponent, // Carrito - Listado
     AbmCarritoComponent, // Carrito - Principal
-    PendientesComponent, // Directiva para productos
+    PendientesComponent, EntregaComponent, // Directiva para productos
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

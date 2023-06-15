@@ -11,7 +11,7 @@ class ServiciosRoute {
 
      config() {
           this.router.get("/", serviciosController.listaServicios);
-          this.router.get("/reparados/", serviciosController.listaServiciosPendientes);
+          this.router.get("/pendientes/", serviciosController.listaServiciosPendientes);
           this.router.get("/:id", serviciosController.listaServicio);
           this.router.post("/", serviciosController.agregaServicio);
           this.router.put("/:id", serviciosController.actualizaServicio);

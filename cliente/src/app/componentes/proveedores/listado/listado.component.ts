@@ -27,7 +27,6 @@ export class ListadoProveedoresComponent implements OnInit {
   }
 
   eliminarProveedor(id: string) {
-    console.log(id);
     this.provServ.deleteProveedor(id).subscribe((res) => {
       this.getProveedor();
     });

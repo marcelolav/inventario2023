@@ -34,7 +34,6 @@ export class FormularioProveedoresComponent implements OnInit {
         .subscribe((data) => {
           this.proveedor = data;
         });
-      console.log(this.proveedor);
     } else {
       this.titulo = 'Alta Proveedor';
       this.editar = false;
