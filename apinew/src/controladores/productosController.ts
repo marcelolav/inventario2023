@@ -41,7 +41,6 @@ class ProductosController {
      // Actualiza un producto por numero de id
      public async actualizaProducto(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
-          // const oldGame = req.body;
           await pool.query("UPDATE productos set ? WHERE idproducto = ?", [req.body, id]);
           res.json({ message: "El producto ha sido actualizado con éxito!" });
      }

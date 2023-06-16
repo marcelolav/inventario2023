@@ -19,6 +19,7 @@ export class FormularioProveedoresComponent implements OnInit {
     fechaultimacompra: new Date(),
     totalcompras: 0,
   };
+
   constructor(
     private proveedoresService: ProveedoresService,
     private router: Router,
