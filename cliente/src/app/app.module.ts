@@ -25,9 +25,6 @@ import { AbmServiciosComponent } from './componentes/servicios/abm-servicios.com
 import { ListadoVentasComponent } from './componentes/ventas/listado/listado.component';
 import { FormularioVentasComponent } from './componentes/ventas/formulario/formulario.component';
 import { AbmVentasComponent } from './componentes/ventas/abm-ventas.component';
-import { AbmCarritoComponent } from './componentes/carrito/abm-carrito.component';
-import { ListadoCarritoComponent } from './componentes/carrito/listado/listado.component';
-import { FormularioCarritoComponent } from './componentes/carrito/formulario/formulario.component';
 
 // Services
 import { ProductosService } from './servicios/productos.service';
@@ -64,10 +61,8 @@ import { EntregaComponent } from './componentes/servicios/entrega/entrega.compon
     FormularioVentasComponent, // Ventas - Form
     ListadoVentasComponent, // Ventas - Listado
     AbmVentasComponent, // Ventas - Principal
-    FormularioCarritoComponent, // Carrito - Form
-    ListadoCarritoComponent, // Carrito - Listado
-    AbmCarritoComponent, // Carrito - Principal
-    PendientesComponent, EntregaComponent, // Directiva para productos
+    PendientesComponent,
+    EntregaComponent, // Directiva para productos
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

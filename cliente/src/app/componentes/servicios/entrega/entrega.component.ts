@@ -40,9 +40,9 @@ export class EntregaComponent implements OnInit {
         reparado: this.servData.reparado,
       };
       this.serviciosService
-        .updateServicio(this.servData.idservicios, regReparacion)
+        .entregaServicio(this.servData.idservicios, regReparacion)
         .subscribe((res) => {
-          this.router.navigate(['/servicios']);
+          this.router.navigate(['/servicios/pendientes']);
         });
     } else {
       alert('El importe no puede ser cero, indique Importe');

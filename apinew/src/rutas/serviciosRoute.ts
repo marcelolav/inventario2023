@@ -15,6 +15,7 @@ class ServiciosRoute {
           this.router.get("/:id", serviciosController.listaServicio);
           this.router.post("/", serviciosController.agregaServicio);
           this.router.put("/:id", serviciosController.actualizaServicio);
+          this.router.put("/entrega/:id", serviciosController.entregaService);
           this.router.delete("/:id", serviciosController.eliminaServicio);
      }
 }

@@ -4,7 +4,7 @@ import cors from "cors";
 import indexRoutes from "./rutas/indexRoute";
 import productosRoute from "./rutas/productosRoute";
 import rubrosRoute from "./rutas/rubrosRoute";
-import carritoRoute from "./rutas/carritoRoute";
+import ventasRoute from "./rutas/ventasRoute";
 import proveedoresRoute from "./rutas/proveedoresRoute";
 import serviciosRoute from "./rutas/serviciosRoute";
 
@@ -30,7 +30,7 @@ class Server {
           this.app.use("/", indexRoutes);
           this.app.use("/api/productos", productosRoute);
           this.app.use("/api/rubros", rubrosRoute);
-          this.app.use("/api/carrito", carritoRoute);
+          this.app.use("/api/ventas", ventasRoute);
           this.app.use("/api/proveedores", proveedoresRoute);
           this.app.use("/api/servicios", serviciosRoute);
      }

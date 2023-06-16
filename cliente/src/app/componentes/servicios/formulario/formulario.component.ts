@@ -30,9 +30,9 @@ export class FormularioServiciosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params['id'];
-
-    if (id) {
+    const id = this.activatedRoute.snapshot.params['id'] || 0;
+    console.log(id);
+    if (id != 0) {
       this.editar = true;
       this.titulo = 'Modificación de Servicios Técnicos';
       const servData = this.serviciosService
@@ -40,6 +40,7 @@ export class FormularioServiciosComponent implements OnInit {
         .subscribe((data) => {
           this.servicio = data;
         });
+      console.log(this.servicio);
     } else {
       this.titulo = 'Alta de Servicio Técnico';
       this.editar = false;
@@ -63,7 +64,7 @@ export class FormularioServiciosComponent implements OnInit {
     });
   }
 
-  actualizaServicio(id: string, servAct: Servicio) {
+  actualizaServicio(id: number, servAct: Servicio) {
     this.serviciosService.updateServicio(id, servAct).subscribe((res) => {
       this.editar = false;
       this.router.navigate(['/servicios/listado']);

@@ -16,6 +16,7 @@
         <th scope="col">Cliente</th>
         <th scope="col">Teléfono</th>
         <th scope="col">Fecha Ingreso</th>
+        <th scope="col">Fecha Salida</th>
         <th scope="col">Artículo</th>
         <th scope="col">Falla</th>
         <th scope="col">Precio Reparación</th>
@@ -29,6 +30,7 @@
         <td>{{ serv.cliente }}</td>
         <td>{{ serv.telefono }}</td>
         <td>{{ serv.fechaingreso | date : "dd-MM-yyyy" }}</td>
+        <td>{{ serv.fechasalida | date : "dd-MM-yyyy" }}</td>
         <td>{{ serv.articulo }}</td>
         <td>{{ serv.falla }}</td>
         <td>{{ serv.precioreparacion | currency }}</td>

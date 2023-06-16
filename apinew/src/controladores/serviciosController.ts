@@ -24,6 +24,10 @@ class ServiciosController {
      }
      // Agrega un item a la tabla servicios
      public async agregaServicio(req: Request, res: Response): Promise<void> {
+          const fechaingreso = new Date(req.body.fechaingreso).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
+          const fechasalida = new Date(req.body.fechasalida).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
+          req.body.fechaingreso = fechaingreso;
+          req.body.fechasalida = fechasalida;
           const result = await pool.query("INSERT INTO servicios set ?", [req.body]);
           res.json({ message: "El servicio ha sido guardado con éxito!" });
      }
@@ -31,12 +35,21 @@ class ServiciosController {
      public async actualizaServicio(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
           const fechaingreso = new Date(req.body.fechaingreso).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
-          console.log(fechaingreso);
-          // const fechasalida = new Date(req.body.fechasalida).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
+          const fechasalida = new Date(req.body.fechasalida).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
+          req.body.fechaingreso = fechaingreso;
+          req.body.fechasalida = fechasalida;
+          await pool.query("UPDATE servicios set ? WHERE idservicios = ?", [req.body, id]);
+          res.json({ message: "El servicio ha sido actualizado con éxito!" });
+     }
+     // Entrega un servicio por numero de id
+     public async entregaService(req: Request, res: Response): Promise<void> {
+          const { id } = req.params;
+          // const fechaingreso = new Date(req.body.fechaingreso).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
+          const fechasalida = new Date(req.body.fechasalida).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
           // req.body.fechaingreso = fechaingreso;
-          // req.body.fechasalida = fechasalida;
-          // await pool.query("UPDATE servicios set ? WHERE idservicios = ?", [req.body, id]);
-          // res.json({ message: "El servicio ha sido actualizado con éxito!" });
+          req.body.fechasalida = fechasalida;
+          await pool.query("UPDATE servicios set ? WHERE idservicios = ?", [req.body, id]);
+          res.json({ message: "El servicio ha sido actualizado con éxito!" });
      }
      // Elimina un servicio por numero de id
      public async eliminaServicio(req: Request, res: Response): Promise<void> {

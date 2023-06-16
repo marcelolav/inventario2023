@@ -40,10 +40,14 @@ export class ServiciosService {
     return this.http.post(`${this.API_URI}/servicios`, bod);
   }
 
-  updateServicio(
-    id: string | number,
-    updatedServicio: Servicio
-  ): Observable<Servicio> {
+  updateServicio(id: number, updatedServicio: Servicio): Observable<Servicio> {
     return this.http.put(`${this.API_URI}/servicios/${id}`, updatedServicio);
+  }
+
+  entregaServicio(id: number, updatedServicio: Servicio): Observable<Servicio> {
+    return this.http.put(
+      `${this.API_URI}/servicios/entrega/${id}`,
+      updatedServicio
+    );
   }
 }

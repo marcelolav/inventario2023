@@ -1,7 +1,7 @@
 export interface Venta {
   idventas?: number;
   fecha?: Date;
-  idproducto?: number;
+  producto?: string;
   cantidad?: number;
   preciounitario?: number;
   preciosubtotal?: number;

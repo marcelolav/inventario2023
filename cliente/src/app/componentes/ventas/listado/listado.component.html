@@ -1,1 +1,44 @@
-<p>listado works!</p>
+<h3
+  class="text-center font-weight-bold border border-primary rounded shadow p-3 mb-5 bg-white"
+>
+  Listado de Ventas
+</h3>
+<div class="col">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio Unitario</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vta of ventasData">
+        <td scope="row">{{ vta.idventas }}</td>
+        <td>{{ vta.fecha }}</td>
+        <td>{{ vta.producto }}</td>
+        <td>{{ vta.cantidad }}</td>
+        <td>{{ vta.preciounitario }}</td>
+        <td>{{ vta.preciosubtotal }}</td>
+        <td>
+          <button
+            class="btn btn-primary btn-sm mr-5"
+            (click)="editarVenta(vta.idventas)"
+          >
+            <span class="material-symbols-rounded"> edit </span>
+          </button>
+          <button
+            class="btn btn-danger btn-sm ml-3"
+            (click)="eliminarVenta(vta.idventas)"
+          >
+            <span class="material-symbols-rounded"> delete </span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
