@@ -30,9 +30,9 @@ class Server {
           this.app.use("/", indexRoutes);
           this.app.use("/api/productos", productosRoute);
           this.app.use("/api/rubros", rubrosRoute);
-          this.app.use("/api/ventas", ventasRoute);
           this.app.use("/api/proveedores", proveedoresRoute);
           this.app.use("/api/servicios", serviciosRoute);
+          this.app.use("/api/ventas", ventasRoute);
      }
 
      start() {
