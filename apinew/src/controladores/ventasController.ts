@@ -4,7 +4,7 @@ import pool from "../database";
 class VentasController {
      // Muestra todos los datos de la tabla ventas
      public async listaVentas(req: Request, res: Response): Promise<void> {
-          const productos = await pool.query("SELECT * FROM ventas");
+          const productos = await pool.query("SELECT * FROM ventas INNER JOIN clientes ON ventas.idcliente = clientes.idclientes");
           res.json(productos);
      }
      // Muestra un solo registro de ventas

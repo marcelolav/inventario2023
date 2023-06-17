@@ -8,22 +8,26 @@
     <thead>
       <tr>
         <th scope="col">#ID</th>
+        <th scope="col">Nº CMP</th>
         <th scope="col">Fecha</th>
         <th scope="col">Producto</th>
         <th scope="col">Cantidad</th>
         <th scope="col">Precio Unitario</th>
         <th scope="col">Subtotal</th>
+        <th scope="col">Cliente</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let vta of ventasData">
         <td scope="row">{{ vta.idventas }}</td>
-        <td>{{ vta.fecha }}</td>
+        <td>{{ vta.comprobante }}</td>
+        <td>{{ vta.fecha | date : "dd-MM-yyyy" }}</td>
         <td>{{ vta.producto }}</td>
         <td>{{ vta.cantidad }}</td>
         <td>{{ vta.preciounitario }}</td>
         <td>{{ vta.preciosubtotal }}</td>
+        <td>{{ vta.nombrecliente }}</td>
         <td>
           <button
             class="btn btn-primary btn-sm mr-5"

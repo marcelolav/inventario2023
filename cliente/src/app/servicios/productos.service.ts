@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Producto } from '../modelos/productos';
+import { Producto, ProductoRubro } from '../modelos/productos';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,15 +14,15 @@ export class ProductosService {
   getProductos() {
     return this.http.get(`${this.API_URI}/productos`);
   }
-  getProductoyRubro() {
-    return this.http.get(`${this.API_URI}/productos/pr`);
+  getProductoyRubro(): Observable<ProductoRubro[]> {
+    return this.http.get<ProductoRubro[]>(`${this.API_URI}/productos/pr`);
   }
 
-  getProducto(id: string) {
+  getProducto(id: number) {
     return this.http.get(`${this.API_URI}/productos/${id}`);
   }
 
-  deleteProducto(id: string) {
+  deleteProducto(id: number) {
     return this.http.delete(`${this.API_URI}/productos/${id}`);
   }
   // veridicar aca para producto

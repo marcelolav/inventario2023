@@ -33,11 +33,11 @@ import { ProveedoresService } from './servicios/proveedores.service';
 import { ServiciosService } from './servicios/servicios.service';
 import { ComprasService } from './servicios/compras.service';
 import { VentasService } from './servicios/ventas.service';
-import { CarritoService } from './servicios/carrito.service';
 
 // Directives
 import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
 import { EntregaComponent } from './componentes/servicios/entrega/entrega.component';
+import { ProductoPipe } from './pipes/producto.pipe';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,8 @@ import { EntregaComponent } from './componentes/servicios/entrega/entrega.compon
     ListadoVentasComponent, // Ventas - Listado
     AbmVentasComponent, // Ventas - Principal
     PendientesComponent,
-    EntregaComponent, // Directiva para productos
+    EntregaComponent,
+    ProductoPipe, // Directiva para productos
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
@@ -72,7 +73,6 @@ import { EntregaComponent } from './componentes/servicios/entrega/entrega.compon
     ComprasService,
     ServiciosService,
     VentasService,
-    CarritoService,
   ],
   bootstrap: [AppComponent],
 })

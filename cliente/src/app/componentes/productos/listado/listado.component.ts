@@ -1,5 +1,6 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductoRubro } from 'src/app/modelos/productos';
 import { ProductosService } from 'src/app/servicios/productos.service';
 
 @Component({
@@ -8,8 +9,11 @@ import { ProductosService } from 'src/app/servicios/productos.service';
   styleUrls: ['./listado.component.css'],
 })
 export class ListadoProductosComponent implements OnInit {
-  prodData: any = [];
+  prodData: ProductoRubro[] = [];
   titulo: string = 'Alta de Producto';
+
+  public page: number = 0;
+  public search: string = '';
 
   constructor(private prodServ: ProductosService, private router: Router) {}
 
@@ -18,18 +22,31 @@ export class ListadoProductosComponent implements OnInit {
   }
 
   getProductos() {
-    this.prodServ.getProductoyRubro().subscribe((res) => {
-      this.prodData = res;
+    this.prodServ.getProductoyRubro().subscribe((prodData) => {
+      this.prodData = prodData;
     });
   }
 
-  editarProducto(id: string) {
+  editarProducto(id: number) {
     this.router.navigate(['/productos/editar/' + id]);
   }
 
-  eliminarProducto(id: string) {
+  eliminarProducto(id: number) {
     this.prodServ.deleteProducto(id).subscribe((res) => {
       this.getProductos();
     });
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if (this.page > 0) this.page -= 5;
+  }
+
+  onSearchProducto(search: string) {
+    this.page = 0;
+    this.search = search;
   }
 }
