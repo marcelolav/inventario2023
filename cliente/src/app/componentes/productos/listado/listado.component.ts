@@ -28,6 +28,7 @@ export class ListadoProductosComponent implements OnInit {
   }
 
   editarProducto(id: number) {
+    console.log('desde lista el id es: ', id);
     this.router.navigate(['/productos/editar/' + id]);
   }
 

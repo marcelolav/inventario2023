@@ -15,7 +15,7 @@ export class FormularioProductosComponent implements OnInit {
   titulo: string = 'Alta Productos';
   rubros: any = [];
   producto: Producto = {
-    idproducto: 0,
+    idproductos: 0,
     codigobarra: '',
     nombreproducto: '',
     descripcion: '',
@@ -39,6 +39,7 @@ export class FormularioProductosComponent implements OnInit {
     if (id) {
       this.titulo = 'Modificación del Producto';
       this.editar = true;
+      console.log('me manda un id por parametro :', id);
       const buscaProv = this.productosService
         .getProducto(id)
         .subscribe((data) => {
@@ -48,7 +49,7 @@ export class FormularioProductosComponent implements OnInit {
       this.titulo = 'Alta Producto';
       this.editar = false;
       this.producto = {
-        idproducto: 0,
+        idproductos: 0,
         codigobarra: '',
         nombreproducto: '',
         descripcion: '',
@@ -77,7 +78,7 @@ export class FormularioProductosComponent implements OnInit {
     rubroid?: any
   ): void {
     this.producto = {
-      idproducto: idproducto,
+      idproductos: idproducto,
       codigobarra: codigobarra,
       nombreproducto: nombre,
       descripcion: descripcion,

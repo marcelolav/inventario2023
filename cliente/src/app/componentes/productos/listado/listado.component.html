@@ -34,7 +34,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let prod of prodData | filtroproducto : page : search">
-        <td scope="row">{{ prod.idproducto }}</td>
+        <td scope="row">{{ prod.idproductos }}</td>
         <td>{{ prod.nombreproducto }}</td>
         <td>{{ prod.precio }}</td>
         <td>{{ prod.preciocompra }}</td>
@@ -43,13 +43,13 @@
         <td>
           <button
             class="btn btn-primary btn-sm mr-5"
-            (click)="editarProducto(prod.idproducto)"
+            (click)="editarProducto(prod.idproductos)"
           >
             <span class="material-symbols-rounded"> edit </span>
           </button>
           <button
             class="btn btn-danger btn-sm ml-3"
-            (click)="eliminarProducto(prod.idproducto)"
+            (click)="eliminarProducto(prod.idproductos)"
           >
             <span class="material-symbols-rounded"> delete </span>
           </button>

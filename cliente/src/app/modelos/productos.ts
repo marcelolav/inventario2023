@@ -1,5 +1,5 @@
 export interface Producto {
-  idproducto?: number;
+  idproductos?: number;
   codigobarra?: string;
   nombreproducto?: string;
   descripcion?: string;
@@ -10,7 +10,7 @@ export interface Producto {
   rubroid?: number;
 }
 export interface ProductoRubro {
-  idproducto: number;
+  idproductos: number;
   codigobarra: string;
   nombreproducto: string;
   descripcion: string;

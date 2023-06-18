@@ -9,7 +9,7 @@
           type="text"
           id="idprod"
           name="idproveedor"
-          [(ngModel)]="producto.idproducto"
+          [(ngModel)]="producto.idproductos"
           readonly
           class="form-control"
         />
@@ -116,7 +116,7 @@
         (click)="
           editar
             ? actualizaProducto(
-                producto.idproducto,
+                producto.idproductos,
                 producto.codigobarra,
                 producto.nombreproducto,
                 producto.descripcion,
