@@ -42,6 +42,7 @@ import { FormularioComponent } from './componentes/clientes/formulario/formulari
 import { ListadoComponent } from './componentes/clientes/listado/listado.component';
 import { AbmClientesComponent } from './componentes/clientes/abm-clientes.component';
 import { RubroPipe } from './pipes/rubro.pipe';
+import { ProveedorPipe } from './pipes/proveedor.pipe';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { RubroPipe } from './pipes/rubro.pipe';
     FormularioComponent,
     ListadoComponent,
     AbmClientesComponent,
-    RubroPipe, // Directiva para productos
+    RubroPipe,
+    ProveedorPipe, // Directiva para productos
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

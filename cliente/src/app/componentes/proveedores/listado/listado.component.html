@@ -8,6 +8,16 @@
     Alta de Proveedor
   </button>
 </div>
+<div class="mt-2 mb-2">
+  <input
+    type="text"
+    class="form-control mb-2"
+    placeholder="Buscar Producto"
+    name="search"
+    [(ngModel)]="search"
+    (onkeyup)="onSearchProveedor(search)"
+  />
+</div>
 <div class="col">
   <table class="table table-striped">
     <thead>
@@ -21,22 +31,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prov of provData">
-        <td scope="row">{{ prov.idproveedor }}</td>
+      <tr *ngFor="let prov of provData | filtroproveedor : page : search">
+        <td scope="row">{{ prov.idproveedores }}</td>
         <td>{{ prov.nombre }}</td>
-        <td>{{ prov.referncia }}</td>
+        <td>{{ prov.referencia }}</td>
         <td>{{ prov.fechaultimacompra | date : "dd-MM-yyyy" }}</td>
         <td>{{ prov.totalcompras | currency }}</td>
         <td>
           <button
             class="btn btn-primary btn-sm mr-5"
-            (click)="editarProveedor(prov.idproveedor)"
+            (click)="editarProveedor(prov.idproveedores)"
           >
             <span class="material-symbols-rounded"> edit </span>
           </button>
           <button
             class="btn btn-danger btn-sm ml-3"
-            (click)="eliminarProveedor(prov.idproveedor)"
+            (click)="eliminarProveedor(prov.idproveedores)"
           >
             <span class="material-symbols-rounded"> delete </span>
           </button>
@@ -44,4 +54,29 @@
       </tr>
     </tbody>
   </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          style="height: 30px; width: 100px"
+          (click)="prevPage()"
+        >
+          Previa
+        </button>
+      </li>
+      <li class="page-item">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="nextPage()"
+          style="height: 30px; width: 100px"
+          [disabled]="(provData | filtroproveedor : page : search).length === 0"
+        >
+          Siguiente
+        </button>
+      </li>
+    </ul>
+  </nav>
 </div>

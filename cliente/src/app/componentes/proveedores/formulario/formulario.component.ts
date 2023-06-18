@@ -13,7 +13,7 @@ export class FormularioProveedoresComponent implements OnInit {
   titulo: string = 'Alta Proveedor';
 
   proveedor: Proveedor = {
-    idproveedor: 0,
+    idproveedores: 0,
     nombre: '',
     referencia: '',
     fechaultimacompra: new Date(),
@@ -39,7 +39,7 @@ export class FormularioProveedoresComponent implements OnInit {
       this.titulo = 'Alta Proveedor';
       this.editar = false;
       this.proveedor = {
-        idproveedor: 0,
+        idproveedores: 0,
         nombre: '',
         referencia: '',
         fechaultimacompra: new Date(),
@@ -60,7 +60,7 @@ export class FormularioProveedoresComponent implements OnInit {
     totalcompras?: any
   ): void {
     this.proveedor = {
-      idproveedor: id,
+      idproveedores: id,
       nombre: nombre,
       referencia: referencia,
       fechaultimacompra: fechaultimacompra,

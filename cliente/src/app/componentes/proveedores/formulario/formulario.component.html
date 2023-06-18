@@ -9,7 +9,7 @@
           type="text"
           id="idprov"
           name="idproveedor"
-          [(ngModel)]="proveedor.idproveedor"
+          [(ngModel)]="proveedor.idproveedores"
           readonly
           class="form-control"
         />
@@ -74,7 +74,7 @@
         (click)="
           editar
             ? actualizaProveedor(
-                proveedor.idproveedor,
+                proveedor.idproveedores,
                 proveedor.nombre,
                 proveedor.referencia,
                 proveedor.fechaultimacompra,
