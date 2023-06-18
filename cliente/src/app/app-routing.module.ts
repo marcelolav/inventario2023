@@ -16,6 +16,9 @@ import { EntregaComponent } from './componentes/servicios/entrega/entrega.compon
 import { AbmVentasComponent } from './componentes/ventas/abm-ventas.component';
 import { FormularioVentasComponent } from './componentes/ventas/formulario/formulario.component';
 import { ListadoVentasComponent } from './componentes/ventas/listado/listado.component';
+import { ListadoClientesComponent } from './componentes/clientes/listado/listado.component';
+import { FormularioClientesComponent } from './componentes/clientes/formulario/formulario.component';
+import { AbmClientesComponent } from './componentes/clientes/abm-clientes.component';
 
 const routes: Routes = [
   { path: 'productos', component: AbmProductosComponent },
@@ -35,9 +38,13 @@ const routes: Routes = [
   { path: 'servicios/listado', component: ListadoServiciosComponent },
   { path: 'servicios/pendientes', component: PendientesComponent },
   { path: 'ventas', component: AbmVentasComponent },
+  { path: 'ventas/listado', component: ListadoVentasComponent },
   { path: 'ventas/agregar', component: FormularioVentasComponent },
   { path: 'ventas/editar/:id', component: FormularioVentasComponent },
-  { path: 'ventas/listado', component: ListadoVentasComponent },
+  { path: 'clientes', component: AbmClientesComponent },
+  { path: 'clientes/listado', component: ListadoClientesComponent },
+  { path: 'clientes/agregar', component: FormularioClientesComponent },
+  { path: 'clientes/editar/:id', component: FormularioClientesComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 ];

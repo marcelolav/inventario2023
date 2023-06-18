@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductoRubro } from 'src/app/modelos/productos';
 import { ProductosService } from 'src/app/servicios/productos.service';
@@ -28,7 +28,6 @@ export class ListadoProductosComponent implements OnInit {
   }
 
   editarProducto(id: number) {
-    console.log('desde lista el id es: ', id);
     this.router.navigate(['/productos/editar/' + id]);
   }
 

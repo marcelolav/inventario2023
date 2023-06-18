@@ -38,11 +38,12 @@ import { VentasService } from './servicios/ventas.service';
 import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
 import { EntregaComponent } from './componentes/servicios/entrega/entrega.component';
 import { ProductoPipe } from './pipes/producto.pipe';
-import { FormularioComponent } from './componentes/clientes/formulario/formulario.component';
-import { ListadoComponent } from './componentes/clientes/listado/listado.component';
+import { FormularioClientesComponent } from './componentes/clientes/formulario/formulario.component';
+import { ListadoClientesComponent } from './componentes/clientes/listado/listado.component';
 import { AbmClientesComponent } from './componentes/clientes/abm-clientes.component';
 import { RubroPipe } from './pipes/rubro.pipe';
 import { ProveedorPipe } from './pipes/proveedor.pipe';
+import { ClientePipe } from './pipes/cliente.pipe';
 
 @NgModule({
   declarations: [
@@ -69,11 +70,12 @@ import { ProveedorPipe } from './pipes/proveedor.pipe';
     PendientesComponent,
     EntregaComponent,
     ProductoPipe,
-    FormularioComponent,
-    ListadoComponent,
+    FormularioClientesComponent,
+    ListadoClientesComponent,
     AbmClientesComponent,
     RubroPipe,
-    ProveedorPipe, // Directiva para productos
+    ProveedorPipe,
+    ClientePipe, // Directiva para productos
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
