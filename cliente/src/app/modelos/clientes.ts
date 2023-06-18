@@ -4,4 +4,5 @@ export interface Cliente {
   telefono?: string;
   direccion?: string;
   cuit?: string;
+  observaciones?: string;
 }

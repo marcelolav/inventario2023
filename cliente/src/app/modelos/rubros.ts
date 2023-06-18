@@ -1,4 +1,8 @@
 export interface Rubro {
-  idrubro?: number;
+  idrubros?: number;
   nombrerubro?: string;
+}
+export interface RubroListado {
+  idrubros: number;
+  nombrerubro: string;
 }

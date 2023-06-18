@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Rubro } from '../modelos/rubros';
+import { Rubro, RubroListado } from '../modelos/rubros';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,14 +12,14 @@ export class RubrosService {
   constructor(private http: HttpClient) {}
 
   getRubros() {
-    return this.http.get(`${this.API_URI}/rubros`);
+    return this.http.get<RubroListado[]>(`${this.API_URI}/rubros`);
   }
 
-  getRubro(id: string) {
+  getRubro(id: number) {
     return this.http.get(`${this.API_URI}/rubros/${id}`);
   }
 
-  deleteRubro(id: string) {
+  deleteRubro(id: number) {
     return this.http.delete(`${this.API_URI}/rubros/${id}`);
   }
 
@@ -32,7 +32,7 @@ export class RubrosService {
     return this.http.post(`${this.API_URI}/rubros`, bod);
   }
 
-  updateRubro(id: string | number, updatedRubro: Rubro): Observable<Rubro> {
+  updateRubro(id: number, updatedRubro: Rubro): Observable<Rubro> {
     return this.http.put(`${this.API_URI}/rubros/${id}`, updatedRubro);
   }
 }

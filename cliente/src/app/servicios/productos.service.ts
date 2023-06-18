@@ -41,10 +41,7 @@ export class ProductosService {
     return this.http.post(`${this.API_URI}/productos`, bod);
   }
 
-  updateProducto(
-    id: string | number,
-    updatedProducto: Producto
-  ): Observable<Producto> {
+  updateProducto(id: number, updatedProducto: Producto): Observable<Producto> {
     return this.http.put(`${this.API_URI}/productos/${id}`, updatedProducto);
   }
 }

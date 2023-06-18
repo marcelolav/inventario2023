@@ -9,13 +9,13 @@ class ProductosController {
      }
      // Muestra todos los productos de la tabla productos
      public async listaProductosRubros(req: Request, res: Response): Promise<void> {
-          const productos = await pool.query("SELECT * FROM productos INNER JOIN rubros ON productos.rubroid = rubros.idrubro");
+          const productos = await pool.query("SELECT * FROM productos INNER JOIN rubros ON productos.rubroid = rubros.idrubros");
           res.json(productos);
      }
      // Muestra un solo producto de la tabla productos por ID
      public async listaProducto(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
-          const productos = await pool.query("SELECT * FROM productos WHERE idproducto = ?", [id]);
+          const productos = await pool.query("SELECT * FROM productos WHERE idproductos = ?", [id]);
           console.log(productos.length);
           if (productos.length > 0) {
                return res.json(productos[0]);
@@ -41,13 +41,13 @@ class ProductosController {
      // Actualiza un producto por numero de id
      public async actualizaProducto(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
-          await pool.query("UPDATE productos set ? WHERE idproducto = ?", [req.body, id]);
+          await pool.query("UPDATE productos set ? WHERE idproductos = ?", [req.body, id]);
           res.json({ message: "El producto ha sido actualizado con éxito!" });
      }
      // Elimina un producto por numero de id
      public async eliminaProducto(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
-          await pool.query("DELETE FROM productos WHERE idproducto = ?", [id]);
+          await pool.query("DELETE FROM productos WHERE idproductos = ?", [id]);
           res.json({ message: "El producto ha sido eliminado con éxito!" });
      }
 }

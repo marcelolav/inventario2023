@@ -1,34 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RubrosService } from 'src/app/servicios/rubros.service';
-// import { Rubro} from '../../../modelos/rubros'
+import { RubroListado } from '../../../modelos/rubros';
 @Component({
   selector: 'app-listado-rubros',
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css'],
 })
 export class ListadoRubrosComponent implements OnInit {
-  rubros: any = [];
+  rubData: RubroListado[] = [];
   titulo: string = 'Alta de Rubro';
-  constructor(private rubrosService: RubrosService, private router: Router) { }
+  public page: number = 0;
+  public search: string = '';
+
+  constructor(private rubrosService: RubrosService, private router: Router) {}
   ngOnInit(): void {
     this.getRubros();
   }
 
   getRubros() {
     this.rubrosService.getRubros().subscribe((res) => {
-      this.rubros = res;
+      this.rubData = res;
     });
   }
 
-  editarRubro(id: string) {
+  editarRubro(id: number) {
     console.log('desde listado de rubros => ', id);
     this.router.navigate(['/rubros/editar/' + id]);
   }
-  eliminarRubro(id: string) {
+  eliminarRubro(id: number) {
     this.rubrosService.deleteRubro(id).subscribe((res) => {
       console.log(res);
       this.getRubros();
     });
+  }
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if (this.page > 0) this.page -= 5;
+  }
+  onSearchRubro(search: string) {
+    this.page = 0;
+    this.search = search;
   }
 }

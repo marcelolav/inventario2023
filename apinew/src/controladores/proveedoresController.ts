@@ -10,7 +10,7 @@ class ProveedoresController {
      // Muestra un solo proveedor por ID
      public async listaProveedor(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
-          const proveedor = await pool.query("SELECT * FROM proveedores WHERE idproveedor = ?", [id]);
+          const proveedor = await pool.query("SELECT * FROM proveedores WHERE idproveedores = ?", [id]);
           if (proveedor.length > 0) {
                return res.json(proveedor[0]);
           }
@@ -26,13 +26,13 @@ class ProveedoresController {
           const { id } = req.params;
           const fecha = new Date(req.body.fechaultimacompra).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" });
           req.body.fechaultimacompra = fecha;
-          await pool.query("UPDATE proveedores set ? WHERE idproveedor = ?", [req.body, id]);
+          await pool.query("UPDATE proveedores set ? WHERE idproveedores = ?", [req.body, id]);
           res.json({ message: "El proveedor ha sido actualizado con éxito!" });
      }
      // Elimina un proveedor por numero de id
      public async eliminaProveedor(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
-          await pool.query("DELETE FROM proveedores WHERE idproveedor = ?", [id]);
+          await pool.query("DELETE FROM proveedores WHERE idproveedores = ?", [id]);
           res.json({ message: "El proveedor ha sido eliminado con éxito!" });
      }
 }

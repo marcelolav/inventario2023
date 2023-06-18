@@ -10,7 +10,7 @@ class RubrosController {
      // Muestra un solo rubro de la tabla rubros por ID
      public async listaRubro(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
-          const rubros = await pool.query("SELECT * FROM rubros WHERE idrubro = ?", [id]);
+          const rubros = await pool.query("SELECT * FROM rubros WHERE idrubros = ?", [id]);
           if (rubros.length > 0) {
                return res.json(rubros[0]);
           }
@@ -26,13 +26,13 @@ class RubrosController {
      // Actualiza un rubro por numero de id
      public async actualizaRubro(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
-          await pool.query("UPDATE rubros set ? WHERE idrubro = ?", [req.body, id]);
+          await pool.query("UPDATE rubros set ? WHERE idrubros = ?", [req.body, id]);
           res.json({ message: "El rubro ha sido actualizado con éxito!" });
      }
      // Elimina un rubro por numero de id
      public async eliminaRubro(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
-          await pool.query("DELETE FROM rubros WHERE idrubro = ?", [id]);
+          await pool.query("DELETE FROM rubros WHERE idrubros = ?", [id]);
           res.json({ message: "El rubro ha sido eliminado con éxito!" });
      }
 }

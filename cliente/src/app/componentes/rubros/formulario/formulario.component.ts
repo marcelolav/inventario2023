@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Rubro } from 'src/app/modelos/rubros';
+import { Rubro, RubroListado } from 'src/app/modelos/rubros';
 import { RubrosService } from 'src/app/servicios/rubros.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class FormularioRubrosComponent implements OnInit {
   editar: boolean = false;
   titulo: string = 'Alta Rubro';
   rubro: Rubro = {
-    idrubro: 0,
+    idrubros: 0,
     nombrerubro: '',
   };
 
@@ -26,7 +26,7 @@ export class FormularioRubrosComponent implements OnInit {
     if (id) {
       this.titulo = 'Modificación del Rubro';
       this.editar = true;
-      const buscaRuro = this.rubrosService.getRubro(id).subscribe((data) => {
+      const listaRubros = this.rubrosService.getRubro(id).subscribe((data) => {
         this.rubro = data;
       });
     } else {
@@ -44,7 +44,7 @@ export class FormularioRubrosComponent implements OnInit {
 
   actualizaRubro(id: any, nombre: any) {
     this.rubro = {
-      idrubro: id,
+      idrubros: id,
       nombrerubro: nombre,
     };
     this.rubrosService.updateRubro(id, this.rubro).subscribe((res) => {

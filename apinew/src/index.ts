@@ -1,12 +1,14 @@
 import express, { Application } from "express";
 import morgan from "morgan";
 import cors from "cors";
+// Rutas de API y desde route va a tomar del controller
 import indexRoutes from "./rutas/indexRoute";
 import productosRoute from "./rutas/productosRoute";
 import rubrosRoute from "./rutas/rubrosRoute";
 import ventasRoute from "./rutas/ventasRoute";
 import proveedoresRoute from "./rutas/proveedoresRoute";
 import serviciosRoute from "./rutas/serviciosRoute";
+import clientesRoute from "./rutas/clientesRoute";
 
 class Server {
      public app: Application;
@@ -30,6 +32,7 @@ class Server {
           this.app.use("/", indexRoutes);
           this.app.use("/api/productos", productosRoute);
           this.app.use("/api/rubros", rubrosRoute);
+          this.app.use("/api/clientes", clientesRoute);
           this.app.use("/api/proveedores", proveedoresRoute);
           this.app.use("/api/servicios", serviciosRoute);
           this.app.use("/api/ventas", ventasRoute);
