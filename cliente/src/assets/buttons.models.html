@@ -1,0 +1,21 @@
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button
+    type="button"
+    class="btn btn-primary"
+    *ngIf="!editar"
+    (click)="guardaServicio(servicio)"
+  >
+    Guardar Servicio
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    *ngIf="editar"
+    (click)="actualizaServicio(servicio.idservicios || 0, servicio)"
+  >
+    Modificar Servicio
+  </button>
+  <button type="button" class="btn btn-danger" (click)="cancelar()">
+    Cancelar
+  </button>
+</div>

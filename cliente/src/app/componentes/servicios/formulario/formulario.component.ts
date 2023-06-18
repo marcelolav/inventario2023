@@ -70,4 +70,7 @@ export class FormularioServiciosComponent implements OnInit {
       this.router.navigate(['/servicios/listado']);
     });
   }
+  cancelar(): void {
+    this.router.navigate(['/servicios/listado']);
+  }
 }

@@ -109,29 +109,39 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-6">
+  <div class="row mt-5">
+    <div class="btn-group" role="group" aria-label="Basic example">
       <button
-        class="btn btn-success mt-4"
+        type="button"
+        class="btn btn-primary"
+        *ngIf="!editar"
+        (click)="guardaProducto(producto)"
+      >
+        Guardar Producto
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        *ngIf="editar"
         (click)="
-          editar
-            ? actualizaProducto(
-                producto.idproductos,
-                producto.codigobarra,
-                producto.nombreproducto,
-                producto.descripcion,
-                producto.precio,
-                producto.preciocompra,
-                producto.existencia,
-                producto.preciorefdolar,
-                producto.rubroid
-              )
-            : guardaProducto(producto)
+          actualizaProducto(
+            producto.idproductos,
+            producto.codigobarra,
+            producto.nombreproducto,
+            producto.descripcion,
+            producto.precio,
+            producto.preciocompra,
+            producto.existencia,
+            producto.preciorefdolar,
+            producto.rubroid
+          )
         "
       >
-        Guardar
+        Modificar Producto
       </button>
-      <button class="btn btn-primary mt-4" (click)="cancelar()">Atrás</button>
+      <button type="button" class="btn btn-danger" (click)="cancelar()">
+        Cancelar
+      </button>
     </div>
   </div>
 </form>

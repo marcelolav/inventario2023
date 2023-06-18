@@ -11,15 +11,27 @@
       autofocus
     />
   </div>
-  <button
-    class="btn btn-success btn-block"
-    (click)="
-      editar
-        ? actualizaRubro(rubro.idrubros, rubro.nombrerubro)
-        : guardaRubro(rubro.nombrerubro)
-    "
-  >
-    Save
-  </button>
-  <button class="btn btn-primary" (click)="cancelar()">Atrás</button>
+  <div class="row mt-5">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button
+        type="button"
+        class="btn btn-primary"
+        *ngIf="!editar"
+        (click)="guardaRubro(rubro.nombrerubro)"
+      >
+        Guardar Rubro
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        *ngIf="editar"
+        (click)="actualizaRubro(rubro.idrubros, rubro.nombrerubro)"
+      >
+        Modificar Rubro
+      </button>
+      <button type="button" class="btn btn-danger" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+  </div>
 </form>

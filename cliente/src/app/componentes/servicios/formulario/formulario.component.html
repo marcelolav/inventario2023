@@ -73,20 +73,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
+    <div class="btn-group" role="group" aria-label="Basic example">
       <button
-        class="btn btn-success mt-4"
-        (click)="guardaServicio(servicio)"
+        type="button"
+        class="btn btn-primary"
         *ngIf="!editar"
+        (click)="guardaServicio(servicio)"
       >
-        Guardar
+        Guardar Servicio
       </button>
       <button
-        class="btn btn-success mt-4"
-        (click)="actualizaServicio(servicio.idservicios || 0, servicio)"
+        type="button"
+        class="btn btn-primary"
         *ngIf="editar"
+        (click)="actualizaServicio(servicio.idservicios || 0, servicio)"
       >
-        Modificar
+        Modificar Servicio
+      </button>
+      <button type="button" class="btn btn-danger" (click)="cancelar()">
+        Cancelar
       </button>
     </div>
   </div>
