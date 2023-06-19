@@ -1,1 +1,85 @@
-<p>listado works!</p>
+<h3
+  class="text-center font-weight-bold border border-primary rounded shadow p-3 mb-5 bg-white"
+>
+  Listado de Compras
+</h3>
+<div>
+  <button class="btn btn-primary btn-block" routerLink="/compras/agregar">
+    Ingreso de Mercadería
+  </button>
+</div>
+<div class="mt-2 mb-2">
+  <input
+    type="text"
+    class="form-control mb-2"
+    placeholder="Buscar Rubro"
+    name="search"
+    [(ngModel)]="search"
+    (onkeyup)="onSearchCompra(search)"
+  />
+</div>
+<div class="col">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">Fecha de Compra</th>
+        <th scope="col">Proveedor</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio Unitario</th>
+
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let compra of compData | filtrocompra : page : search">
+        <td scope="row">{{ compra.idcompras }}</td>
+        <td>{{ compra.fechacompra | date : "dd-MM-yyyy" }}</td>
+        <td>{{ compra.nombre }}</td>
+        <td>{{ compra.nombreproducto }}</td>
+        <td>{{ compra.cantidad }}</td>
+        <td>{{ compra.preciocompra }}</td>
+        <td>
+          <button
+            class="btn btn-primary btn-sm mr-5"
+            (click)="editarCompra(compra.idcompras)"
+          >
+            <span class="material-symbols-rounded"> edit </span>
+          </button>
+          <button
+            class="btn btn-danger btn-sm ml-3"
+            (click)="eliminarCompra(compra.idcompras)"
+          >
+            <span class="material-symbols-rounded"> delete </span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          style="height: 30px; width: 100px"
+          (click)="prevPage()"
+        >
+          Previa
+        </button>
+      </li>
+      <li class="page-item">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="nextPage()"
+          style="height: 30px; width: 100px"
+          [disabled]="(compData | filtrocompra : page : search).length === 0"
+        >
+          Siguiente
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

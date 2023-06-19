@@ -2,7 +2,7 @@ import express, { Router } from "express";
 
 import { clientesController } from "../controladores/clientesController";
 
-class RubrosRoutes {
+class ClientesRoute {
      router: Router = Router();
 
      constructor() {
@@ -17,4 +17,4 @@ class RubrosRoutes {
           this.router.delete("/:id", clientesController.eliminaCliente);
      }
 }
-export default new RubrosRoutes().router;
+export default new ClientesRoute().router;

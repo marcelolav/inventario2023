@@ -44,6 +44,7 @@ import { AbmClientesComponent } from './componentes/clientes/abm-clientes.compon
 import { RubroPipe } from './pipes/rubro.pipe';
 import { ProveedorPipe } from './pipes/proveedor.pipe';
 import { ClientePipe } from './pipes/cliente.pipe';
+import { CompraPipe } from './pipes/compra.pipe';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ClientePipe } from './pipes/cliente.pipe';
     AbmClientesComponent,
     RubroPipe,
     ProveedorPipe,
-    ClientePipe, // Directiva para productos
+    ClientePipe,
+    CompraPipe, // Directiva para productos
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

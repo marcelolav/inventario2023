@@ -9,6 +9,7 @@ import ventasRoute from "./rutas/ventasRoute";
 import proveedoresRoute from "./rutas/proveedoresRoute";
 import serviciosRoute from "./rutas/serviciosRoute";
 import clientesRoute from "./rutas/clientesRoute";
+import comprasRoute from "./rutas/comprasRoute";
 
 class Server {
      public app: Application;
@@ -36,6 +37,7 @@ class Server {
           this.app.use("/api/proveedores", proveedoresRoute);
           this.app.use("/api/servicios", serviciosRoute);
           this.app.use("/api/ventas", ventasRoute);
+          this.app.use("/api/compras", comprasRoute);
      }
 
      start() {

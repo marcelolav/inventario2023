@@ -25,12 +25,10 @@ export class ListadoRubrosComponent implements OnInit {
   }
 
   editarRubro(id: number) {
-    console.log('desde listado de rubros => ', id);
     this.router.navigate(['/rubros/editar/' + id]);
   }
   eliminarRubro(id: number) {
     this.rubrosService.deleteRubro(id).subscribe((res) => {
-      console.log(res);
       this.getRubros();
     });
   }
