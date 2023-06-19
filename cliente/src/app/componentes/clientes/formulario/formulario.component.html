@@ -1,1 +1,100 @@
-<p>formulario works!</p>
+<h3>{{ titulo }}</h3>
+
+<form action="">
+  <div class="row">
+    <div class="col" *ngIf="editar">
+      <div class="form-group">
+        <label for="idclientes"># ID</label>
+        <input
+          type="text"
+          name="idclientes"
+          readonly
+          [(ngModel)]="cliente.idclientes"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="nombrecliente">Nombre / Razón Social</label>
+        <input
+          type="text"
+          name="nombrecliente"
+          [(ngModel)]="cliente.nombrecliente"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input
+          type="text"
+          name="direccion"
+          [(ngModel)]="cliente.direccion"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input
+          type="text"
+          name="telefono"
+          [(ngModel)]="cliente.telefono"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="cuit">CUIT / IVA</label>
+        <input
+          type="text"
+          name="cuit"
+          [(ngModel)]="cliente.cuit"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="observaciones">Observaciones</label>
+        <input
+          type="text"
+          name="observaciones"
+          [(ngModel)]="cliente.observaciones"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button
+        type="button"
+        class="btn btn-primary"
+        *ngIf="!editar"
+        (click)="guardaCliente(cliente)"
+      >
+        Guardar Cliente
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        *ngIf="editar"
+        (click)="actualizaCliente(cliente.idclientes, cliente)"
+      >
+        Modificar Cliente
+      </button>
+      <button type="button" class="btn btn-danger" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</form>
