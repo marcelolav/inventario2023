@@ -22,10 +22,12 @@ class ProductosController {
           }
           res.status(404).json({ text: "El producto no existe!" });
      }
+
      // Muestra un solo producto de la tabla productos por codigobarra
      public async muestraPorCodigobarra(req: Request, res: Response): Promise<any> {
-          const { id } = req.params;
-          const productos = await pool.query("SELECT * FROM productos WHERE codigobarra = ?", [id]);
+          const { codigobarra } = req.params;
+          console.log(codigobarra);
+          const productos = await pool.query("SELECT * FROM productos WHERE codigobarra = ?", [codigobarra]);
           console.log(productos.length);
           if (productos.length > 0) {
                return res.json(productos[0]);

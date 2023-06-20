@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Producto, ProductoRubro } from '../modelos/productos';
-import { Observable } from 'rxjs';
+import { Observable, filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +20,12 @@ export class ProductosService {
 
   getProducto(id: number) {
     return this.http.get(`${this.API_URI}/productos/${id}`);
+  }
+
+  buscarProducto(codigo: string): Observable<ProductoRubro[]> {
+    return this.http.get<ProductoRubro[]>(
+      `${this.API_URI}/productos/cb/${codigo}`
+    );
   }
 
   deleteProducto(id: number) {

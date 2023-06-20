@@ -13,7 +13,7 @@ export class CompraPipe implements PipeTransform {
     if (search.length === 0) return compras.slice(page, page + 5);
 
     const filteredCompras = compras.filter((comp) =>
-      comp.nombreproducto.includes(search)
+      comp.comprobante.includes(search)
     );
     return filteredCompras.slice(page, page + 5);
   }

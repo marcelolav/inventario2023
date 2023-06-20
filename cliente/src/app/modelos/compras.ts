@@ -12,4 +12,7 @@ export interface CompraExtendido extends Compra {
   nombreproducto: string;
   idcompras: number;
   nombre: string;
+  comprobante: string;
+  precio: number;
+  subtotal: number;
 }

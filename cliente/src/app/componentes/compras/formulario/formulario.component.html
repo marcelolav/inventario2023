@@ -3,7 +3,7 @@
 <form action="">
   <div class="form-group">
     <div class="row">
-      <div class="col-2">
+      <div class="col-1">
         <label for="idprod"># ID</label>
         <input
           type="text"
@@ -14,7 +14,7 @@
           class="form-control"
         />
       </div>
-      <div class="col-6">
+      <div class="col-2">
         <label for="fecha">Fecha</label>
         <input
           type="date"
@@ -25,123 +25,66 @@
           autofocus
         />
       </div>
-
-      <!-- <div class="col-4">
-        <label for="nombreproducto">Nombre de Producto</label>
+      <div class="col-4">
+        <label for="comprobante">Comprobante Ref#</label>
         <input
           type="text"
-          id="nombreproducto"
-          name="nombreproducto"
-          [(ngModel)]="producto.nombreproducto"
+          id="comprobante"
+          name="comprobante"
+          [(ngModel)]="compras.comprobante"
           class="form-control"
+          autofocus
         />
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="descripcion">Descripción Extendida</label>
-        <input
-          type="text"
-          id="descripcion"
-          name="descripcion"
-          [(ngModel)]="producto.descripcion"
-          class="form-control"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <label for="precioventa">Precio de Venta</label>
-        <input
-          type="number"
-          id="precioventa"
-          name="precio"
-          [(ngModel)]="producto.precio"
-          class="form-control"
-        />
-      </div>
-      <div class="col-4">
-        <label for="preciocompra">Precio de Compra</label>
-        <input
-          type="number"
-          id="preciocompra"
-          name="preciocompra"
-          [(ngModel)]="producto.preciocompra"
-          class="form-control"
-        />
-      </div>
-      <div class="col-4">
-        <label for="existencia">Existencia/Stock</label>
-        <input
-          type="number"
-          id="existencia"
-          name="existencia"
-          [(ngModel)]="producto.existencia"
-          class="form-control"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <label for="preciorefdolar">Referencia U$S</label>
-        <input
-          type="number"
-          id="preciorefdolar"
-          name="preciorefdolar"
-          [(ngModel)]="producto.preciorefdolar"
-          class="form-control"
-        />
-      </div>
-      <div class="col-6">
-        <label for="rubro">Seleccione Rubro</label>
+      <div class="col-5">
+        <label for="proveedor">Proveedor</label>
         <select
-          class="form-select"
-          aria-label=".form-select-sm example"
-          id="rubro"
-          [(ngModel)]="producto.rubroid"
-          name="rubroid"
+          class="form-select form-select mb-3"
+          id="proveedor"
+          name="proveedores"
+          [(ngModel)]="compras.idproveedores"
+          aria-label=".form-select-sm"
         >
-          <option *ngFor="let rub of rubros" [value]="rub.idrubro">
-            {{ rub.nombrerubro }}
+          <option *ngFor="let prov of proveedores" [value]="prov.idproveedores">
+            {{ prov.nombre }}
           </option>
         </select>
       </div>
     </div>
-  </div> -->
 
-      <!-- <div class="row mt-5">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button
-        type="button"
-        class="btn btn-primary"
-        *ngIf="!editar"
-        (click)="guardaProducto(producto)"
-      >
-        Guardar Producto
-      </button>
-      <button
-        type="button"
-        class="btn btn-primary"
-        *ngIf="editar"
-        (click)="
-          actualizaProducto(
-            producto.idproductos,
-            producto.codigobarra,
-            producto.nombreproducto,
-            producto.descripcion,
-            producto.precio,
-            producto.preciocompra,
-            producto.existencia,
-            producto.preciorefdolar,
-            producto.rubroid
-          )
-        "
-      >
-        Modificar Producto
-      </button>
-      <button type="button" class="btn btn-danger" (click)="cancelar()">
-        Cancelar
-      </button> -->
+    <div class="card">
+      <div class="row m-2">
+        <div class="col-3">
+          <!-- Código de barra a buscar -->
+          <div class="input-group">
+            <input
+              type="text"
+              id="codigobarra"
+              name="codigobarra"
+              [(ngModel)]="codigobarra"
+              class="form-control"
+              placeholder="Código Artículo"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="buscarProducto(codigobarra)"
+              >
+                <span class="material-symbols-rounded"> search </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <input
+            type="text"
+            name="nombreproducto"
+            class="form-control"
+            value="{{ producto.nombreproducto | async }}"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </form>

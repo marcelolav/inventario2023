@@ -25,14 +25,19 @@ export class ListadoComprasComponent implements OnInit {
     });
   }
 
-  editarCompra(id: number) {
-    this.router.navigate(['/compras/editar/' + id]);
-  }
+  // editarCompra(id: number) {
+  //   this.router.navigate(['/compras/editar/' + id]);
+  // }
 
   eliminarCompra(id: number) {
-    this.compraService.deleteCompra(id).subscribe((res) => {
-      this.getCompras();
-    });
+    if (confirm('Confirma que desea eliminar una compra') === true) {
+      this.compraService.deleteCompra(id).subscribe((res) => {
+        this.getCompras();
+      });
+    }
+  }
+  calculaSubtotal(cantidad: number, precio: number) {
+    return cantidad * precio;
   }
   nextPage() {
     this.page += 5;

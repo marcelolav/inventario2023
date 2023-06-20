@@ -12,7 +12,7 @@
   <input
     type="text"
     class="form-control mb-2"
-    placeholder="Buscar Rubro"
+    placeholder="Buscar Comprobante"
     name="search"
     [(ngModel)]="search"
     (onkeyup)="onSearchCompra(search)"
@@ -22,31 +22,30 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#ID</th>
-        <th scope="col">Fecha de Compra</th>
-        <th scope="col">Proveedor</th>
-        <th scope="col">Producto</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Precio Unitario</th>
-
+        <th>#ID</th>
+        <th>Comprobante</th>
+        <th>Fecha de Compra</th>
+        <th>Proveedor</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Importe</th>
+        <th>Subtotal</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let compra of compData | filtrocompra : page : search">
         <td scope="row">{{ compra.idcompras }}</td>
+        <td>{{ compra.comprobante }}</td>
         <td>{{ compra.fechacompra | date : "dd-MM-yyyy" }}</td>
         <td>{{ compra.nombre }}</td>
         <td>{{ compra.nombreproducto }}</td>
-        <td>{{ compra.cantidad }}</td>
-        <td>{{ compra.preciocompra }}</td>
+        <td class="text-center">
+          {{ compra.cantidad | number : "0.0-3" }}
+        </td>
+        <td class="text-right">{{ compra.precio | currency }}</td>
+        <td class="text-right">{{ compra.subtotal | currency }}</td>
         <td>
-          <button
-            class="btn btn-primary btn-sm mr-5"
-            (click)="editarCompra(compra.idcompras)"
-          >
-            <span class="material-symbols-rounded"> edit </span>
-          </button>
           <button
             class="btn btn-danger btn-sm ml-3"
             (click)="eliminarCompra(compra.idcompras)"

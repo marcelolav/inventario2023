@@ -13,7 +13,7 @@ class ProductosRoutes {
           this.router.get("/", productosController.listaProductos);
           this.router.get("/pr/", productosController.listaProductosRubros);
           this.router.get("/:id", productosController.listaProducto);
-          this.router.get("/cb/:id", productosController.muestraPorCodigobarra);
+          this.router.get("/cb/:codigobarra", productosController.muestraPorCodigobarra);
           this.router.post("/", productosController.agregaProducto);
           this.router.put("/:id", productosController.actualizaProducto);
           this.router.delete("/:id", productosController.eliminaProducto);
