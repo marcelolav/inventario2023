@@ -17,21 +17,15 @@ export class ComprasService {
     return this.http.get(`${this.API_URI}/compras/${id}`);
   }
 
+  getCompraComprobante(comp: number) {
+    return this.http.get(`${this.API_URI}/compras/comprobante/${comp}`);
+  }
+
   deleteCompra(id: number) {
     return this.http.delete(`${this.API_URI}/compras/${id}`);
   }
   // veridicar aca para producto
   saveCompra(compra: Compra) {
-    // const bod = {
-    //   codigobarra: producto.codigobarra,
-    //   nombreproducto: producto.nombreproducto,
-    //   descripcion: producto.descripcion,
-    //   precio: producto.precio,
-    //   preciocompra: producto.preciocompra,
-    //   existencia: producto.existencia,
-    //   preciorefdolar: producto.preciorefdolar,
-    //   rubroid: producto.rubroid,
-    // };
     return this.http.post(`${this.API_URI}/compras`, compra);
   }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SafeResourceUrl } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Compra } from 'src/app/modelos/compras';
 import { ProductoRubro } from 'src/app/modelos/productos';
@@ -17,9 +16,17 @@ export class FormularioComprasComponent implements OnInit {
   titulo: string = 'Alta de Compras';
   compras: any = [];
   proveedores: any = [];
-  productos: ProductoRubro[] = [];
+  productos: ProductoRubro[];
   producto: ProductoRubro[];
+  idprod: number = 0;
   codigobarra: string = '';
+  nomprod: string = '';
+  precprod: number = 0;
+  cantprod: number = 0;
+  subtotal: number = 0;
+  refDolar: number = 0;
+  regCompra: Compra = {};
+  listaComprasActual: any = [];
 
   constructor(
     private compraService: ComprasService,
@@ -69,9 +76,41 @@ export class FormularioComprasComponent implements OnInit {
   }
 
   buscarProducto(search: string) {
-    this.productosService.buscarProducto(search).subscribe((res) => {
-      const prod = res;
-      const nombreprod = prod.nombreproducto;
+    this.productosService.buscarProducto(search).subscribe((data: any) => {
+      this.nomprod = data.nombreproducto;
+      this.precprod = data.preciocompra;
+      this.idprod = data.idproductos;
+      this.refDolar = data.preciorefdolar;
+    });
+  }
+
+  agregarItem() {
+    // Generar registro de compra
+    this.regCompra = {
+      idproveedores: this.compras.idproveedores,
+      comprobante: this.compras.comprobante,
+      idproductos: this.idprod,
+      fechacompra: this.compras.fechacompra,
+      cantidad: this.cantprod,
+      preciocompra: this.precprod,
+      subtotal: this.subtotal,
+      preciocompradolar: this.refDolar,
+      //aca poner la referencia al dolar del dia... ver api dolarsi o dolarhoy o dolarreputisimamadrequelopario
+    };
+    this.compraService.saveCompra(this.regCompra).subscribe((res) => {
+      console.log(res);
+      this.actualizaListaCompra(this.compras.comprobante);
+    });
+  }
+
+  calculoSubtotal(cant: number, prec: number) {
+    this.subtotal = cant * prec;
+  }
+
+  actualizaListaCompra(comprobante: number) {
+    this.compraService.getCompraComprobante(comprobante).subscribe((res) => {
+      this.listaComprasActual = res;
+      console.log(this.listaComprasActual);
     });
   }
 }

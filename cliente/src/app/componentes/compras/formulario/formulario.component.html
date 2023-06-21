@@ -1,7 +1,7 @@
 <h3>{{ titulo }}</h3>
 
 <form action="">
-  <div class="form-group">
+  <div class="form-group form-group-sm">
     <div class="row">
       <div class="col-1">
         <label for="idprod"># ID</label>
@@ -20,7 +20,7 @@
           type="date"
           id="fecha"
           name="fecha"
-          [(ngModel)]="compras.fecha"
+          [(ngModel)]="compras.fechacompra"
           class="form-control"
           autofocus
         />
@@ -53,38 +53,83 @@
     </div>
 
     <div class="card">
-      <div class="row m-2">
-        <div class="col-3">
+      <div class="row m-1">
+        <div class="col-1">
           <!-- Código de barra a buscar -->
-          <div class="input-group">
+          <label for="codilabel">Código</label>
+          <div class="input-group-sm" id="codilabel">
             <input
               type="text"
               id="codigobarra"
               name="codigobarra"
               [(ngModel)]="codigobarra"
-              class="form-control"
+              class="form-control form-control-sm"
+              (change)="buscarProducto(codigobarra)"
               placeholder="Código Artículo"
             />
-            <div class="input-group-append">
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                (click)="buscarProducto(codigobarra)"
-              >
-                <span class="material-symbols-rounded"> search </span>
-              </button>
-            </div>
           </div>
         </div>
-        <div class="col-5">
+        <div class="col-4">
+          <label for="nombreproducto">Nombre del Producto</label>
           <input
             type="text"
             name="nombreproducto"
-            class="form-control"
-            value="{{ producto.nombreproducto | async }}"
+            class="form-control form-control-sm"
+            [(ngModel)]="nomprod"
+            disabled
+          />
+        </div>
+        <div class="col-2">
+          <label for="nombreproducto">Precio Compra</label>
+          <input
+            type="number"
+            name="precioproducto"
+            class="form-control form-control-sm"
+            [(ngModel)]="precprod"
+          />
+        </div>
+        <div class="col-2">
+          <label for="cantprod">Cantidad</label>
+          <input
+            type="number"
+            name="cantprod"
+            class="form-control form-control-sm"
+            [(ngModel)]="cantprod"
+            (change)="calculoSubtotal(cantprod, precprod)"
+          />
+        </div>
+        <div class="col-2">
+          <label for="nombreproducto">Subtotal</label>
+          <input
+            type="number"
+            name="subtotal"
+            class="form-control form-control-sm"
+            [(ngModel)]="subtotal"
+            disabled
           />
         </div>
       </div>
+      <div class="row mt-2"></div>
+      <button class="btn btn-primary" (click)="agregarItem()">Agregar</button>
     </div>
   </div>
 </form>
+<!-- Muestra los registros del comprobante en curso -->
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#ID Producto</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let comp of listaComprasActual">
+      <th>{{ comp.idproductos }}</th>
+      <td>{{ comp.preciocompra }}</td>
+      <td>{{ comp.cantidad }}</td>
+      <td>{{ comp.subtotal }}</td>
+    </tr>
+  </tbody>
+</table>

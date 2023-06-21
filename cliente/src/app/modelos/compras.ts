@@ -1,11 +1,13 @@
 export interface Compra {
-  idcompra?: number;
-  idproveedor?: number;
-  idproducto?: number;
+  idcompras?: number;
+  idproveedores?: number;
+  idproductos?: number;
   fechacompra?: Date;
+  comprobante?: string;
   cantidad?: number;
   preciocompra?: number;
   preciocompradolar?: number;
+  subtotal?: number;
   //nombreproducto: string;
 }
 export interface CompraExtendido extends Compra {
@@ -13,6 +15,6 @@ export interface CompraExtendido extends Compra {
   idcompras: number;
   nombre: string;
   comprobante: string;
-  precio: number;
+  preciocompra: number;
   subtotal: number;
 }

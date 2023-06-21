@@ -16,6 +16,15 @@ class ComprasController {
           }
           res.status(404).json({ text: "El registro de compra no existe!" });
      }
+     // Muestra las compras de un mismo comprobante
+     public async listaCompraComprobante(req: Request, res: Response): Promise<any> {
+          const { comprobante } = req.params;
+          console.log(comprobante);
+          const compras = await pool.query("SELECT * FROM compras WHERE comprobante = ?", [comprobante]);
+          res.json(compras);
+
+          // res.status(404).json({ text: "El registro de compra no existe!" });
+     }
      // Agrega una compra
      public async agregaCompra(req: Request, res: Response): Promise<void> {
           const result = await pool.query("INSERT INTO compras set ?", [req.body]);
