@@ -10,11 +10,18 @@ class VentasRoute {
      }
 
      config() {
-          this.router.get("/", ventasController.listaVentas);
-          this.router.get("/:id", ventasController.listaVenta);
-          this.router.post("/", ventasController.agregaVenta);
-          this.router.put("/:id", ventasController.actualizaVenta);
-          this.router.delete("/:id", ventasController.eliminaVenta);
+          // Ventas Cabecera
+          this.router.get("/cab/", ventasController.listaVentasCabecera);
+          this.router.get("/cab/:id", ventasController.listaVentaCabecera);
+          this.router.post("/cab/", ventasController.agregaVentaCabecera);
+          this.router.put("/cab/:id", ventasController.actualizaVentaCabecera);
+          this.router.delete("/cab/:id", ventasController.eliminaVentaCabecera);
+          // ventas detalle
+          this.router.get("/det/", ventasController.listaVentasDetalle);
+          this.router.get("/det/:id", ventasController.listaVentaDetalle);
+          this.router.post("/det/", ventasController.agregaVentaDetalle);
+          this.router.put("/det/:id", ventasController.actualizaVentaDetalle);
+          this.router.delete("/det/:id", ventasController.eliminaVentaDetalle);
      }
 }
 

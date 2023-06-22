@@ -9,13 +9,14 @@ import { VentasService } from 'src/app/servicios/ventas.service';
 })
 export class ListadoVentasComponent implements OnInit {
   ventasData: any = [];
+  comprobante: number = 0;
 
   ngOnInit(): void {
-    this.getVentas();
+    this.getVentasCabecera();
   }
   constructor(private ventasService: VentasService, private router: Router) {}
-  getVentas() {
-    this.ventasService.getVentas().subscribe((res) => {
+  getVentasCabecera() {
+    this.ventasService.getVentasCabecera().subscribe((res) => {
       this.ventasData = res;
     });
   }
@@ -24,6 +25,18 @@ export class ListadoVentasComponent implements OnInit {
     console.log(id);
   }
   eliminarVenta(id: string) {
-    console.log(id);
+    if (
+      confirm(
+        'Si elimina la cabecera se eliminará todo el contenido del comprobante. ¿Desea Eliminar? '
+      )
+    ) {
+      this.ventasService.deleteVentaCabecera(id).subscribe((res) => {
+        console.log(res);
+        this.getVentasCabecera();
+      });
+    }
+  }
+  obtengoComprobante(comprobante: number) {
+    this.comprobante = comprobante;
   }
 }

@@ -8,39 +8,81 @@
     <thead>
       <tr>
         <th scope="col">#ID</th>
-        <th scope="col">Nº CMP</th>
+        <th scope="col">Comprobante</th>
         <th scope="col">Fecha</th>
-        <th scope="col">Producto</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Precio Unitario</th>
-        <th scope="col">Subtotal</th>
         <th scope="col">Cliente</th>
+        <th scope="col">Importe Total</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let vta of ventasData">
-        <td scope="row">{{ vta.idventas }}</td>
+        <td scope="row">{{ vta.idventascabecera }}</td>
         <td>{{ vta.comprobante }}</td>
         <td>{{ vta.fecha | date : "dd-MM-yyyy" }}</td>
-        <td>{{ vta.producto }}</td>
-        <td>{{ vta.cantidad }}</td>
-        <td>{{ vta.preciounitario }}</td>
-        <td>{{ vta.preciosubtotal }}</td>
         <td>{{ vta.nombrecliente }}</td>
+        <td>{{ vta.totalventa }}</td>
         <td>
           <button
             class="btn btn-primary btn-sm mr-5"
-            (click)="editarVenta(vta.idventas)"
+            (click)="editarVenta(vta.idventascabecera)"
           >
             <span class="material-symbols-rounded"> edit </span>
           </button>
           <button
             class="btn btn-danger btn-sm ml-3"
-            (click)="eliminarVenta(vta.idventas)"
+            (click)="eliminarVenta(vta.idventascabecera)"
           >
             <span class="material-symbols-rounded"> delete </span>
           </button>
+
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-sm btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="obtengoComprobante(vta.comprobante)"
+          >
+            <span class="material-symbols-rounded"> search </span>
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Detalle de Venta
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <strong>Comprobante:</strong> {{ comprobante }}
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>

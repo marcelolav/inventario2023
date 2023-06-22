@@ -1,10 +1,16 @@
-export interface Venta {
-  idventas?: number;
+export interface VentaCabecera {
+  idventascabecera?: number;
   comprobante?: number;
-  idcliente?: number; // registro completo
+  idclientes?: number;
   fecha?: Date;
-  producto?: string;
+  totalventa?: string;
+}
+
+export interface VentasDetalle {
+  idventasdetalle?: number;
+  comprobante?: string;
+  idproductos?: number;
   cantidad?: number;
-  preciounitario?: number;
-  preciosubtotal?: number;
+  importe?: number;
+  subtotal?: number;
 }
