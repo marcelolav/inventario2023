@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { VentasDetalle } from 'src/app/modelos/ventas';
 import { VentasService } from 'src/app/servicios/ventas.service';
 
 @Component({
@@ -11,10 +12,12 @@ export class ListadoVentasComponent implements OnInit {
   ventasData: any = [];
   comprobante: number = 0;
   ventasDetalleData: any = [];
+  total: number = 0;
 
   ngOnInit(): void {
     this.getVentasCabecera();
   }
+
   constructor(private ventasService: VentasService, private router: Router) {}
   getVentasCabecera() {
     this.ventasService.getVentasCabecera().subscribe((res) => {
@@ -44,5 +47,9 @@ export class ListadoVentasComponent implements OnInit {
       .subscribe((res) => {
         this.ventasDetalleData = res;
       });
+  }
+
+  totalizar() {
+    // this.total = this.ventasDetalleData.reduce((a,b) => a+b)
   }
 }
