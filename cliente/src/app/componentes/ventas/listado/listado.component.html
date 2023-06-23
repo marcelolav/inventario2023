@@ -18,7 +18,7 @@
     <tbody>
       <tr *ngFor="let vta of ventasData">
         <td scope="row">{{ vta.idventascabecera }}</td>
-        <td>{{ vta.comprobante }}</td>
+        <td>{{ vta.comprobante_cabecera }}</td>
         <td>{{ vta.fecha | date : "dd-MM-yyyy" }}</td>
         <td>{{ vta.nombrecliente }}</td>
         <td>{{ vta.totalventa }}</td>
@@ -42,7 +42,7 @@
             class="btn btn-sm btn-secondary"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
-            (click)="obtengoComprobante(vta.comprobante)"
+            (click)="obtengoComprobante(vta.comprobante_cabecera)"
           >
             <span class="material-symbols-rounded"> search </span>
           </button>
@@ -70,6 +70,24 @@
                 </div>
                 <div class="modal-body">
                   <strong>Comprobante:</strong> {{ comprobante }}
+                  <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let det of ventasDetalleData">
+                        <td scope="row">{{ det.nombreproducto }}</td>
+                        <td>{{ det.cantidad }}</td>
+                        <td>{{ det.precio }}</td>
+                        <td>{{ det.subtotal }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div class="modal-footer">
                   <button

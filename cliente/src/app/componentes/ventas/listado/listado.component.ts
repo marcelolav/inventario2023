@@ -10,6 +10,7 @@ import { VentasService } from 'src/app/servicios/ventas.service';
 export class ListadoVentasComponent implements OnInit {
   ventasData: any = [];
   comprobante: number = 0;
+  ventasDetalleData: any = [];
 
   ngOnInit(): void {
     this.getVentasCabecera();
@@ -38,5 +39,10 @@ export class ListadoVentasComponent implements OnInit {
   }
   obtengoComprobante(comprobante: number) {
     this.comprobante = comprobante;
+    this.ventasDetalleData = this.ventasService
+      .getVentaDetallexComprobante(comprobante)
+      .subscribe((res) => {
+        this.ventasDetalleData = res;
+      });
   }
 }

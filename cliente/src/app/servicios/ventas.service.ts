@@ -6,18 +6,18 @@ import { VentaCabecera, VentasDetalle } from '../modelos/ventas';
   providedIn: 'root',
 })
 export class VentasService {
-  API_URI = 'http://localhost:3000/api';
+  API_URI = 'http://localhost:3000/api/ventas';
   constructor(private http: HttpClient) {}
 
   // TODO: Ventas cabecera
   getVentasCabecera() {
-    return this.http.get(`${this.API_URI}/ventas/cab`);
+    return this.http.get(`${this.API_URI}/cab`);
   }
   getVentaCabecera(id: string) {
-    return this.http.get(`${this.API_URI}/ventas/cab/${id}`);
+    return this.http.get(`${this.API_URI}/cab/${id}`);
   }
   deleteVentaCabecera(id: string) {
-    return this.http.delete(`${this.API_URI}/ventas/cab/${id}`);
+    return this.http.delete(`${this.API_URI}/cab/${id}`);
   }
   saveVentaCabecera(venta: VentaCabecera) {
     const bod = {
@@ -26,21 +26,21 @@ export class VentasService {
       fecha: venta.fecha,
       totalventa: venta.totalventa,
     };
-    return this.http.post(`${this.API_URI}/ventas/cab`, bod);
+    return this.http.post(`${this.API_URI}/cab`, bod);
   }
   updateVentaCabecera(
     id: string | number,
     updatedVenta: VentaCabecera
   ): Observable<VentaCabecera> {
-    return this.http.put(`${this.API_URI}/ventas/cab/${id}`, updatedVenta);
+    return this.http.put(`${this.API_URI}/cab/${id}`, updatedVenta);
   }
 
   // TODO: Ventas Detalle
   getVentasDetalle() {
-    return this.http.get(`${this.API_URI}/ventas/det`);
+    return this.http.get(`${this.API_URI}/det`);
   }
   getVentaDetallexComprobante(comp: number) {
-    return this.http.get(`${this.API_URI}/ventas/det/${id}`);
+    return this.http.get(`${this.API_URI}/detcomp/${comp}`);
   }
   saveVentaDetalle(venta: VentasDetalle) {
     const bod = {
@@ -50,6 +50,6 @@ export class VentasService {
       importe: venta.importe,
       subtotal: venta.subtotal,
     };
-    return this.http.post(`${this.API_URI}/ventas/det`, bod);
+    return this.http.post(`${this.API_URI}/det`, bod);
   }
 }
