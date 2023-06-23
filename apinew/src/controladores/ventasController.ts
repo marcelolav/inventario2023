@@ -2,18 +2,29 @@ import { Request, Response } from "express";
 import pool from "../database";
 
 class VentasController {
+     // VENTAS CABECERA
      // Muestra todos los datos de la tabla ventas cabecera
      public async listaVentasCabecera(req: Request, res: Response): Promise<void> {
-          const ventascabecera = await pool.query("SELECT * FROM ventascabecera INNER JOIN clientes ON ventascabecera.idclientes = clientes.idclientes GROUP BY ventascabecera.comprobante");
+          const ventascabecera = await pool.query("SELECT * FROM ventascabecera");
           res.json(ventascabecera);
      }
-     // Muestra un solo registro de ventas cabecera
+     // Muestra un solo registro de ventas cabecera por comprobante
      public async listaVentaCabecera(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
-          const ventas = await pool.query("SELECT * FROM ventascabecera WHERE idventascabecera = ?", [id]);
+          const ventas = await pool.query("SELECT * FROM ventascabecera WHERE comprobante_cabecera = ?", [id]);
           console.log(ventas.length);
           if (ventas.length > 0) {
                return res.json(ventas[0]);
+          }
+          res.status(404).json({ text: "El registro de ventas no existe!" });
+     }
+     // Muestra los registros de ventas por cliente
+     public async listaVentasCabeceraCliente(req: Request, res: Response): Promise<any> {
+          const { id } = req.params;
+          const ventas = await pool.query("SELECT * FROM vw_ventascabecera_cliente WHERE idclientes_cabecera = ?", [id]);
+          console.log(ventas.length);
+          if (ventas.length > 0) {
+               return res.json(ventas);
           }
           res.status(404).json({ text: "El registro de ventas no existe!" });
      }
@@ -36,19 +47,29 @@ class VentasController {
           res.json({ message: "El registro de ventas ha sido eliminado" });
      }
 
-     // Ventas detalles
+     // VENTAS DETALLES
      // Muestra todos los datos de la tabla ventas detalle
      public async listaVentasDetalle(req: Request, res: Response): Promise<void> {
-          const ventascabecera = await pool.query("SELECT * FROM ventasdetalle INNER JOIN productos ON ventasdetalle.idproductos = productos.idproductos");
-          res.json(ventascabecera);
+          const ventasdetalle = await pool.query("SELECT * FROM vw_ventascondetalles");
+          res.json(ventasdetalle);
      }
-     // lista los datos de una venta detalle por id
-     public async listaVentaDetalle(req: Request, res: Response): Promise<any> {
+     // lista los datos de una venta total de campos por comprobante
+     public async listaVentaDetalleComprobante(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
-          const ventas = await pool.query("SELECT * FROM ventasdetalle WHERE idventasdetalle = ?", [id]);
-          console.log(ventas.length);
-          if (ventas.length > 0) {
-               return res.json(ventas[0]);
+          const ventasdetalle = await pool.query("SELECT * FROM vw_ventascondetalles WHERE comprobante_detalle= ?", [id]);
+          console.log(ventasdetalle.length);
+          if (ventasdetalle.length > 0) {
+               return res.json(ventasdetalle);
+          }
+          res.status(404).json({ text: "El registro de ventas no existe!" });
+     }
+     // lista los datos de una venta total de campos por idproductosdetalle
+     public async listaVentaDetalleProducto(req: Request, res: Response): Promise<any> {
+          const { id } = req.params;
+          const ventasdetalle = await pool.query("SELECT * FROM vw_ventascondetalles WHERE idproductos_detalle= ?", [id]);
+          console.log(ventasdetalle.length);
+          if (ventasdetalle.length > 0) {
+               return res.json(ventasdetalle);
           }
           res.status(404).json({ text: "El registro de ventas no existe!" });
      }
