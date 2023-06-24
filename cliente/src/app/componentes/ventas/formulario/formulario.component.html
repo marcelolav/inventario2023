@@ -1,1 +1,92 @@
-<p>formulario works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center"><strong>Datos de Cliente</strong></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <label for="cliente" class="mb-3">Cliente:</label>
+
+          <select
+            class="form-select"
+            id="cliente"
+            [(ngModel)]="clidatos.idclientes"
+            (change)="capturarCliente(clidatos.idclientes)"
+          >
+            <option *ngFor="let cl of clidatos" [value]="cl.idclientes">
+              {{ cl.nombrecliente }}
+            </option>
+          </select>
+        </div>
+        <div class="col-4">
+          <label for="direccioncliente" class="mb-3">Dirección</label>
+          <input
+            id="direccioncliente"
+            type="text"
+            class="form-control"
+            value="{{ clienteSeleccionado.direccion }}"
+            disabled
+          />
+        </div>
+        <div class="col-3">
+          <label for="telefonocliente" class="mb-3">Teléfono</label>
+          <input
+            id="telefonocliente"
+            type="text"
+            class="form-control"
+            value="{{ clienteSeleccionado.telefono }}"
+            disabled
+          />
+        </div>
+        <div class="col-3">
+          <label for="cuitcliente" class="mb-3">C.U.I.T.</label>
+          <input
+            id="cuitcliente"
+            type="text"
+            class="form-control"
+            value="{{ clienteSeleccionado.cuit }}"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card-footer">card footer</div> -->
+  </div>
+  <div class="card">
+    <div class="card-header text-center">
+      <strong>Datos de Productos</strong>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <label for="codproducto" class="mb-3">Código Producto</label>
+          <input type="text" id="codproducto" (keyup)="addProducto($event)" />
+        </div>
+        <div class="col-4">
+          <label for="nomproducto" class="mb-3">Nombre Producto</label>
+          <input
+            type="text"
+            id="nomproducto"
+            class="form-control"
+            [(ngModel)]="productoSeleccionado.nombreproducto"
+            disabled
+          />
+        </div>
+        <div class="col-2">
+          <label for="cantproducto" class="mb-3">Cantidad</label>
+          <input type="number" id="cantproducto" class="form-control" />
+        </div>
+        <div class="col-2">
+          <label for="cantproducto" class="mb-3">Precio</label>
+          <input
+            type="number"
+            id="cantproducto"
+            class="form-control"
+            value="{{ precioprd }}"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">card footer totales y eso</div>
+  </div>
+</div>

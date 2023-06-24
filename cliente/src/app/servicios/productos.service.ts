@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Producto, ProductoRubro } from '../modelos/productos';
-import { Observable, filter } from 'rxjs';
+import { Observable, catchError, filter, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,9 +23,15 @@ export class ProductosService {
   }
 
   buscarProducto(codigo: string): Observable<ProductoRubro[]> {
-    return this.http.get<ProductoRubro[]>(
-      `${this.API_URI}/productos/cb/${codigo}`
-    );
+    return this.http
+      .get<ProductoRubro[]>(`${this.API_URI}/productos/cb/${codigo}`)
+      .pipe(
+        catchError((error) => {
+          // manejo de error
+          console.log(error);
+          return of([]);
+        })
+      );
   }
 
   deleteProducto(id: number) {

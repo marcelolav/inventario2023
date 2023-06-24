@@ -12,7 +12,7 @@ export class ListadoVentasComponent implements OnInit {
   ventasData: any = [];
   comprobante: number = 0;
   ventasDetalleData: any = [];
-  total: number = 0;
+  total: any;
 
   ngOnInit(): void {
     this.getVentasCabecera();
@@ -25,16 +25,20 @@ export class ListadoVentasComponent implements OnInit {
     });
   }
 
-  editarVenta(id: string) {
-    console.log(id);
-  }
-  eliminarVenta(id: string) {
+  eliminarVenta(id: number, comp: number) {
     if (
       confirm(
         'Si elimina la cabecera se eliminará todo el contenido del comprobante. ¿Desea Eliminar? '
       )
     ) {
+      console.log('Comprobante: ', comp);
+      console.log('id cabecera: ', id);
+
       this.ventasService.deleteVentaCabecera(id).subscribe((res) => {
+        console.log(res);
+        this.getVentasCabecera();
+      });
+      this.ventasService.deleteVentasDetalle(comp).subscribe((res) => {
         console.log(res);
         this.getVentasCabecera();
       });
@@ -47,9 +51,12 @@ export class ListadoVentasComponent implements OnInit {
       .subscribe((res) => {
         this.ventasDetalleData = res;
       });
+    this.totalizar(comprobante);
   }
 
-  totalizar() {
-    // this.total = this.ventasDetalleData.reduce((a,b) => a+b)
+  totalizar(comprobante: number) {
+    return this.ventasService.getTotal(comprobante).subscribe((res) => {
+      this.total = res;
+    });
   }
 }

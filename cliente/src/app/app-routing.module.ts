@@ -13,7 +13,6 @@ import { ListadoServiciosComponent } from './componentes/servicios/listado/lista
 import { FormularioServiciosComponent } from './componentes/servicios/formulario/formulario.component';
 import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
 import { EntregaComponent } from './componentes/servicios/entrega/entrega.component';
-import { AbmVentasComponent } from './componentes/ventas/abm-ventas.component';
 import { FormularioVentasComponent } from './componentes/ventas/formulario/formulario.component';
 import { ListadoVentasComponent } from './componentes/ventas/listado/listado.component';
 import { ListadoClientesComponent } from './componentes/clientes/listado/listado.component';
@@ -40,7 +39,6 @@ const routes: Routes = [
   { path: 'servicios/entregar/:id', component: EntregaComponent },
   { path: 'servicios/listado', component: ListadoServiciosComponent },
   { path: 'servicios/pendientes', component: PendientesComponent },
-  { path: 'ventas', component: AbmVentasComponent },
   { path: 'ventas/listado', component: ListadoVentasComponent },
   { path: 'ventas/agregar', component: FormularioVentasComponent },
   { path: 'ventas/editar/:id', component: FormularioVentasComponent },

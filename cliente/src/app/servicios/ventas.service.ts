@@ -16,7 +16,7 @@ export class VentasService {
   getVentaCabecera(id: string) {
     return this.http.get(`${this.API_URI}/cab/${id}`);
   }
-  deleteVentaCabecera(id: string) {
+  deleteVentaCabecera(id: number) {
     return this.http.delete(`${this.API_URI}/cab/${id}`);
   }
   saveVentaCabecera(venta: VentaCabecera) {
@@ -42,6 +42,9 @@ export class VentasService {
   getVentaDetallexComprobante(comp: number) {
     return this.http.get(`${this.API_URI}/detcomp/${comp}`);
   }
+  deleteVentasDetalle(comp: number) {
+    return this.http.delete(`${this.API_URI}/det/${comp}`);
+  }
   saveVentaDetalle(venta: VentasDetalle) {
     const bod = {
       comprobante: venta.comprobante,
@@ -51,5 +54,8 @@ export class VentasService {
       subtotal: venta.subtotal,
     };
     return this.http.post(`${this.API_URI}/det`, bod);
+  }
+  getTotal(comp: number) {
+    return this.http.get(`${this.API_URI}/func/${comp}`); // este endpoint es solo el total ningun campo mas.!!!
   }
 }

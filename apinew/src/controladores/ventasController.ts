@@ -84,11 +84,24 @@ class VentasController {
           await pool.query("UPDATE ventasdetalle set ? WHERE idventasdetalle = ?", [req.body, id]);
           res.json({ message: "El registro de ventas ha sido actualizado!" });
      }
-     // Elimina un registro de ventas detalle por numero de id
+     // Elimina todos los registros de ventas detalle por numero de comprobante
      public async eliminaVentaDetalle(req: Request, res: Response): Promise<void> {
           const { id } = req.params;
-          await pool.query("DELETE FROM ventasdetalle WHERE idventasdetalle = ?", [id]);
+          await pool.query("DELETE FROM ventasdetalle WHERE comprobante_detalle = ?", [id]);
           res.json({ message: "El registro de ventas ha sido eliminado" });
+     }
+
+     // Funciones utiles
+
+     // Calcular el total de una venta pasando comprobante como dato.
+
+     public async calculaTotalVenta(req: Request, res: Response): Promise<any> {
+          const { id } = req.params;
+          const totalVenta = await pool.query("SELECT sum(subtotal) as total FROM vw_ventascondetalles  where comprobante_detalle= ?", [id]);
+          if (totalVenta.length > 0) {
+               return res.json(totalVenta);
+          }
+          res.status(404).json({ text: "No existe el comprobante referenciado!" });
      }
 }
 

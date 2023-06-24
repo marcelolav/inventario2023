@@ -16,14 +16,16 @@ class VentasRoute {
           this.router.get("/cabcli/:id", ventasController.listaVentasCabeceraCliente);
           this.router.post("/cab/", ventasController.agregaVentaCabecera);
           this.router.put("/cab/:id", ventasController.actualizaVentaCabecera);
-          this.router.delete("/cab/:id", ventasController.eliminaVentaCabecera);
+          this.router.delete("/cab/:id", ventasController.eliminaVentaCabecera); // Este elimina por id (habria que estandarizar....)
           // ventas detalle
           this.router.get("/det/", ventasController.listaVentasDetalle);
           this.router.get("/detcomp/:id", ventasController.listaVentaDetalleComprobante);
           this.router.get("/detprod/:id", ventasController.listaVentaDetalleProducto);
           this.router.post("/det/", ventasController.agregaVentaDetalle);
           this.router.put("/det/:id", ventasController.actualizaVentaDetalle);
-          this.router.delete("/det/:id", ventasController.eliminaVentaDetalle);
+          this.router.delete("/det/:id", ventasController.eliminaVentaDetalle); // OJO: Elimina por numero de comprobante todos los comprobantes del mismo numero.
+          // Funciones varias
+          this.router.get("/func/:id", ventasController.calculaTotalVenta);
      }
 }
 

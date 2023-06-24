@@ -24,14 +24,10 @@
         <td>{{ vta.totalventa }}</td>
         <td>
           <button
-            class="btn btn-primary btn-sm mr-5"
-            (click)="editarVenta(vta.idventascabecera)"
-          >
-            <span class="material-symbols-rounded"> edit </span>
-          </button>
-          <button
             class="btn btn-danger btn-sm ml-3"
-            (click)="eliminarVenta(vta.idventascabecera)"
+            (click)="
+              eliminarVenta(vta.idventascabecera, vta.comprobante_cabecera)
+            "
           >
             <span class="material-symbols-rounded"> delete </span>
           </button>
@@ -91,6 +87,11 @@
                 </div>
 
                 <div class="modal-footer">
+                  <p *ngIf="total" class="border rounded border-primary m-4">
+                    <strong class="p-3"
+                      >Total del Comprobante: {{ total[0].total | currency }}
+                    </strong>
+                  </p>
                   <button
                     type="button"
                     class="btn btn-secondary"

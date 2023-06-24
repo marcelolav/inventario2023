@@ -24,7 +24,6 @@ import { FormularioServiciosComponent } from './componentes/servicios/formulario
 import { AbmServiciosComponent } from './componentes/servicios/abm-servicios.component';
 import { ListadoVentasComponent } from './componentes/ventas/listado/listado.component';
 import { FormularioVentasComponent } from './componentes/ventas/formulario/formulario.component';
-import { AbmVentasComponent } from './componentes/ventas/abm-ventas.component';
 
 // Services
 import { ProductosService } from './servicios/productos.service';
@@ -67,7 +66,6 @@ import { CompraPipe } from './pipes/compra.pipe';
     AbmServiciosComponent, // Servicios - Principal
     FormularioVentasComponent, // Ventas - Form
     ListadoVentasComponent, // Ventas - Listado
-    AbmVentasComponent, // Ventas - Principal
     PendientesComponent,
     EntregaComponent,
     ProductoPipe,
