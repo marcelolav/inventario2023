@@ -111,13 +111,14 @@ export class FormularioVentasComponent implements OnInit {
   }
 
   grabarRegistros() {
+    console.log('CABECERA =>', this.registro_cabecera);
     this.ventasService
       .saveVentaCabecera(this.registro_cabecera)
       .subscribe((res) => {
         console.log(res);
       });
     this.items.forEach((reg: any) => {
-      console.log(reg);
+      console.log('DETALLE =>', reg);
       this.ventasService.saveVentaDetalle(reg).subscribe((res) => {
         console.log(res);
       });
