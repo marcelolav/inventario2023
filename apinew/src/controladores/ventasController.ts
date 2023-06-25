@@ -33,7 +33,7 @@ class VentasController {
      // Agrega un registro en ventas cabecera
      public async agregaVentaCabecera(req: Request, res: Response): Promise<void> {
           const result = await pool.query("INSERT INTO ventascabecera set ?", [req.body]);
-          res.json({ message: "Registro de ventas guardado con éxito!" });
+          res.json({ message: "Registro de cabecera ventas guardado con éxito!" });
      }
      // Actualiza registro de ventas cabecera por numero de id
      public async actualizaVentaCabecera(req: Request, res: Response): Promise<void> {
@@ -76,7 +76,7 @@ class VentasController {
      // Agrega un registro en ventas detalle
      public async agregaVentaDetalle(req: Request, res: Response): Promise<void> {
           const result = await pool.query("INSERT INTO ventasdetalle set ?", [req.body]);
-          res.json({ message: "Registro de ventas guardado con éxito!" });
+          res.json({ message: "Registro de detalle ventas guardado con éxito!" });
      }
      // Actualiza registro de ventas detalle por numero de id
      public async actualizaVentaDetalle(req: Request, res: Response): Promise<void> {

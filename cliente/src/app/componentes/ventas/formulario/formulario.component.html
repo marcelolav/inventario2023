@@ -3,6 +3,26 @@
     <div class="card-header text-center"><strong>Datos de Cliente</strong></div>
     <div class="card-body">
       <div class="row">
+        <div class="col-6">
+          <label for="fecha">Fecha</label>
+          <input
+            type="date"
+            class="form-control"
+            [(ngModel)]="fecha"
+            value="{{ fecha }}"
+          />
+        </div>
+        <div class="col-6">
+          <label for="comprobante">Nº Comprobante</label>
+          <input
+            type="number"
+            id="comprobante"
+            class="form-control"
+            [(ngModel)]="comprobante"
+          />
+        </div>
+      </div>
+      <div class="row">
         <div class="col-2">
           <label for="cliente" class="mb-3">Cliente:</label>
 
@@ -49,7 +69,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="card-footer">card footer</div> -->
   </div>
   <div class="card">
     <div class="card-header text-center">
@@ -57,9 +76,15 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-2">
-          <label for="codproducto" class="mb-3">Código Producto</label>
-          <input type="text" id="codproducto" (keyup)="addProducto($event)" />
+        <div class="col-1">
+          <label for="codproducto" class="mb-3">Código</label>
+          <input
+            type="text"
+            id="codproducto"
+            (keyup)="addProducto($event)"
+            class="form-control"
+            [(ngModel)]="productoSeleccionado.codigobarra"
+          />
         </div>
         <div class="col-4">
           <label for="nomproducto" class="mb-3">Nombre Producto</label>
@@ -71,22 +96,95 @@
             disabled
           />
         </div>
-        <div class="col-2">
+        <div class="col-1">
           <label for="cantproducto" class="mb-3">Cantidad</label>
-          <input type="number" id="cantproducto" class="form-control" />
-        </div>
-        <div class="col-2">
-          <label for="cantproducto" class="mb-3">Precio</label>
           <input
             type="number"
             id="cantproducto"
             class="form-control"
+            [(ngModel)]="cantprd"
+          />
+        </div>
+        <div class="col-2">
+          <label for="precioprd" class="mb-3">Precio</label>
+          <input
+            type="number"
+            id="precioprd"
+            class="form-control"
+            [(ngModel)]="precioprd"
             value="{{ precioprd }}"
           />
         </div>
+        <div class="col-2">
+          <label for="subtotal" class="mb-3">Subtotal</label>
+          <input
+            type="number"
+            id="subtotal"
+            class="form-control"
+            step=".01"
+            [(ngModel)]="subtotal"
+            value="{{ calculoSubtotal(precioprd, cantprd) }}"
+          />
+        </div>
+        <div class="col-2">
+          <label for="botones" class="mb-3 text-center">Confirmar</label>
+          <div class="input-group mb-3 align-center">
+            <button class="btn btn-success btn-sm" (click)="agregaItem()">
+              <span class="material-symbols-rounded" id="basic-addon1"
+                >done</span
+              >
+            </button>
+            <button class="btn btn-danger btn-sm">
+              <span
+                class="material-symbols-rounded"
+                id="boton"
+                (click)="vaciarCamposItem()"
+              >
+                cancel
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="card-footer">card footer totales y eso</div>
+  </div>
+  <div class="card" *ngIf="items.length > 0">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unit.</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td>{{ item.idproductos_detalle }}</td>
+            <td>{{ item.nombreproducto }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.importe }}</td>
+            <td>{{ item.subtotal }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-8">
+          <button class="btn btn-success" (click)="grabarRegistros()">
+            Confirmar Venta
+          </button>
+          <button class="btn btn-danger" (click)="cancelarVentaTotal()">
+            Cancelar
+          </button>
+        </div>
+        <div class="col-4">
+          <p class="text-right"><strong>Total General: ... </strong></p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
