@@ -4,7 +4,7 @@ import pool from "../database";
 class ComprasController {
      // Muestra todas las compras con el join de producto y proveedores
      public async listaCompras(req: Request, res: Response): Promise<void> {
-          const compras = await pool.query("SELECT * FROM compras INNER JOIN proveedores ON compras.idproveedor = proveedores.idproveedores INNER JOIN productos ON compras.idproducto = productos.idproductos");
+          const compras = await pool.query("SELECT * FROM compras INNER JOIN proveedores ON compras.idproveedores = proveedores.idproveedores INNER JOIN productos ON compras.idproductos = productos.idproductos");
           res.json(compras);
      }
      // Muestra una compra por ID
