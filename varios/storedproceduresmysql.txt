@@ -1,0 +1,26 @@
+
+
+Cuando recibes el json en Node.js, el objeto req.body.[valor] contiene tus parámetros. ej.
+
+req.body.name
+
+si tu mensaje fuera
+
+{
+   name: "GMG"
+}
+
+tómalos de este objeto y asignalos a tu llamada a bd:
+
+router.get('/prueba', (req: Request, res: Response) => {
+
+    const {_rau_id, _rau_nombre, _rau_descripcion, _rau_estado, _inicio, _offset}
+        = req.body;
+    const query = `
+    call pbd_consultar_tbl_roles_por_agrupador
+    (${_rau_id}, ${rau_nombre}, 
+    ${_rau_descripcion}, ${_rau_estado}, ${_inicio}, ${_offset}, @cantidad)
+`
+
+MySQL.QueryRun(query, (err: any, response: object[]) =>{
+
