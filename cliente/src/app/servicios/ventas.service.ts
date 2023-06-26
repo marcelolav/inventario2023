@@ -58,4 +58,12 @@ export class VentasService {
   getTotal(comp: number) {
     return this.http.get(`${this.API_URI}/func/${comp}`); // este endpoint es solo el total ningun campo mas.!!! El comprobante debe estar generado
   }
+
+  updateExistencia(
+    idproducto: number,
+    cantidadAnterior: number,
+    cantidadNueva: number
+  ) {
+    console.log(idproducto, cantidadAnterior, cantidadNueva);
+  }
 }

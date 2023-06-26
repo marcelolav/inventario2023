@@ -20,8 +20,8 @@ export class FormularioVentasComponent implements OnInit {
   totalventa: number;
   itemCompleto: any;
   items: any;
-
   registro_cabecera: any;
+  cantidadAnterior: number;
 
   constructor(
     private ventasService: VentasService,
@@ -40,6 +40,7 @@ export class FormularioVentasComponent implements OnInit {
     this.itemCompleto = [];
     this.items = [];
     this.registro_cabecera = [];
+    this.cantidadAnterior = 0;
   }
 
   ngOnInit(): void {
@@ -82,6 +83,7 @@ export class FormularioVentasComponent implements OnInit {
     this.itemCompleto = {
       comprobante_detalle: this.comprobante,
       idproductos_detalle: this.productoSeleccionado.idproductos,
+      nombreproducto: this.productoSeleccionado.nombreproducto,
       cantidad: this.cantprd,
       importe: this.precioprd,
       subtotal: this.subtotal,
@@ -126,5 +128,17 @@ export class FormularioVentasComponent implements OnInit {
     this.comprobante = 0;
     this.clienteSeleccionado = [];
     this.vaciarCamposItem();
+  }
+
+  actualizarExistencia(
+    id: number,
+    cantidadAnterior: number,
+    cantidadNueva: number
+  ) {
+    const valor = this.ventasService.updateExistencia(
+      id,
+      cantidadNueva,
+      cantidadAnterior
+    );
   }
 }
