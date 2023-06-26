@@ -1,0 +1,11 @@
+.precios {
+    text-align: right !important;
+}
+.total {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 200;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    padding: 6px;
+}

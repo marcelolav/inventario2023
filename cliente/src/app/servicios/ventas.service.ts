@@ -21,8 +21,8 @@ export class VentasService {
   }
   saveVentaCabecera(venta: VentaCabecera) {
     const bod = {
-      comprobante: venta.comprobante,
-      idclientes: venta.idclientes,
+      comprobante_cabecera: venta.comprobante_cabecera,
+      idclientes_cabecera: venta.idclientes_cabecera,
       fecha: venta.fecha,
       totalventa: venta.totalventa,
     };
@@ -47,8 +47,8 @@ export class VentasService {
   }
   saveVentaDetalle(venta: VentasDetalle) {
     const bod = {
-      comprobante: venta.comprobante,
-      idproductos: venta.idproductos,
+      comprobante_detalle: venta.comprobante_detalle,
+      idproductos_detalle: venta.idproductos_detalle,
       cantidad: venta.cantidad,
       importe: venta.importe,
       subtotal: venta.subtotal,
@@ -56,6 +56,6 @@ export class VentasService {
     return this.http.post(`${this.API_URI}/det`, bod);
   }
   getTotal(comp: number) {
-    return this.http.get(`${this.API_URI}/func/${comp}`); // este endpoint es solo el total ningun campo mas.!!!
+    return this.http.get(`${this.API_URI}/func/${comp}`); // este endpoint es solo el total ningun campo mas.!!! El comprobante debe estar generado
   }
 }

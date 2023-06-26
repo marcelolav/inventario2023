@@ -1,15 +1,15 @@
 export interface VentaCabecera {
   idventascabecera?: number;
-  comprobante?: number;
-  idclientes?: number;
+  comprobante_cabecera?: number;
+  idclientes_cabecera?: number;
   fecha?: Date;
   totalventa?: string;
 }
 
 export interface VentasDetalle {
   idventasdetalle?: number;
-  comprobante?: string;
-  idproductos?: number;
+  comprobante_detalle?: string;
+  idproductos_detalle?: number;
   cantidad?: number;
   importe?: number;
   subtotal?: number;

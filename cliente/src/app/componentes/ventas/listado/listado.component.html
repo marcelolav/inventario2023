@@ -69,27 +69,31 @@
                   <table class="table table-dark">
                     <thead>
                       <tr>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Subtotal</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let det of ventasDetalleData">
                         <td scope="row">{{ det.nombreproducto }}</td>
-                        <td>{{ det.cantidad }}</td>
-                        <td>{{ det.precio }}</td>
-                        <td>{{ det.subtotal }}</td>
+                        <td class="precios">
+                          {{ det.cantidad | number : "0.2-8" }}
+                        </td>
+                        <td class="precios">{{ det.importe | currency }}</td>
+                        <td class="precios">
+                          {{ det.subtotal | currency }}
+                        </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
                 <div class="modal-footer">
-                  <p *ngIf="total" class="border rounded border-primary m-4">
-                    <strong class="p-3"
-                      >Total del Comprobante: {{ total[0].total | currency }}
+                  <p class="border rounded border-primary m-4">
+                    <strong class="total"
+                      >Total del Comprobante: {{ vta.totalventa | currency }}
                     </strong>
                   </p>
                   <button

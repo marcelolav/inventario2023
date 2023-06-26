@@ -13,7 +13,6 @@ class VentasController {
           const { id } = req.params;
           const ventas = await pool.query("SELECT * FROM vw_ventascabecera_cliente WHERE comprobante_cabecera = ?", [id]);
 
-          console.log(ventas.length);
           if (ventas.length > 0) {
                return res.json(ventas[0]);
           }
@@ -23,7 +22,6 @@ class VentasController {
      public async listaVentasCabeceraCliente(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
           const ventas = await pool.query("SELECT * FROM vw_ventascabecera_cliente WHERE idclientes_cabecera = ?", [id]);
-          console.log(ventas.length);
           if (ventas.length > 0) {
                return res.json(ventas);
           }
@@ -67,7 +65,6 @@ class VentasController {
      public async listaVentaDetalleProducto(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
           const ventasdetalle = await pool.query("SELECT * FROM vw_ventascondetalles WHERE idproductos_detalle= ?", [id]);
-          console.log(ventasdetalle.length);
           if (ventasdetalle.length > 0) {
                return res.json(ventasdetalle);
           }

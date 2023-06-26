@@ -12,7 +12,7 @@ export class ListadoVentasComponent implements OnInit {
   ventasData: any = [];
   comprobante: number = 0;
   ventasDetalleData: any = [];
-  total: any;
+  total: any = [];
 
   ngOnInit(): void {
     this.getVentasCabecera();
@@ -51,12 +51,12 @@ export class ListadoVentasComponent implements OnInit {
       .subscribe((res) => {
         this.ventasDetalleData = res;
       });
-    this.totalizar(comprobante);
+    //this.totalizar(comprobante);
   }
 
-  totalizar(comprobante: number) {
-    return this.ventasService.getTotal(comprobante).subscribe((res) => {
-      this.total = res;
-    });
-  }
+  // totalizar(comprobante: number) {
+  //   return this.ventasService.getTotal(comprobante).subscribe((res) => {
+  //     this.total = res;
+  //   });
+  //}
 }

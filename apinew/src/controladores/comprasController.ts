@@ -19,7 +19,6 @@ class ComprasController {
      // Muestra las compras de un mismo comprobante
      public async listaCompraComprobante(req: Request, res: Response): Promise<any> {
           const { comprobante } = req.params;
-          console.log(comprobante);
           const compras = await pool.query("SELECT * FROM compras WHERE comprobante = ?", [comprobante]);
           res.json(compras);
 

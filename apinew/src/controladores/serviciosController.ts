@@ -5,7 +5,6 @@ class ServiciosController {
      // Muestra los servicios pendientes
      public async listaServiciosPendientes(req: Request, res: Response): Promise<void> {
           const servicios = await pool.query("SELECT * FROM servicios WHERE reparado = 0");
-          console.log("lista de no reparados teoricamente!!");
           res.json(servicios);
      }
      // Muestra todos los items de la tabla servicios

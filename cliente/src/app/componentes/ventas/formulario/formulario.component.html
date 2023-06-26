@@ -164,9 +164,9 @@
           <tr *ngFor="let item of items">
             <td>{{ item.idproductos_detalle }}</td>
             <td>{{ item.nombreproducto }}</td>
-            <td>{{ item.cantidad }}</td>
-            <td>{{ item.importe }}</td>
-            <td>{{ item.subtotal }}</td>
+            <td>{{ item.cantidad | number : "0.2-5" }}</td>
+            <td>{{ item.importe | currency }}</td>
+            <td>{{ item.subtotal | currency }}</td>
           </tr>
         </tbody>
       </table>
@@ -182,7 +182,9 @@
           </button>
         </div>
         <div class="col-4">
-          <p class="text-right"><strong>Total General: ... </strong></p>
+          <p class="text-center">
+            <strong>Total General: {{ totalventa | currency }} </strong>
+          </p>
         </div>
       </div>
     </div>
