@@ -47,7 +47,6 @@ export class FormularioVentasComponent implements OnInit {
     this.clientesService.getClientes().subscribe((res) => {
       this.clidatos = res;
     });
-    console.log(this.items);
   }
 
   capturarCliente(idcli: number) {
@@ -89,7 +88,6 @@ export class FormularioVentasComponent implements OnInit {
       subtotal: this.subtotal,
     };
     this.items.push(this.itemCompleto);
-    console.log(this.itemCompleto);
     this.vaciarCamposItem();
     this.agregarCabeceraCliente();
   }

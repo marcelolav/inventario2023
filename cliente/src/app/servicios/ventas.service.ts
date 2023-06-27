@@ -67,6 +67,5 @@ export class VentasService {
     return this.http.get(
       `${this.API_URI}/productos/actualizaexistencia/${idproducto}/${cantidadNueva}/venta`
     );
-    console.log(idproducto, cantidadNueva);
   }
 }
