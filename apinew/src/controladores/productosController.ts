@@ -49,6 +49,25 @@ class ProductosController {
           await pool.query("DELETE FROM productos WHERE idproductos = ?", [id]);
           res.json({ message: "El producto ha sido eliminado con éxito!" });
      }
+     // Actualiza la existencia de un producto por numero de id
+     public async actualizaExistencia(req: Request, res: Response): Promise<void> {
+          const { id, cantidadNueva, operacion } = req.params;
+          const regCant = await pool.query(`SELECT * FROM vw_existencias WHERE idproductos = ${id}`);
+          const ex_anterior = regCant[0].existencia;
+          if (operacion === "venta") {
+               // Venta restar de stock
+               const ex_actual = Number(ex_anterior) - Number(cantidadNueva);
+               if (ex_actual > 0) {
+                    await pool.query(`UPDATE productos SET existencia = ${ex_actual} WHERE idproductos = ${id}`);
+               }
+          }
+          if (operacion === "compra") {
+               // compra sumar al stock
+               const ex_actual = Number(ex_anterior) + Number(cantidadNueva);
+               await pool.query(`UPDATE productos SET existencia = ${ex_actual} WHERE idproductos = ${id}`);
+          }
+          res.json({ message: "Existencia actualizada" });
+     }
 }
 
 export const productosController = new ProductosController();

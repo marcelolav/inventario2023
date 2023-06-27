@@ -15,6 +15,7 @@ class ProductosRoutes {
           this.router.get("/:id", productosController.listaProducto);
           this.router.get("/cb/:codigobarra", productosController.muestraPorCodigobarra);
           this.router.post("/", productosController.agregaProducto);
+          this.router.get("/actualizaexistencia/:id/:cantidadNueva/:operacion", productosController.actualizaExistencia);
           this.router.put("/:id", productosController.actualizaProducto);
           this.router.delete("/:id", productosController.eliminaProducto);
      }

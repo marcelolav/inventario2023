@@ -121,6 +121,11 @@ export class FormularioVentasComponent implements OnInit {
     this.items.forEach((reg: any) => {
       this.ventasService.saveVentaDetalle(reg).subscribe((res) => {
         console.log(res);
+        this.ventasService
+          .updateExistencia(reg.idproductos_detalle, reg.cantidad)
+          .subscribe((res) => {
+            console.log(res);
+          });
       });
     });
     this.items = {};
@@ -128,17 +133,5 @@ export class FormularioVentasComponent implements OnInit {
     this.comprobante = 0;
     this.clienteSeleccionado = [];
     this.vaciarCamposItem();
-  }
-
-  actualizarExistencia(
-    id: number,
-    cantidadAnterior: number,
-    cantidadNueva: number
-  ) {
-    const valor = this.ventasService.updateExistencia(
-      id,
-      cantidadNueva,
-      cantidadAnterior
-    );
   }
 }
