@@ -18,7 +18,6 @@ import { ListadoVentasComponent } from './componentes/ventas/listado/listado.com
 import { ListadoClientesComponent } from './componentes/clientes/listado/listado.component';
 import { FormularioClientesComponent } from './componentes/clientes/formulario/formulario.component';
 import { AbmClientesComponent } from './componentes/clientes/abm-clientes.component';
-import { AbmComprasComponent } from './componentes/compras/abm-compras.component';
 import { ListadoComprasComponent } from './componentes/compras/listado/listado.component';
 import { FormularioComprasComponent } from './componentes/compras/formulario/formulario.component';
 
@@ -42,7 +41,6 @@ const routes: Routes = [
   { path: 'ventas/listado', component: ListadoVentasComponent },
   { path: 'ventas/agregar', component: FormularioVentasComponent },
   { path: 'ventas/editar/:id', component: FormularioVentasComponent },
-  { path: 'compras', component: AbmComprasComponent },
   { path: 'compras/listado', component: ListadoComprasComponent },
   { path: 'compras/agregar', component: FormularioComprasComponent },
   { path: 'compras/editar/:id', component: FormularioComprasComponent },

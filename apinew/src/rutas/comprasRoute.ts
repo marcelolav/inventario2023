@@ -10,12 +10,12 @@ class ComprasRoute {
      }
 
      config() {
-          this.router.get("/", comprasController.listaCompras);
-          this.router.get("/:id", comprasController.listaCompra);
-          this.router.get("/comprobante/:comprobante", comprasController.listaCompraComprobante);
-          this.router.post("/", comprasController.agregaCompra);
-          this.router.put("/:id", comprasController.actualizaCompra);
-          this.router.delete("/:id", comprasController.eliminaCompra);
+          this.router.get("/cabecera", comprasController.getComprasCabeceras);
+          this.router.get("/cabecera/:id", comprasController.getCompraCabecera);
+          this.router.get("/detalle", comprasController.getComprasDetalles);
+          this.router.get("/detalle/:id", comprasController.getCompraDetalle);
+          this.router.post("/cabecera", comprasController.addCompraCabecera);
+          this.router.post("/detalle", comprasController.addCompraDetalle);
      }
 }
 export default new ComprasRoute().router;

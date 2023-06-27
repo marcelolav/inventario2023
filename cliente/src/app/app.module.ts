@@ -18,12 +18,16 @@ import { ListadoProveedoresComponent } from './componentes/proveedores/listado/l
 import { AbmProveedoresComponent } from './componentes/proveedores/abm-proveedores.component';
 import { FormularioComprasComponent } from './componentes/compras/formulario/formulario.component';
 import { ListadoComprasComponent } from './componentes/compras/listado/listado.component';
-import { AbmComprasComponent } from './componentes/compras/abm-compras.component';
 import { ListadoServiciosComponent } from './componentes/servicios/listado/listado.component';
 import { FormularioServiciosComponent } from './componentes/servicios/formulario/formulario.component';
 import { AbmServiciosComponent } from './componentes/servicios/abm-servicios.component';
 import { ListadoVentasComponent } from './componentes/ventas/listado/listado.component';
 import { FormularioVentasComponent } from './componentes/ventas/formulario/formulario.component';
+import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
+import { EntregaComponent } from './componentes/servicios/entrega/entrega.component';
+import { FormularioClientesComponent } from './componentes/clientes/formulario/formulario.component';
+import { ListadoClientesComponent } from './componentes/clientes/listado/listado.component';
+import { AbmClientesComponent } from './componentes/clientes/abm-clientes.component';
 
 // Services
 import { ProductosService } from './servicios/productos.service';
@@ -34,12 +38,7 @@ import { ComprasService } from './servicios/compras.service';
 import { VentasService } from './servicios/ventas.service';
 
 // Directives
-import { PendientesComponent } from './componentes/servicios/pendientes/pendientes.component';
-import { EntregaComponent } from './componentes/servicios/entrega/entrega.component';
 import { ProductoPipe } from './pipes/producto.pipe';
-import { FormularioClientesComponent } from './componentes/clientes/formulario/formulario.component';
-import { ListadoClientesComponent } from './componentes/clientes/listado/listado.component';
-import { AbmClientesComponent } from './componentes/clientes/abm-clientes.component';
 import { RubroPipe } from './pipes/rubro.pipe';
 import { ProveedorPipe } from './pipes/proveedor.pipe';
 import { ClientePipe } from './pipes/cliente.pipe';
@@ -60,7 +59,6 @@ import { CompraPipe } from './pipes/compra.pipe';
     AbmProveedoresComponent, // Proveedores - Principal
     FormularioComprasComponent, // Compras - Form
     ListadoComprasComponent, // Compras - Listado
-    AbmComprasComponent, // Compras - Principal
     FormularioServiciosComponent, // Servicios - Form
     ListadoServiciosComponent, // Servicios - Listado
     AbmServiciosComponent, // Servicios - Principal
