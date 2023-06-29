@@ -8,16 +8,6 @@
     Ingreso de Mercadería
   </button>
 </div>
-<div class="mt-2 mb-2">
-  <input
-    type="text"
-    class="form-control mb-2"
-    placeholder="Buscar Comprobante"
-    name="search"
-    [(ngModel)]="search"
-    (onkeyup)="onSearchCompra(search)"
-  />
-</div>
 <div class="col">
   <table class="table table-striped">
     <thead>
@@ -26,59 +16,93 @@
         <th>Comprobante</th>
         <th>Fecha de Compra</th>
         <th>Proveedor</th>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Importe</th>
-        <th>Subtotal</th>
-        <th scope="col">Acciones</th>
+        <th>Total Compra</th>
+        <th>Detalles</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let compra of compData | filtrocompra : page : search">
-        <td scope="row">{{ compra.idcompras }}</td>
-        <td>{{ compra.comprobante }}</td>
-        <td>{{ compra.fechacompra | date : "dd-MM-yyyy" }}</td>
+      <tr *ngFor="let compra of compData">
+        <td>{{ compra.idcomprascabecera }}</td>
+        <td>{{ compra.comprobante_cabecera }}</td>
+        <td>{{ compra.fecha | date : "dd-MM-yyyy" }}</td>
         <td>{{ compra.nombre }}</td>
-        <td>{{ compra.nombreproducto }}</td>
-        <td class="text-center">
-          {{ compra.cantidad | number : "0.0-3" }}
-        </td>
-        <td class="text-right">{{ compra.preciocompra | currency }}</td>
-        <td class="text-right">{{ compra.subtotal | currency }}</td>
+        <td class="text-right">{{ compra.totalcompra | currency }}</td>
         <td>
+          <!-- Aca va el modal para visualizar el detalle de compra -->
+
           <button
-            class="btn btn-danger btn-sm ml-3"
-            (click)="eliminarCompra(compra.idcompras)"
+            type="button"
+            class="btn btn-sm btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="obtengoComprobante(compra.comprobante_cabecera)"
           >
-            <span class="material-symbols-rounded"> delete </span>
+            <span class="material-symbols-rounded"> search </span>
           </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Detalle de Compra
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <strong>Comprobante:</strong> {{ comprobante }}
+                  <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let det of comprasDetalleData">
+                        <td>{{ det.nombreproducto }}</td>
+                        <td class="precios">
+                          {{ det.cantidadproducto | number : "0.2-8" }}
+                        </td>
+                        <td class="precios">
+                          {{ det.precioproducto | currency }}
+                        </td>
+                        <td class="precios">
+                          {{ det.subtotalproducto | currency }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>
   </table>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <button
-          type="button"
-          class="btn btn-primary btn-sm"
-          style="height: 30px; width: 100px"
-          (click)="prevPage()"
-        >
-          Previa
-        </button>
-      </li>
-      <li class="page-item">
-        <button
-          type="button"
-          class="btn btn-primary btn-sm"
-          (click)="nextPage()"
-          style="height: 30px; width: 100px"
-          [disabled]="(compData | filtrocompra : page : search).length === 0"
-        >
-          Siguiente
-        </button>
-      </li>
-    </ul>
-  </nav>
 </div>

@@ -1,7 +1,7 @@
 export interface CompraCabecera {
   idcomprascabecera?: number;
-  fechacompra?: Date;
-  comprobante_cabecera?: number;
+  fecha?: Date;
+  comprobante_cabecera: number;
   idproveedores?: number;
   totalcompra?: number;
 }
@@ -12,4 +12,9 @@ export interface CompraDetalle {
   precioproducto?: number;
   cantidadproducto?: number;
   subtotalproducto?: number;
+}
+
+export interface CompraCabeceraConProveedorSimple extends CompraCabecera {
+  idproveedores: number;
+  nombre: string;
 }

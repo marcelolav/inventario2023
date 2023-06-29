@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CompraCabecera, CompraDetalle } from '../modelos/compras';
+import {
+  CompraCabecera,
+  CompraDetalle,
+  CompraCabeceraConProveedorSimple,
+} from '../modelos/compras';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +15,12 @@ export class ComprasService {
   constructor(private http: HttpClient) {}
 
   getComprasCabecera() {
-    return this.http.get<CompraCabecera[]>(`${this.API_URI}/compras/cabecera`);
+    return this.http.get<CompraCabeceraConProveedorSimple[]>(
+      `${this.API_URI}/compras/cabecera`
+    );
   }
   getCompraCabecera(id: number) {
-    return this.http.get<CompraCabecera[]>(
+    return this.http.get<CompraCabeceraConProveedorSimple[]>(
       `${this.API_URI}/compras/cabecera/${id}`
     );
   }
@@ -30,5 +36,10 @@ export class ComprasService {
 
   saveCompraDetalle(compra: CompraDetalle) {
     return this.http.post(`${this.API_URI}/compras/detalle`, compra);
+  }
+  updateExistencia(idproducto: number, cantidadNueva: number) {
+    return this.http.get(
+      `${this.API_URI}/productos/actualizaexistencia/${idproducto}/${cantidadNueva}/compra`
+    );
   }
 }

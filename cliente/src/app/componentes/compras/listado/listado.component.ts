@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Compra, CompraExtendido } from 'src/app/modelos/compras';
+import {
+  CompraCabecera,
+  CompraDetalle,
+  CompraCabeceraConProveedorSimple,
+} from 'src/app/modelos/compras';
 import { ComprasService } from 'src/app/servicios/compras.service';
 
 @Component({
@@ -9,45 +13,30 @@ import { ComprasService } from 'src/app/servicios/compras.service';
   styleUrls: ['./listado.component.css'],
 })
 export class ListadoComprasComponent implements OnInit {
-  compData: CompraExtendido[] = [];
+  compData: CompraCabeceraConProveedorSimple[] = [];
   titulo: string = 'Alta de Compra';
-  public page: number = 0;
-  public search: string = '';
+  comprobante: number = 0;
+  comprasDetalleData: any = [];
+
   constructor(private compraService: ComprasService, private router: Router) {}
 
   ngOnInit() {
-    this.getCompras();
+    this.getComprasCabecera();
   }
 
-  getCompras() {
-    this.compraService.getCompras().subscribe((res) => {
+  getComprasCabecera() {
+    this.compraService.getComprasCabecera().subscribe((res) => {
       this.compData = res;
     });
   }
 
-  // editarCompra(id: number) {
-  //   this.router.navigate(['/compras/editar/' + id]);
-  // }
-
-  eliminarCompra(id: number) {
-    if (confirm('Confirma que desea eliminar una compra') === true) {
-      this.compraService.deleteCompra(id).subscribe((res) => {
-        this.getCompras();
+  obtengoComprobante(comprobante: number) {
+    this.comprobante = comprobante;
+    this.comprasDetalleData = this.compraService
+      .getCompraDetalle(comprobante)
+      .subscribe((res) => {
+        this.comprasDetalleData = res;
+        console.log(this.comprasDetalleData);
       });
-    }
-  }
-  calculaSubtotal(cantidad: number, precio: number) {
-    return cantidad * precio;
-  }
-  nextPage() {
-    this.page += 5;
-  }
-
-  prevPage() {
-    if (this.page > 0) this.page -= 5;
-  }
-  onSearchCompra(search: string) {
-    this.page = 0;
-    this.search = search;
   }
 }

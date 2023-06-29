@@ -42,7 +42,6 @@ import { ProductoPipe } from './pipes/producto.pipe';
 import { RubroPipe } from './pipes/rubro.pipe';
 import { ProveedorPipe } from './pipes/proveedor.pipe';
 import { ClientePipe } from './pipes/cliente.pipe';
-import { CompraPipe } from './pipes/compra.pipe';
 
 @NgModule({
   declarations: [
@@ -73,7 +72,6 @@ import { CompraPipe } from './pipes/compra.pipe';
     RubroPipe,
     ProveedorPipe,
     ClientePipe,
-    CompraPipe, // Directiva para productos
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

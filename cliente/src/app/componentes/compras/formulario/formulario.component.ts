@@ -10,6 +10,7 @@ import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 })
 export class FormularioComprasComponent implements OnInit {
   provdatos: any;
+  proddatos: any;
   fecha: Date;
   comprobante: number;
   proveedorSeleccionado: any;
@@ -29,6 +30,7 @@ export class FormularioComprasComponent implements OnInit {
     private productosService: ProductosService
   ) {
     this.provdatos = [];
+    this.proddatos = [];
     this.fecha = new Date();
     this.comprobante = 0;
     this.proveedorSeleccionado = [];
@@ -43,8 +45,12 @@ export class FormularioComprasComponent implements OnInit {
     this.cantidadAnterior = 0;
   }
   ngOnInit(): void {
-    this.proveedorService.getProveedores().subscribe((proveedores) => {
-      this.provdatos = proveedores;
+    // Cargo en provdatos todos los proveedores
+    this.proveedorService.getProveedores().subscribe((res) => {
+      this.provdatos = res;
+    });
+    this.productosService.getProductos().subscribe((res) => {
+      this.proddatos = res;
     });
   }
 
@@ -71,7 +77,7 @@ export class FormularioComprasComponent implements OnInit {
     this.registroCabecera = {
       fecha: this.fecha,
       comprobante_cabecera: this.comprobante,
-      idproveedores: this.provdatos.idproveedores,
+      idproveedores_cabecera: this.provdatos.idproveedores,
       totalcompra: this.totalCompra,
     };
   }
@@ -80,14 +86,16 @@ export class FormularioComprasComponent implements OnInit {
     this.totalCompra = this.totalCompra + this.subtotal;
     this.itemCompleto = {
       comprobante_detalle: this.comprobante,
-      idproductos: this.productoSeleccionado.idproductos,
-      precioproducto: this.productoSeleccionado.nombreproducto,
-      cantidadproducto: this.cantidadProducto,
-      subtotalproducto: this.precioProducto,
+      idproductos_detalle: this.productoSeleccionado.idproductos,
+      // nombreproducto: this.productoSeleccionado.nombreproducto,
+      importe: this.precioProducto,
+      cantidad: this.cantidadProducto,
+      subtotal: this.subtotal,
     };
     this.items.push(this.itemCompleto);
+    console.log(this.items);
     this.vaciarCamposItem();
-    this.agregarCabeceraCliente();
+    this.agregarCabeceraCompra();
   }
 
   vaciarCamposItem() {
@@ -108,13 +116,15 @@ export class FormularioComprasComponent implements OnInit {
   }
 
   grabarRegistroCompra() {
-    this.compraService.save(this.registro_cabecera).subscribe((res) => {
-      console.log(res);
-    });
-    this.items.forEach((reg: any) => {
-      this.ventasService.saveVentaDetalle(reg).subscribe((res) => {
+    this.compraService
+      .saveCompraCabecera(this.registroCabecera)
+      .subscribe((res) => {
         console.log(res);
-        this.ventasService
+      });
+    this.items.forEach((reg: any) => {
+      this.compraService.saveCompraDetalle(reg).subscribe((res) => {
+        console.log(res);
+        this.compraService
           .updateExistencia(reg.idproductos_detalle, reg.cantidad)
           .subscribe((res) => {
             console.log(res);
@@ -122,9 +132,9 @@ export class FormularioComprasComponent implements OnInit {
       });
     });
     this.items = {};
-    this.clidatos = [];
+    this.provdatos = [];
     this.comprobante = 0;
-    this.clienteSeleccionado = [];
+    this.proveedorSeleccionado = [];
     this.vaciarCamposItem();
   }
 }

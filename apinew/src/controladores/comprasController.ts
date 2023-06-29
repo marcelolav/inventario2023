@@ -4,13 +4,13 @@ import pool from "../database";
 class ComprasController {
      // Muestra view  todas las compras con el join de producto y proveedores
      public async getComprasCabeceras(req: Request, res: Response): Promise<void> {
-          const compras = await pool.query("SELECT * FROM vw_comprascabeceraproveedor");
+          const compras = await pool.query("SELECT * FROM vw_comprascabecerasimple");
           res.json(compras);
      }
      // Muestra una cabecera de compra por ID
      public async getCompraCabecera(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
-          const compra = await pool.query("SELECT * FROM vw_comprascabecera WHERE idcomprascabecera = ?", [id]);
+          const compra = await pool.query("SELECT * FROM vw_comprascabecerasimple WHERE idcomprascabecera = ?", [id]);
           if (compra.length > 0) {
                return res.json(compra[0]);
           }
@@ -18,13 +18,13 @@ class ComprasController {
      }
      // Muestra view  todas las compras detalle limpia sin joins
      public async getComprasDetalles(req: Request, res: Response): Promise<void> {
-          const compras = await pool.query("SELECT * FROM comprasdetalle");
+          const compras = await pool.query("SELECT * FROM vw_comprascondetalle");
           res.json(compras);
      }
      // Muestra comprasdetalle de un comprobante por id de comprobante
      public async getCompraDetalle(req: Request, res: Response): Promise<any> {
           const { id } = req.params;
-          const compras = await pool.query("SELECT * FROM comprascondetalle WHERE comprobante_detalle = ?", [id]);
+          const compras = await pool.query("SELECT * FROM vw_comprascondetalle WHERE comprobante_detalle = ?", [id]);
           res.json(compras);
      }
      // Agrega cabecera de compra
