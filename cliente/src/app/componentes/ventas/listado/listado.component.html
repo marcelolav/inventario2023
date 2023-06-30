@@ -21,7 +21,7 @@
         <td>{{ vta.comprobante_cabecera }}</td>
         <td>{{ vta.fecha | date : "dd-MM-yyyy" }}</td>
         <td>{{ vta.nombrecliente }}</td>
-        <td>{{ vta.totalventa }}</td>
+        <td>{{ vta.totalventa | currency }}</td>
         <td>
           <button
             class="btn btn-danger btn-sm ml-3"
@@ -77,7 +77,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let det of ventasDetalleData">
-                        <td scope="row">{{ det.nombreproducto }}</td>
+                        <td>{{ det.nombreproducto }}</td>
                         <td class="precios">
                           {{ det.cantidad | number : "0.2-8" }}
                         </td>

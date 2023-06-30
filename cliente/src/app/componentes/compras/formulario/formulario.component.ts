@@ -116,25 +116,28 @@ export class FormularioComprasComponent implements OnInit {
   }
 
   grabarRegistroCompra() {
-    this.compraService
-      .saveCompraCabecera(this.registroCabecera)
-      .subscribe((res) => {
-        console.log(res);
+    if (confirm('¿Confirma los datos Ingresados?')) {
+      this.compraService
+        .saveCompraCabecera(this.registroCabecera)
+        .subscribe((res) => {
+          console.log(res);
+        });
+      this.items.forEach((reg: any) => {
+        this.compraService.saveCompraDetalle(reg).subscribe((res) => {
+          console.log(res);
+          this.compraService
+            .updateExistencia(reg.idproductos_detalle, reg.cantidad)
+            .subscribe((res) => {
+              console.log(res);
+            });
+        });
       });
-    this.items.forEach((reg: any) => {
-      this.compraService.saveCompraDetalle(reg).subscribe((res) => {
-        console.log(res);
-        this.compraService
-          .updateExistencia(reg.idproductos_detalle, reg.cantidad)
-          .subscribe((res) => {
-            console.log(res);
-          });
-      });
-    });
-    this.items = {};
-    this.provdatos = [];
-    this.comprobante = 0;
-    this.proveedorSeleccionado = [];
-    this.vaciarCamposItem();
+      this.items = {};
+      this.provdatos = [];
+      this.comprobante = 0;
+      this.proveedorSeleccionado = [];
+
+      this.vaciarCamposItem();
+    }
   }
 }

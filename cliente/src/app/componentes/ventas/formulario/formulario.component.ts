@@ -111,25 +111,37 @@ export class FormularioVentasComponent implements OnInit {
   }
 
   grabarRegistros() {
-    this.ventasService
-      .saveVentaCabecera(this.registro_cabecera)
-      .subscribe((res) => {
-        console.log(res);
+    if (confirm('¿Confirma los datos ingresados?') && this.comprobante > 0) {
+      this.registro_cabecera.comprobante = this.comprobante;
+      this.ventasService
+        .saveVentaCabecera(this.registro_cabecera)
+        .subscribe((res) => {
+          console.log(
+            '🚀 ~ file: formulario.component.ts:119 ~ FormularioVentasComponent ~ .subscribe ~ res:',
+            res
+          );
+          console.log(
+            '🚀 ~ file: formulario.component.ts:115 ~ FormularioVentasComponent ~ grabarRegistros ~ comprobante:',
+            this.comprobante
+          );
+        });
+      this.items.forEach((reg: any) => {
+        this.ventasService.saveVentaDetalle(reg).subscribe((res) => {
+          console.log(res);
+          this.ventasService
+            .updateExistencia(reg.idproductos_detalle, reg.cantidad)
+            .subscribe((res) => {
+              console.log(res);
+            });
+        });
       });
-    this.items.forEach((reg: any) => {
-      this.ventasService.saveVentaDetalle(reg).subscribe((res) => {
-        console.log(res);
-        this.ventasService
-          .updateExistencia(reg.idproductos_detalle, reg.cantidad)
-          .subscribe((res) => {
-            console.log(res);
-          });
-      });
-    });
-    this.items = {};
-    this.clidatos = [];
-    this.comprobante = 0;
-    this.clienteSeleccionado = [];
-    this.vaciarCamposItem();
+      this.items = {};
+      this.clidatos = [];
+      this.comprobante = 0;
+      this.clienteSeleccionado = [];
+      this.vaciarCamposItem();
+    } else {
+      alert('Error en el número de comprobante!!');
+    }
   }
 }
